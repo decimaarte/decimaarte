@@ -1,0 +1,39 @@
+<header class="site-head">
+  <div class="head-inner">
+    <a href="{{ '/' | relative_url }}" class="logo-lockup">
+      <div class="logo-badge" style="background:transparent; border:none;">
+        <img src="{{ '/assets/img/logo-badge.png' | relative_url }}" alt="Décima Arte" style="width:38px; height:38px;">
+      </div>
+      <span class="logo-word">DÉCIMA ARTE</span>
+    </a>
+    <nav class="main-nav">
+      {% for item in site.nav %}
+        <a href="{{ item.url | relative_url }}" {% if page.url == item.url %}class="active"{% endif %}>{{ item.title }}</a>
+      {% endfor %}
+    </nav>
+    <div class="head-actions">
+      <div class="search-box">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        <input type="text" placeholder="Buscar...">
+      </div>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Alternar tema">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+      </button>
+      <a href="{{ site.youtube_url }}" target="_blank" rel="noopener" class="btn-sub">Inscreva-se</a>
+    </div>
+  </div>
+</header>
+
+<div class="cat-strip">
+  <div class="wrap">
+    <a href="{{ '/categoria/lancamentos/' | relative_url }}">Lançamentos</a>
+    <a href="{{ '/categoria/pc/' | relative_url }}">PC</a>
+    <a href="{{ '/categoria/playstation/' | relative_url }}">PlayStation</a>
+    <a href="{{ '/categoria/xbox/' | relative_url }}">Xbox</a>
+    <a href="{{ '/categoria/indie/' | relative_url }}">Indie</a>
+    <a href="{{ '/categoria/game-design/' | relative_url }}">Game Design</a>
+    <a href="{{ '/categoria/retro/' | relative_url }}">Retro</a>
+    <a href="{{ '/promocoes/' | relative_url }}">Promoções</a>
+    <a href="{{ '/categoria/jogos-gratis/' | relative_url }}">Jogos grátis da semana</a>
+  </div>
+</div>

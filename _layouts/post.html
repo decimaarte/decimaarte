@@ -1,0 +1,14 @@
+---
+layout: default
+---
+<article>
+  <div class="post-header">
+    <span class="tag-pill">{{ page.categories | first }}</span>
+    <h1>{{ page.title }}</h1>
+    <div class="post-meta">Por {{ page.author | default: "Redação" }} · {{ page.date | date: "%d de %B de %Y" }}</div>
+    {% if page.image %}<img src="{{ page.image | relative_url }}" alt="" style="border-radius:10px; margin-bottom:10px;">{% endif %}
+  </div>
+  <div class="post-body">
+    {{ content }}
+  </div>
+</article>

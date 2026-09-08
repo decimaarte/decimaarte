@@ -1,0 +1,45 @@
+title: Décima Arte
+description: "Notícias, curiosidades de desenvolvimento e promoções do mundo dos games."
+url: "https://decimaarte.com.br"
+baseurl: ""
+email: decimaarte1@gmail.com
+youtube_url: "https://www.youtube.com/@decima10arte"
+
+# Menu principal — "Guias" fica pronto no código mas oculto até ter o 1º guia publicado
+nav:
+  - title: Notícias
+    url: /noticias/
+  - title: Curiosidades Dev
+    url: /curiosidades-dev/
+  - title: Gameplays
+    url: /gameplays/
+  - title: Promoções
+    url: /promocoes/
+  - title: Sobre
+    url: /sobre/
+  # - title: Guias
+  #   url: /guias/
+
+markdown: kramdown
+permalink: /:categories/:title/
+
+collections:
+  guias:
+    output: true
+    permalink: /guias/:path/
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+  - scope:
+      path: ""
+    values:
+      layout: page
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock

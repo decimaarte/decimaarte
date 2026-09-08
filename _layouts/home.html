@@ -1,0 +1,78 @@
+---
+layout: default
+---
+{% assign posts = site.posts %}
+{% assign featured = posts.first %}
+
+<main class="wrap content-grid">
+  <div>
+    {% if featured %}
+    <a href="{{ featured.url | relative_url }}" class="hero">
+      <img class="hero-img" src="{{ featured.image | default: '/assets/img/placeholder-hero.jpg' | relative_url }}" alt="">
+      <div class="hero-copy">
+        <span class="tag-pill">{{ featured.categories | first }}</span>
+        <h1>{{ featured.title }}</h1>
+        <p>{{ featured.excerpt | strip_html | truncate: 140 }}</p>
+      </div>
+    </a>
+    {% endif %}
+
+    <h2 class="section-title">Notícias quentes</h2>
+    <div class="article-grid">
+      {% assign noticias = site.categories.noticias | default: posts %}
+      {% for post in noticias limit:3 %}
+      <a href="{{ post.url | relative_url }}" class="card">
+        <img class="card-img" src="{{ post.image | default: '/assets/img/placeholder-card.jpg' | relative_url }}" alt="">
+        <div class="card-body">
+          <span class="card-cat">{{ post.categories | first }}</span>
+          <h3>{{ post.title }}</h3>
+          <div class="card-meta"><span>{{ post.author | default: "Redação" }}</span> · <span>{{ post.date | date: "%d/%m" }}</span></div>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+
+    <h2 class="section-title">Curiosidades de desenvolvimento</h2>
+    <div class="article-grid">
+      {% assign curiosidades = site.categories.curiosidades-dev | default: posts %}
+      {% for post in curiosidades limit:3 %}
+      <a href="{{ post.url | relative_url }}" class="card">
+        <img class="card-img" src="{{ post.image | default: '/assets/img/placeholder-card.jpg' | relative_url }}" alt="">
+        <div class="card-body">
+          <span class="card-cat">{{ post.categories | first }}</span>
+          <h3>{{ post.title }}</h3>
+          <div class="card-meta"><span>{{ post.author | default: "Redação" }}</span> · <span>{{ post.date | date: "%d/%m" }}</span></div>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+
+  <aside>
+    <div class="sidebar-block">
+      <h2 class="section-title" style="font-size:15px;">Últimas</h2>
+      {% for post in posts limit:4 %}
+      <a href="{{ post.url | relative_url }}" class="latest-item">
+        <img class="latest-thumb" src="{{ post.image | default: '/assets/img/placeholder-card.jpg' | relative_url }}" alt="">
+        <div><h4>{{ post.title }}</h4><span>{{ post.date | date: "%d/%m" }}</span></div>
+      </a>
+      {% endfor %}
+    </div>
+
+    <div class="promo-block">
+      <span class="card-cat">Promoção · Link de afiliado</span>
+      <h4>Confira as promoções da semana</h4>
+      <p>Achados selecionados em hardware, jogos e periféricos.</p>
+      <a href="{{ '/promocoes/' | relative_url }}" style="color:#fff; font-weight:700; font-size:13px;">Ver todas →</a>
+    </div>
+
+    <div class="sidebar-block sub-block">
+      <div class="logo-badge">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M12 2L20 7V17L12 22L4 17V7L12 2Z" stroke="#FEFEFD" stroke-width="1.4" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.6" fill="#FEFEFD"/><rect x="10.8" y="12" width="2.4" height="5" fill="#FEFEFD"/></svg>
+      </div>
+      <h4>Décima Arte no YouTube</h4>
+      <p>Gamedev, curiosidades e gameplays toda semana.</p>
+      <a href="{{ site.youtube_url }}" target="_blank" rel="noopener" class="btn-sub">Inscreva-se no canal</a>
+    </div>
+  </aside>
+</main>
