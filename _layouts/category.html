@@ -1,0 +1,24 @@
+---
+layout: default
+---
+<main class="wrap" style="padding: 40px 24px 60px;">
+  <h1 style="font-family: var(--font-display); font-weight:400; font-size: clamp(26px,4vw,36px); margin: 0 0 24px;">{{ page.title }}</h1>
+
+  {% assign filtered = site.categories[page.category_key] %}
+  {% if filtered and filtered.size > 0 %}
+    <div class="article-grid">
+      {% for post in filtered %}
+      <a href="{{ post.url | relative_url }}" class="card">
+        <img class="card-img" src="{{ post.image | default: '/assets/img/placeholder-card.jpg' | relative_url }}" alt="">
+        <div class="card-body">
+          <span class="card-cat">{{ post.categories | first }}</span>
+          <h3>{{ post.title }}</h3>
+          <div class="card-meta"><span>{{ post.author | default: "Redação" }}</span> · <span>{{ post.date | date: "%d/%m" }}</span></div>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p style="color: var(--text-muted); font-size: 15px;">Ainda não tem matéria publicada aqui — as primeiras chegam em breve.</p>
+  {% endif %}
+</main>
