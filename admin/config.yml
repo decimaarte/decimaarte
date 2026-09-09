@@ -40,6 +40,7 @@ collections:
           - { label: "PC", value: "pc" }
           - { label: "PlayStation", value: "playstation" }
           - { label: "Xbox", value: "xbox" }
+          - { label: "Nintendo", value: "nintendo" }
           - { label: "Indie", value: "indie" }
           - { label: "Game Design", value: "game-design" }
           - { label: "Retro", value: "retro" }
@@ -62,6 +63,18 @@ collections:
       - { label: "Link de afiliado", name: "link", widget: "string" }
       - { label: "Imagem do produto", name: "image", widget: "image", required: false }
       - { label: "Data", name: "date", widget: "datetime" }
+
+  - name: "textos"
+    label: "Textos do site"
+    files:
+      - name: "textos_gerais"
+        label: "Frases e avisos"
+        file: "_data/textos.yml"
+        fields:
+          - { label: "Aviso de afiliado (página Promoções)", name: "promocoes_aviso", widget: "text" }
+          - { label: "Texto de introdução (página Promoções)", name: "promocoes_intro", widget: "text" }
+          - { label: "Texto de introdução (página Apoie)", name: "apoie_intro", widget: "text" }
+          - { label: "Texto da página Sobre", name: "sobre_texto", widget: "text" }
 
   - name: "paginas"
     label: "Páginas fixas"

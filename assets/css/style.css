@@ -168,8 +168,9 @@ nav.main-nav a:hover, nav.main-nav a.active { color: var(--text-main); border-co
 
 /* ---------- Footer ---------- */
 footer { border-top: 1px solid var(--line); background: var(--bg-surface); padding: 40px 24px 26px; margin-top: 20px; }
-.foot-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 30px; margin-bottom: 30px; }
-@media (max-width: 700px) { .foot-grid { grid-template-columns: 1fr; } }
+.foot-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 30px; margin-bottom: 30px; }
+@media (max-width: 900px) { .foot-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 600px) { .foot-grid { grid-template-columns: 1fr; } }
 .foot-grid h5 { font-size: 13px; text-transform: uppercase; letter-spacing: .5px; color: var(--text-muted); margin: 0 0 12px; }
 .foot-grid ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 9px; }
 .foot-grid ul a { font-size: 13.5px; color: var(--text-main); }
