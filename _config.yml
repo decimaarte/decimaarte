@@ -3,7 +3,7 @@ description: "Notícias, curiosidades de desenvolvimento e promoções do mundo 
 url: "https://decimaarte.com.br"
 baseurl: ""
 email: decimaarte1@gmail.com
-youtube_url: "https://www.youtube.com/@decima10arte"
+youtube_url: "https://www.youtube.com/@decima10arte?sub_confirmation=1"
 
 # Menu principal — "Guias" fica pronto no código mas oculto até ter o 1º guia publicado
 nav:

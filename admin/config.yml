@@ -30,6 +30,20 @@ collections:
           - { label: "Gameplays", value: "gameplays" }
         default: "curiosidades-dev"
       - { label: "Autor", name: "author", widget: "string", default: "Redação" }
+      - label: "Tags (aparecem na faixa de categorias)"
+        name: "tags"
+        widget: "select"
+        multiple: true
+        required: false
+        options:
+          - { label: "Lançamentos", value: "lancamentos" }
+          - { label: "PC", value: "pc" }
+          - { label: "PlayStation", value: "playstation" }
+          - { label: "Xbox", value: "xbox" }
+          - { label: "Indie", value: "indie" }
+          - { label: "Game Design", value: "game-design" }
+          - { label: "Retro", value: "retro" }
+          - { label: "Jogos grátis da semana", value: "jogos-gratis" }
       - { label: "Imagem de destaque", name: "image", widget: "image", required: false }
       - { label: "Resumo (aparece nos cards)", name: "excerpt", widget: "text", required: false }
       - { label: "Texto da matéria", name: "body", widget: "markdown" }
