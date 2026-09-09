@@ -27,6 +27,8 @@ collections:
   guias:
     output: true
     permalink: /guias/:path/
+  promocoes:
+    output: false
 
 defaults:
   - scope:

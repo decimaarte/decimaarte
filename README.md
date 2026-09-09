@@ -39,3 +39,24 @@ Abre em `http://localhost:4000`.
 Quando o primeiro guia estiver pronto:
 1. Descomenta as linhas de `Guias` no `nav` do `_config.yml`.
 2. Usa a collection `_guias` (já configurada) pra criar os arquivos, ou adapta pra posts com categoria `guias`.
+
+## Painel de edição visual (sem mexer em código)
+
+O site já vem com um painel de administração em `/admin` (Sveltia CMS) — depois de publicado, acessa `decimaarte.com.br/admin` no navegador.
+
+**Antes de usar, 2 ajustes obrigatórios:**
+
+1. Abre `admin/config.yml` e troca `SEU_USUARIO/NOME_DO_REPO` pelo caminho real do teu repositório no GitHub (ex: `decimaarte/decimaarte.github.io`).
+2. Gera um **token de acesso pessoal (PAT)** no GitHub:
+   - Vai em GitHub → foto de perfil → **Settings** → (menu esquerdo, bem embaixo) **Developer settings** → **Personal access tokens** → **Fine-grained tokens** → **Generate new token**.
+   - Em "Repository access", escolhe **Only select repositories** e seleciona o repositório do site.
+   - Em "Permissions" → "Repository permissions", muda **Contents** pra **Read and write**.
+   - Gera o token e **copia ele na hora** (só aparece uma vez).
+
+**Pra usar no dia a dia:**
+- Acessa `decimaarte.com.br/admin`.
+- Na tela de login, cola o token pessoal (em vez de clicar em "Sign in with GitHub", que precisaria de um servidor extra que a gente não configurou).
+- Edita matérias, promoções e as páginas fixas (Sobre/Contato/Apoie) numa tela com campos, sem tocar em código. Ao salvar, ele faz o commit sozinho no GitHub.
+
+**Uma limitação importante:** as páginas "Sobre", "Contato" e "Apoie" têm um bloco de visual (o card com a logo) misturado no meio do texto. Editar essas páginas pelo painel troca **todo o texto** do corpo — se quiser manter aquele card estilizado, é mais seguro editar essas 3 páginas específicas direto no GitHub (ou pedir ajuda aqui) em vez de pelo painel. Matérias novas (`_posts`) e promoções (`_promocoes`) não têm esse problema — pode usar o painel à vontade.
+

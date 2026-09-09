@@ -1,0 +1,73 @@
+backend:
+  name: github
+  repo: SEU_USUARIO/NOME_DO_REPO   # troca pelo teu usuário/repositório real do GitHub
+  branch: main
+
+# Login por token pessoal (PAT) — sem precisar de servidor de OAuth externo.
+# Basta colar o token na tela de login do painel.
+
+site_url: https://decimaarte.com.br
+media_folder: "assets/img/uploads"
+public_folder: "/assets/img/uploads"
+
+collections:
+  - name: "posts"
+    label: "Matérias"
+    label_singular: "Matéria"
+    folder: "_posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Título", name: "title", widget: "string" }
+      - { label: "Data", name: "date", widget: "datetime" }
+      - label: "Categoria"
+        name: "categories"
+        widget: "select"
+        multiple: false
+        options:
+          - { label: "Notícias", value: "noticias" }
+          - { label: "Curiosidades Dev", value: "curiosidades-dev" }
+          - { label: "Gameplays", value: "gameplays" }
+        default: "curiosidades-dev"
+      - { label: "Autor", name: "author", widget: "string", default: "Redação" }
+      - { label: "Imagem de destaque", name: "image", widget: "image", required: false }
+      - { label: "Resumo (aparece nos cards)", name: "excerpt", widget: "text", required: false }
+      - { label: "Texto da matéria", name: "body", widget: "markdown" }
+
+  - name: "promocoes"
+    label: "Promoções"
+    label_singular: "Promoção"
+    folder: "_promocoes"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Nome do produto", name: "title", widget: "string" }
+      - { label: "Categoria (hardware, periférico, jogo, cadeira...)", name: "categoria", widget: "string" }
+      - { label: "Preço original", name: "preco_original", widget: "string", required: false }
+      - { label: "Preço com desconto", name: "preco_promo", widget: "string" }
+      - { label: "Link de afiliado", name: "link", widget: "string" }
+      - { label: "Imagem do produto", name: "image", widget: "image", required: false }
+      - { label: "Data", name: "date", widget: "datetime" }
+
+  - name: "paginas"
+    label: "Páginas fixas"
+    label_singular: "Página"
+    files:
+      - name: "sobre"
+        label: "Sobre"
+        file: "sobre.html"
+        fields:
+          - { label: "Título", name: "title", widget: "string" }
+          - { label: "Texto", name: "body", widget: "markdown" }
+      - name: "contato"
+        label: "Contato"
+        file: "contato.html"
+        fields:
+          - { label: "Título", name: "title", widget: "string" }
+          - { label: "Texto", name: "body", widget: "markdown" }
+      - name: "apoie"
+        label: "Apoie o projeto"
+        file: "apoie.html"
+        fields:
+          - { label: "Título", name: "title", widget: "string" }
+          - { label: "Texto", name: "body", widget: "markdown" }
