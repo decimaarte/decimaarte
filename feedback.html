@@ -19,11 +19,19 @@ permalink: /feedback/
       var formId = isDarkTheme() ? 'KYE7KK' : 'OD2p5p';
       var wrapper = document.getElementById('tally-feedback-wrapper');
       wrapper.innerHTML = '<iframe data-tally-src="https://tally.so/embed/' + formId +
-        '?alignLeft=1&hideTitle=1&dynamicHeight=1" loading="lazy" width="100%" height="500" ' +
-        'frameborder="0" title="Feedback Décima Arte"></iframe>';
+        '?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="500" ' +
+        'frameborder="0" style="border:none; background:transparent;" title="Feedback Décima Arte"></iframe>';
       if (typeof Tally !== 'undefined') { Tally.loadEmbeds(); }
     }
 
     loadTallyForm();
+
+    // recarrega o form quando o usuário clica no toggle de tema, sem precisar dar F5
+    var toggleBtn = document.querySelector('.theme-toggle');
+    if (toggleBtn) {
+      toggleBtn.addEventListener('click', function () {
+        setTimeout(loadTallyForm, 60);
+      });
+    }
   })();
 </script>
