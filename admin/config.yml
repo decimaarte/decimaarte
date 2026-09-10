@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: decimaarte/decimaarte   # troca pelo teu usuário/repositório real do GitHub
+  repo: decimaarte/decimaarte
   branch: main
 
 # Login por token pessoal (PAT) — sem precisar de servidor de OAuth externo.
@@ -61,6 +61,7 @@ collections:
       - { label: "Categoria (hardware, periférico, jogo, cadeira...)", name: "categoria", widget: "string" }
       - { label: "Preço original", name: "preco_original", widget: "string", required: false }
       - { label: "Preço com desconto", name: "preco_promo", widget: "string" }
+      - { label: "Código de cupom (se tiver)", name: "cupom", widget: "string", required: false }
       - { label: "Link de afiliado", name: "link", widget: "string" }
       - { label: "Imagem do produto", name: "image", widget: "image", required: false }
       - { label: "Data", name: "date", widget: "datetime" }

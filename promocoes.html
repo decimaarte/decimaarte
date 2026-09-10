@@ -20,6 +20,7 @@ permalink: /promocoes/
         <span class="card-cat">{{ produto.categoria }} · Link de afiliado</span>
         <h3>{{ produto.title }}</h3>
         <div class="card-meta">{{ produto.preco_promo }} {% if produto.preco_original %}<s style="opacity:.6;">{{ produto.preco_original }}</s>{% endif %}</div>
+        {% if produto.cupom %}<div style="margin-top:8px; font-size:12px; font-weight:800; color:var(--pink-accent);">Cupom: {{ produto.cupom }}</div><div style="font-size:11px; color:var(--text-muted); margin-top:2px;">Sujeito a disponibilidade — confirme no site antes de comprar</div>{% endif %}
       </div>
     </a>
     {% endfor %}
