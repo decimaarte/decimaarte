@@ -12,7 +12,8 @@ permalink: /promocoes/
 
 <div class="article-grid" style="margin-top:30px;">
   {% if site.promocoes and site.promocoes.size > 0 %}
-    {% for produto in site.promocoes %}
+    {% assign promos_ordenadas = site.promocoes | sort: "date" | reverse %}
+    {% for produto in promos_ordenadas %}
     <a href="{{ produto.link }}" target="_blank" rel="noopener sponsored" class="card">
       <img class="card-img" src="{{ produto.image | default: '/assets/img/placeholder-card.jpg' | relative_url }}" alt="">
       <div class="card-body">
