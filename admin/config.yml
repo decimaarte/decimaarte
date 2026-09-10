@@ -41,6 +41,7 @@ collections:
           - { label: "PlayStation", value: "playstation" }
           - { label: "Xbox", value: "xbox" }
           - { label: "Nintendo", value: "nintendo" }
+          - { label: "Tech", value: "tech" }
           - { label: "Indie", value: "indie" }
           - { label: "Game Design", value: "game-design" }
           - { label: "Retro", value: "retro" }
