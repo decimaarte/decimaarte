@@ -77,6 +77,8 @@ collections:
           - { label: "Texto de introdução (página Promoções)", name: "promocoes_intro", widget: "text" }
           - { label: "Texto de introdução (página Apoie)", name: "apoie_intro", widget: "text" }
           - { label: "Texto da página Sobre", name: "sobre_texto", widget: "text" }
+          - { label: "Descrição curta (rodapé, abaixo da logo)", name: "footer_descricao", widget: "text" }
+          - { label: "Texto da newsletter (rodapé)", name: "footer_newsletter_texto", widget: "text" }
 
   - name: "paginas"
     label: "Páginas fixas"

@@ -28,6 +28,20 @@
 
   {% include footer.html %}
 
+  <div id="cookie-banner" class="cookie-banner" style="display:none;">
+    <p>Usamos cookies pra melhorar sua experiência e medir desempenho de conteúdo. <a href="{{ '/privacidade/' | relative_url }}">Saiba mais</a>.</p>
+    <button onclick="aceitarCookies()">Entendi</button>
+  </div>
+  <script>
+    if (!localStorage.getItem('decima-cookies-ok')) {
+      document.getElementById('cookie-banner').style.display = 'flex';
+    }
+    function aceitarCookies() {
+      localStorage.setItem('decima-cookies-ok', '1');
+      document.getElementById('cookie-banner').style.display = 'none';
+    }
+  </script>
+
   <script src="{{ '/assets/js/theme.js' | relative_url }}"></script>
 </body>
 </html>

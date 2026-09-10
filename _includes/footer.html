@@ -8,7 +8,7 @@
       </div>
           <span class="logo-word">DÉCIMA ARTE</span>
         </div>
-        <p style="font-size:13px; color:var(--text-muted); max-width:340px;">{{ site.description }}</p>
+        <p style="font-size:13px; color:var(--text-muted); max-width:340px;">{{ site.data.textos.footer_descricao }}</p>
       </div>
       <div>
         <h5>Navegue</h5>
@@ -20,7 +20,7 @@
       </div>
       <div>
         <h5>Newsletter</h5>
-        <p style="font-size:13px; color:var(--text-muted); margin:0 0 12px;">As notícias mais quentes, direto no seu e-mail.</p>
+        <p style="font-size:13px; color:var(--text-muted); margin:0 0 12px;">{{ site.data.textos.footer_newsletter_texto }}</p>
         <a href="https://decimaarte.beehiiv.com/subscribe" target="_blank" rel="noopener" class="btn-sub" style="display:inline-block;">Assinar newsletter</a>
       </div>
       <div>
@@ -28,14 +28,13 @@
         <ul>
           <li><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
           <li><a href="{{ site.youtube_url }}" target="_blank" rel="noopener">Canal no YouTube</a></li>
-          <li><a href="{{ '/sobre/' | relative_url }}">Sobre</a></li>
           <li><a href="{{ '/apoie/' | relative_url }}">Apoie o projeto</a></li>
           <li><a href="{{ '/feedback/' | relative_url }}">Deixe seu feedback</a></li>
         </ul>
       </div>
     </div>
     <div class="foot-bottom">
-      <span>© {{ 'now' | date: "%Y" }} Décima Arte. Todos os direitos reservados.</span>
+      <span>© {{ 'now' | date: "%Y" }} Décima Arte. Todos os direitos reservados. · <a href="{{ '/privacidade/' | relative_url }}" style="color:inherit;">Privacidade</a></span>
       <span>decimaarte.com.br</span>
     </div>
   </div>
