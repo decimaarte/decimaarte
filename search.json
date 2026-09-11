@@ -1,0 +1,27 @@
+---
+layout: null
+permalink: /search.json
+---
+[
+{% assign first_item = true %}
+{% for post in site.posts %}
+{% unless first_item %},{% endunless %}
+{
+  "title": {{ post.title | jsonify }},
+  "url": {{ post.url | relative_url | jsonify }},
+  "excerpt": {{ post.excerpt | strip_html | truncate: 120 | jsonify }},
+  "category": {{ post.categories | first | jsonify }}
+}
+{% assign first_item = false %}
+{% endfor %}
+{% for produto in site.promocoes %}
+{% unless first_item %},{% endunless %}
+{
+  "title": {{ produto.title | jsonify }},
+  "url": {{ produto.title | slugify | prepend: "/promocoes/#promo-" | relative_url | jsonify }},
+  "excerpt": {{ produto.categoria | jsonify }},
+  "category": "Promoção"
+}
+{% assign first_item = false %}
+{% endfor %}
+]

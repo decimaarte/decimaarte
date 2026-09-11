@@ -14,7 +14,7 @@ permalink: /promocoes/
   {% if site.promocoes and site.promocoes.size > 0 %}
     {% assign promos_ordenadas = site.promocoes | sort: "date" | reverse %}
     {% for produto in promos_ordenadas %}
-    <a href="{{ produto.link }}" target="_blank" rel="noopener sponsored" class="card">
+    <a href="{{ produto.link }}" target="_blank" rel="noopener sponsored" class="card" id="promo-{{ produto.title | slugify }}">
       <img class="card-img" src="{{ produto.image | default: '/assets/img/placeholder-card.jpg' | relative_url }}" alt="">
       <div class="card-body">
         <span class="card-cat">{{ produto.categoria }} · Link de afiliado</span>
