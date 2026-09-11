@@ -41,6 +41,9 @@
       return normalize(item.title).indexOf(q) !== -1 ||
              normalize(item.excerpt || '').indexOf(q) !== -1;
     });
+    filtered.sort(function (a, b) {
+      return new Date(b.date) - new Date(a.date);
+    });
     renderResults(filtered);
   });
 
