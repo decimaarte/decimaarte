@@ -10,7 +10,8 @@ permalink: /search.json
   "title": {{ post.title | jsonify }},
   "url": {{ post.url | relative_url | jsonify }},
   "excerpt": {{ post.excerpt | strip_html | truncate: 120 | jsonify }},
-  "category": {{ post.categories | first | jsonify }}
+  "category": {{ post.categories | first | jsonify }},
+  "date": {{ post.date | date: "%Y-%m-%d" | jsonify }}
 }
 {% assign first_item = false %}
 {% endfor %}
@@ -21,7 +22,8 @@ permalink: /search.json
   "title": {{ promo_title | jsonify }},
   "url": {{ promo_title | slugify | prepend: "/promocoes/#promo-" | relative_url | jsonify }},
   "excerpt": {{ produto.categoria | jsonify }},
-  "category": "Promoção"
+  "category": "Promoção",
+  "date": {{ produto.date | date: "%Y-%m-%d" | jsonify }}
 }
 {% assign first_item = false %}
 {% endfor %}
