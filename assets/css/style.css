@@ -293,7 +293,6 @@ footer { border-top: 1px solid var(--line); background: var(--bg-surface); paddi
   color: #a0a0ab;
 }
 
-
 /* ---------- Botão "Carregar mais" (Promoções) ---------- */
 .load-more-wrap {
   display: flex;
@@ -316,4 +315,45 @@ footer { border-top: 1px solid var(--line); background: var(--bg-surface); paddi
 .btn-load-more:hover {
   background: var(--purple-accent);
   color: #fff;
+}
+
+/* ---------- Botão Newsletter (header) ---------- */
+.btn-news {
+  border: 1.5px solid var(--purple-accent);
+  color: var(--purple-accent);
+  background: transparent;
+  font-weight: 700;
+  font-size: 13px;
+  padding: 7px 14px;
+  border-radius: 999px;
+  white-space: nowrap;
+  transition: background .15s ease, color .15s ease;
+}
+.btn-news:hover { background: var(--purple-accent); color: #fff; }
+
+@media (max-width: 640px) {
+  .btn-news { padding: 8px 12px; font-size: 12px; }
+}
+
+/* ---------- CTA de newsletter no fim da matéria ---------- */
+.post-newsletter-cta {
+  max-width: 760px;
+  margin: 10px auto 50px;
+  padding: 26px 28px;
+  background: var(--bg-surface);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--purple-accent);
+  border-radius: var(--radius);
+  text-align: center;
+}
+.post-newsletter-cta h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 20px;
+  margin: 0 0 6px;
+}
+.post-newsletter-cta p {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin: 0 0 16px;
 }
