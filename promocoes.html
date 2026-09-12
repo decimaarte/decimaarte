@@ -17,7 +17,7 @@ permalink: /promocoes/
     <a href="{{ produto.link }}" target="_blank" rel="noopener sponsored" class="card" id="promo-{{ produto.title | slugify }}">
       <img class="card-img" src="{{ produto.image | default: '/assets/img/placeholder-card.jpg' | relative_url }}" alt="">
       <div class="card-body">
-        <span class="card-cat">{{ produto.categoria }} · Link de afiliado</span>
+        <span class="card-cat">{{ produto.categoria }}</span>
         <h3>{{ produto.title }}</h3>
         <div class="card-meta">{{ produto.preco_promo }} {% if produto.preco_original %}<s style="opacity:.6;">{{ produto.preco_original }}</s>{% endif %}</div>
         {% if produto.cupom %}<div style="margin-top:8px; font-size:12px; font-weight:800; color:var(--pink-accent);">Cupom: {{ produto.cupom }}</div><div style="font-size:11px; color:var(--text-muted); margin-top:2px;">Sujeito a disponibilidade — confirme no site antes de comprar</div>{% endif %}
