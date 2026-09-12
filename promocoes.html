@@ -10,7 +10,7 @@ permalink: /promocoes/
 
 <p>{{ site.data.textos.promocoes_intro }}</p>
 
-<div class="article-grid" style="margin-top:30px;">
+<div class="article-grid" id="promocoes-grid" style="margin-top:30px;">
   {% if site.promocoes and site.promocoes.size > 0 %}
     {% assign promos_ordenadas = site.promocoes | sort: "date" | reverse %}
     {% for produto in promos_ordenadas %}
@@ -35,3 +35,11 @@ permalink: /promocoes/
     </div>
   {% endif %}
 </div>
+
+{% if site.promocoes and site.promocoes.size > 12 %}
+<div class="load-more-wrap">
+  <button id="load-more-btn" class="btn-load-more" type="button">Carregar mais</button>
+</div>
+{% endif %}
+
+<script src="{{ '/assets/js/load-more.js' | relative_url }}"></script>
