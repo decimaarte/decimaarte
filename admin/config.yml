@@ -29,7 +29,6 @@ collections:
           - { label: "Curiosidades Dev", value: "curiosidades-dev" }
           - { label: "Gameplays", value: "gameplays" }
         default: "curiosidades-dev"
-      - { label: "Autor", name: "author", widget: "string", default: "Redação" }
       - label: "Tags (aparecem na faixa de categorias)"
         name: "tags"
         widget: "select"
@@ -49,6 +48,7 @@ collections:
       - { label: "Imagem de destaque", name: "image", widget: "image", required: false }
       - { label: "Resumo (aparece nos cards)", name: "excerpt", widget: "text", required: false }
       - { label: "Texto da matéria", name: "body", widget: "markdown" }
+      - { label: "Autor", name: "author", widget: "string", default: "Redação" }
 
   - name: "promocoes"
     label: "Promoções"
@@ -99,6 +99,12 @@ collections:
       - name: "apoie"
         label: "Apoie o projeto"
         file: "apoie.html"
+        fields:
+          - { label: "Título", name: "title", widget: "string" }
+          - { label: "Texto", name: "body", widget: "markdown" }
+      - name: "privacidade"
+        label: "Política de Privacidade"
+        file: "privacidade.html"
         fields:
           - { label: "Título", name: "title", widget: "string" }
           - { label: "Texto", name: "body", widget: "markdown" }
