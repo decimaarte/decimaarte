@@ -1,62 +1,57 @@
 # Décima Arte — site
 
-Site estático em Jekyll, pronto pro GitHub Pages.
+Site estático em Jekyll, hospedado no GitHub Pages, domínio próprio: **decimaarte.com.br**.
 
-## Como subir (primeira vez)
+## Status atual
 
-1. Cria um repositório novo no GitHub chamado `decimaarte.github.io` **ou** qualquer nome (se for nome diferente, o site fica em `usuario.github.io/nome-do-repo` até você configurar o domínio próprio).
-2. Sobe esses arquivos pro repositório:
-   ```
-   git init
-   git add .
-   git commit -m "primeira versão do site"
-   git branch -M main
-   git remote add origin https://github.com/SEU_USUARIO/NOME_DO_REPO.git
-   git push -u origin main
-   ```
-3. No GitHub: **Settings → Pages → Build and deployment → Source: Deploy from a branch → main / (root)**.
-4. Ainda em Settings → Pages, em **Custom domain**, coloca `decimaarte.com.br` (o arquivo `CNAME` já existe no projeto, então o GitHub reconhece sozinho).
-5. No Registro.br, aponta o domínio pro GitHub Pages: cria os registros DNS tipo A pros IPs do GitHub Pages (185.199.108.153, 185.199.109.153, 185.199.110.153, 185.199.111.153) e um CNAME `www` apontando pra `SEU_USUARIO.github.io`.
+- ✅ Site no ar em decimaarte.com.br (GitHub Pages + domínio via Registro.br)
+- ✅ Painel de edição visual ativo em `/admin` (Sveltia CMS)
+- ✅ Newsletter configurada (Beehiiv), com botão no header e CTA ao fim de cada matéria
+- 🔧 Sistema de comentários via Supabase — em implementação
 
-## Como testar localmente (opcional, precisa de Ruby instalado)
+## Estrutura do projeto
 
-```
-gem install bundler jekyll
-bundle exec jekyll serve
-```
-Abre em `http://localhost:4000`.
+- `_posts/` — matérias do site (notícias, curiosidades dev, gameplays)
+- `_promocoes/` — produtos em promoção/afiliado
+- `_data/textos.yml` — textos institucionais reutilizáveis (avisos, introduções, textos de card)
+- `_layouts/` — templates (default, post, home, page, category, tag)
+- `_includes/` — componentes reutilizáveis (header, footer)
+- `assets/css/style.css` — estilo do site (cores no topo, em `:root` = tema light e `[data-theme="dark"]` = tema dark)
+- `admin/config.yml` — configuração do painel de edição (Sveltia CMS)
 
 ## Onde mexer no dia a dia
 
-- **Nova matéria/notícia:** cria um arquivo em `_posts/`, formato `AAAA-MM-DD-titulo.md`, com o cabeçalho (front matter) igual ao post de exemplo.
-- **Cores e tema:** `assets/css/style.css`, nas variáveis lá no topo (`:root` = tema light, `[data-theme="dark"]` = tema dark).
-- **Menu do site:** `_config.yml`, na lista `nav`.
-- **Textos institucionais:** `sobre.html`, `contato.html`, `apoie.html`.
-- **Logo:** troca o SVG simplificado (dentro de `_includes/header.html` e `_includes/footer.html`) pelo arquivo oficial quando quiser — ideal é exportar a logo como `.svg` ou `.png` com fundo transparente e trocar a tag `<svg>...</svg>` por `<img src="{{ '/assets/img/logo.png' | relative_url }}">`.
+**Pelo painel `/admin` (sem tocar em código):**
+- Matérias novas, promoções, e as páginas fixas (Sobre, Contato, Apoie o projeto, Política de Privacidade)
+- Textos institucionais reutilizáveis (avisos, cards, rodapé)
+
+**Direto no código (mudanças estruturais, não pelo painel):**
+- Cores e tema → `assets/css/style.css`
+- Menu do site → `_config.yml`, lista `nav`
+- Estrutura do header/footer → `_includes/`
+- Layout de matérias/páginas → `_layouts/`
+
+## Painel de edição visual — acesso
+
+Acessa `decimaarte.com.br/admin` no navegador e loga com um **token de acesso pessoal (PAT)** do GitHub:
+
+1. GitHub → foto de perfil → **Settings** → **Developer settings** → **Personal access tokens** → **Fine-grained tokens** → **Generate new token**
+2. "Repository access" → **Only select repositories** → seleciona `decimaarte/decimaarte`
+3. "Permissions" → "Repository permissions" → **Contents: Read and write**
+4. Gera e copia o token (só aparece uma vez — guarda num lugar seguro, nunca em arquivo do repositório)
+5. Cola o token na tela de login do `/admin`
+
+**Atenção com edições diretas no GitHub:** o painel e o código-fonte editam os mesmos arquivos. Se for editar algo manualmente no GitHub que também existe no painel (páginas fixas, textos institucionais), sempre baixa a versão mais recente do repositório antes de mexer na cópia local, pra não sobrescrever uma edição feita pelo painel.
+
+## Testar localmente (opcional, precisa de Ruby instalado)
+
+gem install bundler jekyll
+bundle exec jekyll serve
+
+Abre em `http://localhost:4000`.
 
 ## Ativando a aba "Guias" no futuro
 
 Quando o primeiro guia estiver pronto:
-1. Descomenta as linhas de `Guias` no `nav` do `_config.yml`.
-2. Usa a collection `_guias` (já configurada) pra criar os arquivos, ou adapta pra posts com categoria `guias`.
-
-## Painel de edição visual (sem mexer em código)
-
-O site já vem com um painel de administração em `/admin` (Sveltia CMS) — depois de publicado, acessa `decimaarte.com.br/admin` no navegador.
-
-**Antes de usar, 2 ajustes obrigatórios:**
-
-1. Abre `admin/config.yml` e troca `SEU_USUARIO/NOME_DO_REPO` pelo caminho real do teu repositório no GitHub (ex: `decimaarte/decimaarte.github.io`).
-2. Gera um **token de acesso pessoal (PAT)** no GitHub:
-   - Vai em GitHub → foto de perfil → **Settings** → (menu esquerdo, bem embaixo) **Developer settings** → **Personal access tokens** → **Fine-grained tokens** → **Generate new token**.
-   - Em "Repository access", escolhe **Only select repositories** e seleciona o repositório do site.
-   - Em "Permissions" → "Repository permissions", muda **Contents** pra **Read and write**.
-   - Gera o token e **copia ele na hora** (só aparece uma vez).
-
-**Pra usar no dia a dia:**
-- Acessa `decimaarte.com.br/admin`.
-- Na tela de login, cola o token pessoal (em vez de clicar em "Sign in with GitHub", que precisaria de um servidor extra que a gente não configurou).
-- Edita matérias, promoções e as páginas fixas (Sobre/Contato/Apoie) numa tela com campos, sem tocar em código. Ao salvar, ele faz o commit sozinho no GitHub.
-
-**Uma limitação importante:** as páginas "Sobre", "Contato" e "Apoie" têm um bloco de visual (o card com a logo) misturado no meio do texto. Editar essas páginas pelo painel troca **todo o texto** do corpo — se quiser manter aquele card estilizado, é mais seguro editar essas 3 páginas específicas direto no GitHub (ou pedir ajuda aqui) em vez de pelo painel. Matérias novas (`_posts`) e promoções (`_promocoes`) não têm esse problema — pode usar o painel à vontade.
-
+1. Descomenta as linhas de `Guias` no `nav` do `_config.yml`
+2. Usa a collection `_guias` (já configurada) pra criar os arquivos, ou adapta pra posts com categoria `guias`
