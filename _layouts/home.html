@@ -59,12 +59,12 @@ layout: default
       {% endfor %}
     </div>
 
-    <div class="promo-block">
-      <span class="card-cat">Promoção · Link de afiliado</span>
-      <h4>Confira as promoções da semana</h4>
-      <p>Achados selecionados em hardware, jogos e periféricos.</p>
-      <a href="{{ '/promocoes/' | relative_url }}" style="color:#fff; font-weight:700; font-size:13px;">Ver todas →</a>
-    </div>
+  <div class="promo-block">
+  <span class="card-cat">Promoções</span>
+  <h4>{{ site.data.textos.promo_card_titulo }}</h4>
+  <p>{{ site.data.textos.promo_card_texto }}</p>
+  <a href="{{ '/promocoes/' | relative_url }}" style="color:#fff; font-weight:700; font-size:13px;">Ver todas →</a>
+</div>
 
     <div class="sidebar-block sub-block">
       <div class="logo-badge" style="background:transparent; border:none;">
