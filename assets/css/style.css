@@ -292,3 +292,28 @@ footer { border-top: 1px solid var(--line); background: var(--bg-surface); paddi
 [data-theme="dark"] .search-empty {
   color: #a0a0ab;
 }
+
+
+/* ---------- Botão "Carregar mais" (Promoções) ---------- */
+.load-more-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 6px;
+  margin-bottom: 44px;
+}
+.btn-load-more {
+  background: var(--bg-surface);
+  border: 1px solid var(--purple-accent);
+  color: var(--purple-accent);
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 13.5px;
+  padding: 11px 28px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background .15s ease, color .15s ease;
+}
+.btn-load-more:hover {
+  background: var(--purple-accent);
+  color: #fff;
+}
