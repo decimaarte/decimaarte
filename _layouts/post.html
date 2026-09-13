@@ -41,10 +41,10 @@ layout: default
         <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
           <img src="${user.user_metadata.avatar_url}" style="width:32px;height:32px;border-radius:50%;">
           <span>${user.user_metadata.full_name || user.email}</span>
-          <button id="logout-btn" style="margin-left:auto;">Sair</button>
+          <button id="logout-btn" style="margin-left:auto;background:transparent;color:inherit;border:1px solid rgba(255,255,255,0.2);padding:6px 14px;border-radius:20px;cursor:pointer;">Sair</button>
         </div>
-        <textarea id="comment-input" placeholder="Escreve um comentário..." style="width:100%;min-height:70px;padding:10px;border-radius:8px;"></textarea>
-        <button id="submit-comment" style="margin-top:8px;">Comentar</button>
+        <textarea id="comment-input" placeholder="Escreve um comentário..." style="width:100%;min-height:70px;padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.03);color:inherit;font-family:inherit;"></textarea>
+        <button id="submit-comment" style="margin-top:8px;background:#FF2D55;color:#fff;border:none;padding:8px 20px;border-radius:24px;font-weight:600;cursor:pointer;">Comentar</button>
       `;
       document.getElementById('logout-btn').onclick = async () => {
         await supabaseClient.auth.signOut();
@@ -52,7 +52,7 @@ layout: default
       };
       document.getElementById('submit-comment').onclick = submitComment;
     } else {
-      authDiv.innerHTML = `<button id="login-btn">Entrar com Google pra comentar</button>`;
+      authDiv.innerHTML = `<button id="login-btn" style="display:flex;align-items:center;gap:8px;background:#8846C4;color:#fff;border:none;padding:10px 20px;border-radius:24px;font-weight:600;cursor:pointer;">Entrar com Google pra comentar</button>`;
       document.getElementById('login-btn').onclick = async () => {
         await supabaseClient.auth.signInWithOAuth({ provider: 'google' });
       };
