@@ -10,14 +10,7 @@ layout: default
   </div>
   <div class="post-body">
     {{ content }}
-  </div>
-  <div class="post-newsletter-cta">
-    <h3>Gostou da matéria?</h3>
-    <p>Receba um resumo semanal — sem enrolação.</p>
-    <a href="https://newsletter.decimaarte.com.br" target="_blank" rel="noopener" class="btn-sub">Assinar</a>
-  </div>
-</article>
-
+    
 <!-- Sistema de comentários - Décima Arte -->
 <div id="comments-section" style="margin-top:40px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.1);">
   <h3 style="margin-bottom:16px;">Comentários</h3>
@@ -29,7 +22,7 @@ layout: default
 <script>
 (function() {
   const SUPABASE_URL = "https://lvkbrtyqjzvjimcfahej.supabase.co";
-  const SUPABASE_ANON_KEY = "COLA_SUA_ANON_KEY_AQUI";
+  const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx2a2JydHlxanp2amltY2ZhaGVqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODkyMTQyMzMsImV4cCI6MjEwNDc5MDIzM30.JegRq0USoUKfUgKDM95gKz69-o0SpTEjp-FTlfS93qs";
   const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
   const POST_SLUG = "{{ page.slug }}";
 
@@ -116,3 +109,11 @@ layout: default
   supabaseClient.auth.onAuthStateChange(() => renderAuth());
 })();
 </script>
+
+  </div>
+  <div class="post-newsletter-cta">
+    <h3>Gostou da matéria?</h3>
+    <p>Receba um resumo semanal — sem enrolação.</p>
+    <a href="https://newsletter.decimaarte.com.br" target="_blank" rel="noopener" class="btn-sub">Assinar</a>
+  </div>
+</article>
