@@ -17,3 +17,102 @@ layout: default
     <a href="https://newsletter.decimaarte.com.br" target="_blank" rel="noopener" class="btn-sub">Assinar</a>
   </div>
 </article>
+
+<!-- Sistema de comentários - Décima Arte -->
+<div id="comments-section" style="margin-top:40px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.1);">
+  <h3 style="margin-bottom:16px;">Comentários</h3>
+  <div id="comments-auth" style="margin-bottom:20px;"></div>
+  <div id="comments-list"></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script>
+(function() {
+  const SUPABASE_URL = "https://lvkbrtyqjzvjimcfahej.supabase.co";
+  const SUPABASE_ANON_KEY = "COLA_SUA_ANON_KEY_AQUI";
+  const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+  const POST_SLUG = "{{ page.slug }}";
+
+  const authDiv = document.getElementById('comments-auth');
+  const listDiv = document.getElementById('comments-list');
+
+  async function getUser() {
+    const { data: { user } } = await supabaseClient.auth.getUser();
+    return user;
+  }
+
+  async function renderAuth() {
+    const user = await getUser();
+    if (user) {
+      authDiv.innerHTML = `
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+          <img src="${user.user_metadata.avatar_url}" style="width:32px;height:32px;border-radius:50%;">
+          <span>${user.user_metadata.full_name || user.email}</span>
+          <button id="logout-btn" style="margin-left:auto;">Sair</button>
+        </div>
+        <textarea id="comment-input" placeholder="Escreve um comentário..." style="width:100%;min-height:70px;padding:10px;border-radius:8px;"></textarea>
+        <button id="submit-comment" style="margin-top:8px;">Comentar</button>
+      `;
+      document.getElementById('logout-btn').onclick = async () => {
+        await supabaseClient.auth.signOut();
+        renderAuth();
+      };
+      document.getElementById('submit-comment').onclick = submitComment;
+    } else {
+      authDiv.innerHTML = `<button id="login-btn">Entrar com Google pra comentar</button>`;
+      document.getElementById('login-btn').onclick = async () => {
+        await supabaseClient.auth.signInWithOAuth({ provider: 'google' });
+      };
+    }
+  }
+
+  async function submitComment() {
+    const user = await getUser();
+    const content = document.getElementById('comment-input').value.trim();
+    if (!content) return;
+    const { error } = await supabaseClient.from('comments').insert({
+      post_slug: POST_SLUG,
+      user_id: user.id,
+      author_name: user.user_metadata.full_name || user.email,
+      author_avatar: user.user_metadata.avatar_url,
+      content: content
+    });
+    if (!error) {
+      document.getElementById('comment-input').value = '';
+      renderComments();
+    }
+  }
+
+  async function renderComments() {
+    const { data: comments } = await supabaseClient
+      .from('comments')
+      .select('*')
+      .eq('post_slug', POST_SLUG)
+      .order('created_at', { ascending: false });
+
+    const user = await getUser();
+
+    listDiv.innerHTML = (comments || []).map(c => `
+      <div style="display:flex;gap:10px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.08);">
+        <img src="${c.author_avatar}" style="width:36px;height:36px;border-radius:50%;">
+        <div style="flex:1;">
+          <strong>${c.author_name}</strong>
+          <p style="margin:4px 0;">${c.content}</p>
+          ${user && user.id === c.user_id ? `<button data-id="${c.id}" class="delete-comment" style="font-size:12px;color:#FF2D55;">Apagar</button>` : ''}
+        </div>
+      </div>
+    `).join('') || '<p style="opacity:0.6;">Nenhum comentário ainda. Seja o primeiro!</p>';
+
+    document.querySelectorAll('.delete-comment').forEach(btn => {
+      btn.onclick = async () => {
+        await supabaseClient.from('comments').delete().eq('id', btn.dataset.id);
+        renderComments();
+      };
+    });
+  }
+
+  renderAuth();
+  renderComments();
+  supabaseClient.auth.onAuthStateChange(() => renderAuth());
+})();
+</script>
