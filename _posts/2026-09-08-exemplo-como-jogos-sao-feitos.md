@@ -5,7 +5,7 @@ categories: curiosidades-dev
 tags: []
 image: /assets/img/placeholder-hero.jpg
 excerpt: ''
-author: ''
+author: Deivisson Freitas
 ---
 
 Este é um post de exemplo pra você ver como o layout de artigo fica na prática. Substitua por conteúdo real quando o chat de redação estiver produzindo as matérias.
