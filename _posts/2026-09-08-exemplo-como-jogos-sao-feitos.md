@@ -1,8 +1,11 @@
 ---
-title: "Exemplo: como um jogo indie nasce do zero"
-categories: [curiosidades-dev]
-author: Redação
+title: 'Exemplo: como um jogo indie nasce do zero'
+date: 2026-09-13T05:08:00
+categories: curiosidades-dev
+tags: []
 image: /assets/img/placeholder-hero.jpg
+excerpt: ''
+author: Deivisson Freitas
 ---
 
 Este é um post de exemplo pra você ver como o layout de artigo fica na prática. Substitua por conteúdo real quando o chat de redação estiver produzindo as matérias.
