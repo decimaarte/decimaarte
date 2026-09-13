@@ -27,7 +27,7 @@ layout: default
 <div class="post-tags" style="margin:24px 0;display:flex;flex-wrap:wrap;gap:8px;align-items:center;">
   <span style="font-weight:600;">Veja mais:</span>
   {% for cat in page.categories %}
-    <a href="/categoria/{{ cat | slugify }}/" style="background:rgba(136,70,196,0.15);color:#8846C4;padding:4px 12px;border-radius:16px;font-size:13px;text-decoration:none;">{{ cat }}</a>
+    <a href="/{{ cat | slugify }}/" style="background:rgba(136,70,196,0.15);color:#8846C4;padding:4px 12px;border-radius:16px;font-size:13px;text-decoration:none;">{{ cat }}</a>
   {% endfor %}
 </div>
 {% endif %}
