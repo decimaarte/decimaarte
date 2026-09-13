@@ -10,7 +10,27 @@ layout: default
   </div>
   <div class="post-body">
     {{ content }}
-    
+
+    <div class="related-posts" style="margin-top:40px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.1);">
+  <h3 style="margin-bottom:16px;">Continue lendo</h3>
+  <div style="display:flex;flex-direction:column;gap:12px;">
+    {% assign related = site.posts | where_exp: "post", "post.url != page.url" | limit: 5 %}
+    {% for post in related %}
+      <a href="{{ post.url }}" style="display:block;padding:12px;border-radius:10px;background:rgba(255,255,255,0.03);text-decoration:none;color:inherit;">
+        <span style="font-size:11px;color:#8846C4;font-weight:600;text-transform:uppercase;">{{ post.categories | first }}</span>
+        <div style="font-weight:600;margin-top:4px;">{{ post.title }}</div>
+      </a>
+    {% endfor %}
+  </div>
+</div>
+    {% if page.categories.size > 0 %}
+<div class="post-tags" style="margin:24px 0;display:flex;flex-wrap:wrap;gap:8px;align-items:center;">
+  <span style="font-weight:600;">Veja mais:</span>
+  {% for cat in page.categories %}
+    <a href="/categoria/{{ cat | slugify }}/" style="background:rgba(136,70,196,0.15);color:#8846C4;padding:4px 12px;border-radius:16px;font-size:13px;text-decoration:none;">{{ cat }}</a>
+  {% endfor %}
+</div>
+{% endif %}
 <!-- Sistema de comentários - Décima Arte -->
 <div id="comments-section" style="margin-top:40px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.1);">
   <h3 style="margin-bottom:16px;">Comentários</h3>
