@@ -58,7 +58,7 @@ collections:
     slug: "{{slug}}"
     fields:
       - { label: "Nome do produto", name: "title", widget: "string" }
-         - label: "Categoria"
+      - label: "Categoria"
         name: "categoria"
         widget: "select"
         options:
@@ -119,7 +119,10 @@ collections:
         file: "apoie.html"
         fields:
           - { label: "Título", name: "title", widget: "string" }
-          - { label: "Texto", name: "body", widget: "markdown" }
+          - { label: "Texto de introdução", name: "intro", widget: "text" }
+          - { label: "Imagem do QR Code", name: "qr_image", widget: "image", required: false }
+          - { label: "Chave Pix", name: "chave_pix", widget: "string" }
+          - { label: "Texto final (chamada pro canal)", name: "texto_final", widget: "markdown" }
       - name: "privacidade"
         label: "Política de Privacidade"
         file: "privacidade.html"
