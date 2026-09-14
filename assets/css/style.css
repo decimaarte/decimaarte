@@ -100,7 +100,7 @@ nav.main-nav a:hover, nav.main-nav a.active { color: var(--text-main); border-co
   .head-inner { flex-wrap: wrap; gap: 12px 16px; padding: 12px 16px; }
   .logo-lockup { margin-right: 0; }
   nav.main-nav {
-    order: 3; width: 100%; flex-wrap: nowrap; overflow-x: auto;
+    order: 3; flex: 1 1 100%; flex-wrap: nowrap; overflow-x: auto;
     gap: 18px; padding-bottom: 2px; -webkit-overflow-scrolling: touch;
   }
   nav.main-nav a { flex-shrink: 0; }
