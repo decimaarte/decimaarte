@@ -122,7 +122,8 @@ collections:
           - { label: "Texto de introdução", name: "intro", widget: "text" }
           - { label: "Imagem do QR Code", name: "qr_image", widget: "image", required: false }
           - { label: "Chave Pix", name: "chave_pix", widget: "string" }
-          - { label: "Texto final (chamada pro canal)", name: "texto_final", widget: "markdown" }
+          - { label: "Texto final (chamada pro canal)", name: "texto_final", widget: "string" }
+          - { label: "Texto do botão", name: "cta_texto", widget: "string", default: "Inscreva-se no canal" }
       - name: "privacidade"
         label: "Política de Privacidade"
         file: "privacidade.html"
