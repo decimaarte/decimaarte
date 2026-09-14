@@ -58,18 +58,19 @@ collections:
     slug: "{{slug}}"
     fields:
       - { label: "Nome do produto", name: "title", widget: "string" }
-      - { label: "Categoria", name: "categoria", widget: "select", options: [
-    { label: "Componentes", value: "componentes" },
-    { label: "Armazenamento", value: "armazenamento" },
-    { label: "Periféricos & Áudio", value: "perifericos" },
-    { label: "Monitores", value: "monitores" },
-    { label: "Cadeiras & Mesas", value: "cadeiras-mesas" },
-    { label: "Notebooks & Celulares", value: "notebooks-celulares" },
-    { label: "Kits Completos", value: "kits" },
-    { label: "Jogos & Keys", value: "jogos-keys" },
-    { label: "Criador de Conteúdo", value: "criador" },
-    { label: "Energia", value: "energia" }
-  ]}
+      - label: "Categoria"
+        name: "categoria"
+        widget: "select"
+        options:
+          - { label: "Componentes", value: "componentes" }
+          - { label: "Armazenamento", value: "armazenamento" }
+          - { label: "Periféricos & Áudio", value: "perifericos" }
+          - { label: "Monitores", value: "monitores" }
+          - { label: "Cadeiras & Mesas", value: "cadeiras-mesas" }
+          - { label: "Notebooks & Celulares", value: "notebooks-celulares" }
+          - { label: "Kits Completos", value: "kits" }
+          - { label: "Jogos & Keys", value: "jogos-keys" }
+          - { label: "Criador de Conteúdo", value: "criador" }
       - { label: "Preço original", name: "preco_original", widget: "string", required: false }
       - { label: "Preço com desconto", name: "preco_promo", widget: "string" }
       - { label: "Código de cupom (se tiver)", name: "cupom", widget: "string", required: false }
