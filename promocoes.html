@@ -11,8 +11,8 @@ title: Promoções
     style="width:100%;padding:12px 16px;border-radius:24px;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.03);color:inherit;margin-bottom:16px;font-family:inherit;">
   <div id="promo-filters" style="display:flex;flex-wrap:wrap;gap:8px;">
     <button class="promo-filter-btn active" data-cat="todos">Todos</button>
-    {% assign cats = "componentes,armazenamento,perifericos,monitores,cadeiras-mesas,notebooks-celulares,kits,jogos-keys,criador,energia" | split: "," %}
-    {% assign labels = "Componentes,Armazenamento,Periféricos & Áudio,Monitores,Cadeiras & Mesas,Notebooks & Celulares,Kits Completos,Jogos & Keys,Criador de Conteúdo,Energia" | split: "," %}
+    {% assign cats = "componentes,armazenamento,perifericos,monitores,cadeiras-mesas,notebooks-celulares,kits,jogos-keys,criador" | split: "," %}
+    {% assign labels = "Componentes,Armazenamento,Periféricos & Áudio,Monitores,Cadeiras & Mesas,Notebooks & Celulares,Kits Completos,Jogos & Keys,Criador de Conteúdo" | split: "," %}
     {% for cat in cats %}<button class="promo-filter-btn" data-cat="{{ cat }}">{{ labels[forloop.index0] }}</button>{% endfor %}
   </div>
 </div>
