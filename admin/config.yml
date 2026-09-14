@@ -76,6 +76,7 @@ collections:
       - { label: "Link de afiliado", name: "link", widget: "string" }
       - { label: "Imagem do produto", name: "image", widget: "image", required: false }
       - { label: "Data", name: "date", widget: "datetime" }
+      - { label: "Destaque (Em Alta)", name: "destaque", widget: "boolean", required: false, default: false }
 
   - name: "textos"
     label: "Textos do site"
