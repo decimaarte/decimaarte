@@ -2,13 +2,19 @@
 layout: default
 title: Promoções
 ---
-<h1>Promoções</h1>
-<div class="promo-alert"><strong>Aviso:</strong> {{ site.data.textos.promocoes_aviso }}</div>
+<div class="wrap" style="padding-top:44px;padding-bottom:60px;">
 
-<div class="promo-controls" style="margin:24px 0;">
-  <input type="text" id="promo-search" placeholder="Buscar por nome do produto..."
-    style="width:100%;padding:12px 16px;border-radius:24px;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.03);color:inherit;margin-bottom:16px;font-family:inherit;">
-  <div id="promo-filters" style="display:flex;flex-wrap:wrap;gap:8px;">
+<h1 style="font-family:var(--font-display);font-weight:400;font-size:clamp(28px,4vw,38px);margin:0 0 20px;">Promoções</h1>
+
+<div class="affiliate-notice" style="align-items:flex-start;">
+  <div><strong>Aviso:</strong> {{ site.data.textos.promocoes_aviso }}</div>
+</div>
+
+<p style="font-size:16px;line-height:1.7;color:var(--text-main);margin:24px 0 28px;">{{ site.data.textos.promocoes_intro }}</p>
+
+<div class="promo-controls" style="margin-bottom:24px;">
+  <input type="text" id="promo-search" placeholder="Buscar por nome do produto..." class="promo-search-input">
+  <div id="promo-filters" style="display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;">
     <button class="promo-filter-btn active" data-cat="todos">Todos</button>
     {% assign cats = "componentes,armazenamento,perifericos,monitores,cadeiras-mesas,notebooks,celulares,consoles,controles,kits,jogos-keys,custo-beneficio" | split: "," %}
     {% assign labels = "Componentes,Armazenamento,Periféricos &amp; Áudio,Monitores,Cadeiras &amp; Mesas,Notebooks,Celulares,Consoles,Controles,Kits Completos,Jogos &amp; Keys,Custo-Benefício" | split: "," %}
@@ -16,30 +22,23 @@ title: Promoções
   </div>
 </div>
 
-<style>
-.promo-filter-btn { background:transparent;border:1px solid rgba(255,255,255,0.2);color:inherit;padding:8px 18px;border-radius:20px;cursor:pointer;font-size:14px;font-family:inherit; }
-.promo-filter-btn.active { background:#8846C4;border-color:#8846C4;color:#fff;font-weight:600; }
-.promo-grid { display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px;margin-top:24px; }
-.promo-alert { background: rgba(255,45,85,0.08);border-left: 4px solid #FF2D55;border-radius: 8px;padding: 16px 20px;margin: 20px 0 24px;line-height: 1.6;}
-.promo-alert strong { color: #FF2D55; }
-</style>
-
 <div class="promo-grid" id="promo-grid">
   {% assign produtos = site.promocoes | sort: 'date' | reverse %}
   {% for p in produtos %}
   <div class="promo-card" data-cat="{{ p.categoria }}" data-name="{{ p.title | downcase }}">
-    {% if p.image %}<img src="{{ p.image | relative_url }}" alt="{{ p.title }}" style="width:100%;border-radius:10px;">{% endif %}
-    {% if p.destaque %}<span style="background:#FF2D55;color:#fff;font-size:11px;padding:2px 8px;border-radius:10px;">🔥 Em alta</span>{% endif %}
-    <h4 style="margin:8px 0 4px;">{{ p.title }}</h4>
+    {% if p.image %}<img src="{{ p.image | relative_url }}" alt="{{ p.title }}" class="promo-card-img">{% endif %}
+    {% if p.destaque %}<span class="promo-badge">🔥 Em alta</span>{% endif %}
+    <h4 class="promo-card-title">{{ p.title }}</h4>
     <div>
-      {% if p.preco_promo %}<span style="font-weight:600;">{{ p.preco_promo }}</span>{% endif %}
-      {% if p.preco_original %}<s style="opacity:0.5;margin-left:6px;">{{ p.preco_original }}</s>{% endif %}
+      {% if p.preco_promo %}<span class="promo-price-now">{{ p.preco_promo }}</span>{% endif %}
+      {% if p.preco_original %}<s class="promo-price-old">{{ p.preco_original }}</s>{% endif %}
     </div>
-    {% if p.cupom %}<div style="color:#FF2D55;font-size:13px;margin-top:4px;">Cupom: {{ p.cupom }}</div>{% endif %}
-    <a href="{{ p.link }}" target="_blank" rel="noopener sponsored" data-goatcounter-click="produto-{{ p.title | slugify }}"
-       style="display:inline-block;margin-top:8px;background:#FF2D55;color:#fff;padding:6px 16px;border-radius:16px;text-decoration:none;font-size:13px;">Ver oferta</a>
+    {% if p.cupom %}<div class="promo-coupon">Cupom: {{ p.cupom }}</div>{% endif %}
+    <a href="{{ p.link }}" target="_blank" rel="noopener sponsored" data-goatcounter-click="produto-{{ p.title | slugify }}" class="promo-cta">Ver oferta</a>
   </div>
   {% endfor %}
+</div>
+
 </div>
 
 <script>
