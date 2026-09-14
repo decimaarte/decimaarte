@@ -357,3 +357,62 @@ footer { border-top: 1px solid var(--line); background: var(--bg-surface); paddi
   color: var(--text-muted);
   margin: 0 0 16px;
 }
+
+/* ---------- Promoções ---------- */
+.promo-search-input {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--bg-surface);
+  color: var(--text-main);
+  font-family: var(--font-body);
+  font-size: 14px;
+}
+.promo-search-input::placeholder { color: var(--text-muted); }
+
+.promo-filter-btn {
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--text-muted);
+  padding: 8px 18px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 13.5px;
+  font-weight: 600;
+  font-family: var(--font-body);
+  transition: background .15s ease, color .15s ease, border-color .15s ease;
+}
+.promo-filter-btn:hover { border-color: var(--purple-accent); color: var(--text-main); }
+.promo-filter-btn.active { background: var(--purple-accent); border-color: var(--purple-accent); color: #fff; }
+
+.promo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+}
+.promo-card {
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  transition: transform .18s ease, border-color .18s ease;
+}
+.promo-card:hover { transform: translateY(-3px); border-color: var(--purple-accent); }
+.promo-card-img { width: 100%; border-radius: 8px; margin-bottom: 10px; background: var(--purple-dark); }
+.promo-badge { align-self: flex-start; background: var(--pink-accent); color: #fff; font-size: 11px; font-weight: 800; padding: 2px 10px; border-radius: 10px; margin-bottom: 6px; }
+.promo-card-title { font-family: var(--font-display); font-weight: 400; font-size: 16px; margin: 4px 0 6px; }
+.promo-price-now { font-weight: 800; font-size: 17px; }
+.promo-price-old { opacity: .5; margin-left: 6px; font-size: 13px; }
+.promo-coupon { color: var(--pink-accent); font-size: 13px; margin-top: 4px; font-weight: 600; }
+.promo-cta {
+  display: inline-block; margin-top: 10px; background: var(--pink-accent); color: #fff;
+  padding: 8px 18px; border-radius: 999px; text-decoration: none; font-size: 13.5px; font-weight: 700;
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  .promo-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 14px; }
+}
