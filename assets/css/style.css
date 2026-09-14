@@ -431,10 +431,12 @@ footer { border-top: 1px solid var(--line); background: var(--bg-surface); paddi
 }
 .pix-key-text {
   flex: 1;
+  min-width: 0;
   font-family: monospace;
   font-size: 13px;
   color: var(--text-main);
   overflow-wrap: break-word;
+  word-break: break-all;
   text-align: left;
 }
 .btn-copy-pix {
