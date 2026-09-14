@@ -58,7 +58,7 @@ collections:
     slug: "{{slug}}"
     fields:
       - { label: "Nome do produto", name: "title", widget: "string" }
-      - label: "Categoria"
+         - label: "Categoria"
         name: "categoria"
         widget: "select"
         options:
@@ -67,10 +67,13 @@ collections:
           - { label: "Periféricos & Áudio", value: "perifericos" }
           - { label: "Monitores", value: "monitores" }
           - { label: "Cadeiras & Mesas", value: "cadeiras-mesas" }
-          - { label: "Notebooks & Celulares", value: "notebooks-celulares" }
+          - { label: "Notebooks", value: "notebooks" }
+          - { label: "Celulares", value: "celulares" }
+          - { label: "Consoles", value: "consoles" }
+          - { label: "Controles", value: "controles" }
           - { label: "Kits Completos", value: "kits" }
           - { label: "Jogos & Keys", value: "jogos-keys" }
-          - { label: "Criador de Conteúdo", value: "criador" }
+          - { label: "Custo-Benefício", value: "custo-beneficio" }
       - { label: "Preço original", name: "preco_original", widget: "string", required: false }
       - { label: "Preço com desconto", name: "preco_promo", widget: "string" }
       - { label: "Código de cupom (se tiver)", name: "cupom", widget: "string", required: false }
