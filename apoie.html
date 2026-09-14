@@ -1,23 +1,31 @@
 ---
+layout: default
 title: Apoie o projeto
-layout: page
-permalink: /apoie/
 ---
+<div class="simple-page">
+  <h1>{{ page.title }}</h1>
+  <p>{{ page.intro }}</p>
 
-<p>{{ site.data.textos.apoie_intro }}</p>
+  <div class="contact-card" style="flex-direction:column;text-align:center;">
+    {% if page.qr_image %}<img src="{{ page.qr_image | relative_url }}" alt="QR Code Pix" style="max-width:260px;margin-bottom:18px;">{% endif %}
 
-<div class="contact-card" style="flex-direction:column; text-align:center; gap:14px; max-width:320px; margin:0 auto; padding:20px; overflow-wrap:break-word; word-break:break-word;">
-
-<img src="/assets/img/uploads/qrcode-pix.png" alt="QR Code Pix" tyle="width:180px;height:180px;border-radius:10px;padding:8px;background:#fff;box-shadow:0 0 0 1px rgba(0,0,0,0.08);">
-
-  <div>
-
-   <strong>Chave Pix: 00020126580014br.gov.bcb.pix013671f1811a-1084-4025-b1a0-e1cd854e219f5204000053039865802BR5901N6001C62190515ApoieDecimaArte6304BB8B</strong> <span style="color:var(--text-muted);"></span>
+    <div class="pix-key-box">
+      <code id="pix-key" class="pix-key-text">{{ page.chave_pix }}</code>
+      <button class="btn-copy-pix" onclick="copiarPix()">Copiar chave</button>
+    </div>
   </div>
+
+  {{ page.texto_final | markdownify }}
 </div>
 
-<br>
-
-<p>A forma mais simples e igualmente valiosa de apoiar é se inscrever no canal e compartilhar os vídeos com quem você sabe que vai amar esse tipo de conteúdo!</p>
-
-<a href="{{ site.youtube_url }}" target="_blank" rel="noopener" class="btn-sub">Inscreva-se no canal</a>
+<script>
+function copiarPix() {
+  const key = document.getElementById('pix-key').innerText;
+  navigator.clipboard.writeText(key).then(() => {
+    const btn = document.querySelector('.btn-copy-pix');
+    const original = btn.innerText;
+    btn.innerText = 'Copiado! ✓';
+    setTimeout(() => { btn.innerText = original; }, 2000);
+  });
+}
+</script>
