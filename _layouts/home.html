@@ -34,7 +34,7 @@ layout: default
 
     <h2 class="section-title">Curiosidades de desenvolvimento</h2>
     <div class="article-grid">
-      {% assign curiosidades = site.categories.curiosidades-dev | default: posts %}
+      {% assign curiosidades = site.categories["curiosidades-dev"] | default: posts %}
       {% for post in curiosidades limit:3 %}
       <a href="{{ post.url | relative_url }}" class="card">
         <img class="card-img" src="{{ post.image | default: '/assets/img/placeholder-card.jpg' | relative_url }}" alt="">
