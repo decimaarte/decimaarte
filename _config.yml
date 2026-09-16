@@ -4,6 +4,13 @@ url: "https://decimaarte.com.br"
 baseurl: ""
 email: contato@decimaarte.com.br
 youtube_url: "https://www.youtube.com/@decima10arte?sub_confirmation=1"
+lang: pt-BR
+logo: /assets/img/logo-badge.png
+
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
 
 # Menu principal — "Guias" fica pronto no código mas oculto até ter o 1º guia publicado
 nav:
