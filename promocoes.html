@@ -29,7 +29,21 @@ title: Promoções
   {% assign produtos = em_alta | concat: resto %}
   {% for p in produtos %}
   <div class="promo-card" data-cat="{{ p.categoria }}" data-name="{{ p.title | downcase }}">
-    {% if p.image %}<img src="{{ p.image | relative_url }}" alt="{{ p.title }}" class="promo-card-img">{% endif %}
+    {% if p.image %}
+    <div class="promo-img-wrap">
+      <img src="{{ p.image | relative_url }}" alt="{{ p.title }}" class="promo-card-img">
+      {% assign loja = '' %}
+      {% if p.link contains 'kabum.com.br' %}{% assign loja = 'Kabum' %}
+      {% elsif p.link contains 'terabyteshop.com.br' %}{% assign loja = 'Terabyte' %}
+      {% elsif p.link contains 'pichau.com.br' %}{% assign loja = 'Pichau' %}
+      {% elsif p.link contains 'mercadolivre.com' or p.link contains 'meli.la' %}{% assign loja = 'Mercado Livre' %}
+      {% elsif p.link contains 'amazon.com' or p.link contains 'amzn.to' %}{% assign loja = 'Amazon' %}
+      {% elsif p.link contains 'shopee.com' or p.link contains 's.shopee' %}{% assign loja = 'Shopee' %}
+      {% elsif p.link contains 'nuuvem.com' %}{% assign loja = 'Nuuvem' %}
+      {% endif %}
+      {% if loja != '' %}<span class="promo-store-tag">{{ loja }}</span>{% endif %}
+    </div>
+    {% endif %}
     {% if p.destaque %}<span class="promo-badge">🔥 Em alta</span>{% endif %}
     <h4 class="promo-card-title">{{ p.title }}</h4>
     <div>
