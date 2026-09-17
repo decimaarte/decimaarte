@@ -6,7 +6,7 @@ layout: default
     <span class="tag-pill">{{ page.categories | first }}</span>
     <h1>{{ page.title }}</h1>
     <div class="post-meta">{% assign meses = "Janeiro,Fevereiro,Março,Abril,Maio,Junho,Julho,Agosto,Setembro,Outubro,Novembro,Dezembro" | split: "," %}{% assign mes_index = page.date | date: "%-m" | minus: 1 %}Por {{ page.author | default: "Deivisson Freitas" }} · {{ page.date | date: "%d" }} de {{ meses[mes_index] }} de {{ page.date | date: "%Y" }}</div>
-    {% if page.image %}<img src="{{ page.image | relative_url }}" alt="" style="border-radius:10px; margin-bottom:10px;">{% endif %}
+    {% if page.image %}<img src="{{ page.image | relative_url }}" alt="{{ page.title }}" style="border-radius:10px; margin-bottom:10px;">{% endif %}
   </div>
   <div class="post-body">
     {{ content }}

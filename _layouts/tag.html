@@ -9,7 +9,7 @@ layout: default
     <div class="article-grid">
       {% for post in filtered %}
       <a href="{{ post.url | relative_url }}" class="card">
-        <img class="card-img" src="{{ post.image | default: '/assets/img/placeholder-card.jpg' | relative_url }}" alt="">
+        <img class="card-img" src="{{ post.image | default: '/assets/img/placeholder-card.jpg' | relative_url }}" alt="{{ post.title }}">
         <div class="card-body">
           <span class="card-cat">{{ post.categories | first }}</span>
           <h3>{{ post.title }}</h3>

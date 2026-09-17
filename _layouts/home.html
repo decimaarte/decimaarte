@@ -8,7 +8,7 @@ layout: default
   <div>
     {% if featured %}
     <a href="{{ featured.url | relative_url }}" class="hero">
-      <img class="hero-img" src="{{ featured.image | default: '/assets/img/placeholder-hero.jpg' | relative_url }}" alt="">
+      <img class="hero-img" src="{{ featured.image | default: '/assets/img/placeholder-hero.jpg' | relative_url }}" alt="{{ featured.title }}">
       <div class="hero-copy">
         <span class="tag-pill">{{ featured.categories | first }}</span>
         <h1>{{ featured.title }}</h1>
@@ -22,7 +22,7 @@ layout: default
       {% assign noticias = site.categories.noticias | default: posts %}
       {% for post in noticias limit:3 %}
       <a href="{{ post.url | relative_url }}" class="card">
-        <img class="card-img" src="{{ post.image | default: '/assets/img/placeholder-card.jpg' | relative_url }}" alt="">
+        <img class="card-img" src="{{ post.image | default: '/assets/img/placeholder-card.jpg' | relative_url }}" alt="{{ post.title }}">
         <div class="card-body">
           <span class="card-cat">{{ post.categories | first }}</span>
           <h3>{{ post.title }}</h3>
@@ -37,7 +37,7 @@ layout: default
       {% assign curiosidades = site.categories["curiosidades-dev"] | default: posts %}
       {% for post in curiosidades limit:3 %}
       <a href="{{ post.url | relative_url }}" class="card">
-        <img class="card-img" src="{{ post.image | default: '/assets/img/placeholder-card.jpg' | relative_url }}" alt="">
+        <img class="card-img" src="{{ post.image | default: '/assets/img/placeholder-card.jpg' | relative_url }}" alt="{{ post.title }}">
         <div class="card-body">
           <span class="card-cat">{{ post.categories | first }}</span>
           <h3>{{ post.title }}</h3>
@@ -53,7 +53,7 @@ layout: default
       <h2 class="section-title" style="font-size:15px;">Últimas</h2>
       {% for post in posts limit:4 %}
       <a href="{{ post.url | relative_url }}" class="latest-item">
-        <img class="latest-thumb" src="{{ post.image | default: '/assets/img/placeholder-card.jpg' | relative_url }}" alt="">
+        <img class="latest-thumb" src="{{ post.image | default: '/assets/img/placeholder-card.jpg' | relative_url }}" alt="{{ post.title }}">
         <div><h4>{{ post.title }}</h4><span>{{ post.date | date: "%d/%m" }}</span></div>
       </a>
       {% endfor %}
