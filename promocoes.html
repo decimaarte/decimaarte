@@ -24,8 +24,14 @@ title: Promoções
 
 <div class="promo-grid" id="promo-grid">
   {% assign todos_promocoes = site.promocoes | sort: 'date' | reverse %}
-  {% assign em_alta = todos_promocoes | where: 'destaque', true %}
+  {% assign em_alta_todos = todos_promocoes | where: 'destaque', true %}
   {% assign resto = todos_promocoes | where_exp: 'p', 'p.destaque != true' %}
+
+  {% assign em_alta_com_prioridade = em_alta_todos | where_exp: 'p', 'p.prioridade_destaque' %}
+  {% assign em_alta_sem_prioridade = em_alta_todos | where_exp: 'p', 'p.prioridade_destaque == nil' %}
+  {% assign em_alta_ordenado = em_alta_com_prioridade | sort: 'prioridade_destaque' %}
+  {% assign em_alta = em_alta_ordenado | concat: em_alta_sem_prioridade %}
+
   {% assign produtos = em_alta | concat: resto %}
   {% for p in produtos %}
   <div class="promo-card" data-cat="{{ p.categoria }}" data-name="{{ p.title | downcase }}">
