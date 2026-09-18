@@ -45,6 +45,7 @@ title: Promoções
       {% elsif p.link contains 'mercadolivre.com' or p.link contains 'meli.la' %}{% assign loja = 'Mercado Livre' %}
       {% elsif p.link contains 'amazon.com' or p.link contains 'amzn.to' %}{% assign loja = 'Amazon' %}
       {% elsif p.link contains 'shopee.com' or p.link contains 's.shopee' %}{% assign loja = 'Shopee' %}
+      {% elsif p.link contains 'aliexpress.com' or p.link contains 's.click.aliexpress' %}{% assign loja = 'AliExpress' %}
       {% elsif p.link contains 'nuuvem.com' %}{% assign loja = 'Nuuvem' %}
       {% endif %}
       {% if loja != '' %}<span class="promo-store-tag">{{ loja }}</span>{% endif %}
