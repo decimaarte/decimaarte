@@ -81,7 +81,8 @@ collections:
       - { label: "Link de afiliado", name: "link", widget: "string" }
       - { label: "Imagem do produto", name: "image", widget: "image", required: false }
       - { label: "Data", name: "date", widget: "datetime" }
-      - { label: "Destaque (Em Alta)", name: "destaque", widget: "boolean", required: false, default: false }
+      - { label: "Destaque (Em Alta)", name: "destaque", widget: "boolean", required: false, default: false, hint: "Marque manualmente quando o produto estiver vendendo bem de verdade (não só recebido clique)" }
+      - { label: "Prioridade no destaque", name: "prioridade_destaque", widget: "number", required: false, hint: "Só importa se 'Destaque' estiver marcado. Números menores aparecem primeiro (1 = topo de tudo). Deixe em branco se não quiser controlar a ordem entre os destaques." }
 
   - name: "textos"
     label: "Textos do site"
