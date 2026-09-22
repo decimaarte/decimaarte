@@ -6,7 +6,7 @@ layout: default
 
   {% assign filtered = site.tags[page.tag_key] %}
   {% if filtered and filtered.size > 0 %}
-    <div class="article-grid">
+    <div class="article-grid js-load-more-grid">
       {% for post in filtered %}
       <a href="{{ post.url | relative_url }}" class="card">
         <img class="card-img" src="{{ post.image | default: '/assets/img/placeholder-card.jpg' | relative_url }}" alt="{{ post.title }}">
@@ -22,3 +22,4 @@ layout: default
     <p style="color: var(--text-muted); font-size: 15px;">Ainda não tem matéria publicada com essa tag — as primeiras chegam em breve.</p>
   {% endif %}
 </main>
+<script src="{{ '/assets/js/load-more.js' | relative_url }}"></script>
