@@ -2,7 +2,16 @@
 layout: default
 ---
 {% assign posts = site.posts %}
-{% assign featured = posts.first %}
+
+{% assign posts_all = posts | sort: 'date' | reverse %}
+{% assign hero_destaque_todos = posts_all | where: 'destaque_home', true %}
+{% assign hero_resto = posts_all | where_exp: 'p', 'p.destaque_home != true' %}
+{% assign hero_destaque_com_prio = hero_destaque_todos | where_exp: 'p', 'p.prioridade_home' %}
+{% assign hero_destaque_sem_prio = hero_destaque_todos | where_exp: 'p', 'p.prioridade_home == nil' %}
+{% assign hero_destaque_ordenado = hero_destaque_com_prio | sort: 'prioridade_home' %}
+{% assign hero_lista = hero_destaque_ordenado | concat: hero_destaque_sem_prio %}
+{% assign hero_final = hero_lista | concat: hero_resto %}
+{% assign featured = hero_final.first %}
 
 <main class="wrap content-grid">
   <div>
@@ -17,9 +26,16 @@ layout: default
     </a>
     {% endif %}
 
-    <h2 class="section-title">Notícias quentes</h2>
+    <h2 class="section-title">Notícias quentes <a href="{{ '/noticias/' | relative_url }}" style="margin-left:auto;font-size:13px;font-weight:700;color:var(--purple-accent);">Ver todas →</a></h2>
     <div class="article-grid">
-      {% assign noticias = site.categories.noticias | default: posts %}
+      {% assign noticias_all = site.categories.noticias | default: posts | sort: 'date' | reverse %}
+      {% assign noticias_destaque_todos = noticias_all | where: 'destaque_home', true %}
+      {% assign noticias_resto = noticias_all | where_exp: 'p', 'p.destaque_home != true' %}
+      {% assign noticias_destaque_com_prio = noticias_destaque_todos | where_exp: 'p', 'p.prioridade_home' %}
+      {% assign noticias_destaque_sem_prio = noticias_destaque_todos | where_exp: 'p', 'p.prioridade_home == nil' %}
+      {% assign noticias_destaque_ordenado = noticias_destaque_com_prio | sort: 'prioridade_home' %}
+      {% assign noticias_destaque = noticias_destaque_ordenado | concat: noticias_destaque_sem_prio %}
+      {% assign noticias = noticias_destaque | concat: noticias_resto %}
       {% for post in noticias limit:3 %}
       <a href="{{ post.url | relative_url }}" class="card">
         <img class="card-img" src="{{ post.image | default: '/assets/img/placeholder-card.jpg' | relative_url }}" alt="{{ post.title }}">
@@ -32,9 +48,16 @@ layout: default
       {% endfor %}
     </div>
 
-    <h2 class="section-title">Curiosidades de desenvolvimento</h2>
+    <h2 class="section-title">Curiosidades de desenvolvimento <a href="{{ '/curiosidades-dev/' | relative_url }}" style="margin-left:auto;font-size:13px;font-weight:700;color:var(--purple-accent);">Ver todas →</a></h2>
     <div class="article-grid">
-      {% assign curiosidades = site.categories["curiosidades-dev"] | default: posts %}
+      {% assign curio_all = site.categories["curiosidades-dev"] | default: posts | sort: 'date' | reverse %}
+      {% assign curio_destaque_todos = curio_all | where: 'destaque_home', true %}
+      {% assign curio_resto = curio_all | where_exp: 'p', 'p.destaque_home != true' %}
+      {% assign curio_destaque_com_prio = curio_destaque_todos | where_exp: 'p', 'p.prioridade_home' %}
+      {% assign curio_destaque_sem_prio = curio_destaque_todos | where_exp: 'p', 'p.prioridade_home == nil' %}
+      {% assign curio_destaque_ordenado = curio_destaque_com_prio | sort: 'prioridade_home' %}
+      {% assign curio_destaque = curio_destaque_ordenado | concat: curio_destaque_sem_prio %}
+      {% assign curiosidades = curio_destaque | concat: curio_resto %}
       {% for post in curiosidades limit:3 %}
       <a href="{{ post.url | relative_url }}" class="card">
         <img class="card-img" src="{{ post.image | default: '/assets/img/placeholder-card.jpg' | relative_url }}" alt="{{ post.title }}">
@@ -51,7 +74,7 @@ layout: default
   <aside>
     <div class="sidebar-block">
       <h2 class="section-title" style="font-size:15px;">Últimas</h2>
-      {% for post in posts limit:4 %}
+      {% for post in posts_all limit:4 %}
       <a href="{{ post.url | relative_url }}" class="latest-item">
         <img class="latest-thumb" src="{{ post.image | default: '/assets/img/placeholder-card.jpg' | relative_url }}" alt="{{ post.title }}">
         <div><h4>{{ post.title }}</h4><span>{{ post.date | date: "%d/%m" }}</span></div>
