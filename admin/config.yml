@@ -50,6 +50,8 @@ collections:
       - { label: "Resumo (aparece nos cards)", name: "excerpt", widget: "text", required: false }
       - { label: "Texto da matéria", name: "body", widget: "markdown" }
       - {label: "Autor", name: "author", widget: "string", required: false, default: "Deivisson Freitas"}
+      - { label: "Destacar na home?", name: "destaque_home", widget: "boolean", required: false, default: false, hint: "Marque pra furar a ordem cronológica e aparecer em destaque na home (bloco de topo e nas seções de Notícias/Curiosidades)" }
+      - { label: "Prioridade no destaque", name: "prioridade_home", widget: "number", required: false, hint: "Só importa se 'Destacar na home?' estiver marcado. Números menores aparecem primeiro (1 = topo de tudo). Deixe em branco se não quiser controlar a ordem entre os destaques." }
 
   - name: "promocoes"
     label: "Promoções"
