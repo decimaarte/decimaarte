@@ -1,8 +1,8 @@
 ---
 title: 8BitDo SN30 2.4G Wireless Gamepad for Original SNES/SFC
 categoria: controles
-preco_original: R$337,41
-preco_promo: R$123,38
+preco_original: ''
+preco_promo: R$337,41 + R$30,88
 cupom: ''
 link: https://s.click.aliexpress.com/e/_c4KsYjYD
 image: /assets/img/uploads/Screenshot_7.png
