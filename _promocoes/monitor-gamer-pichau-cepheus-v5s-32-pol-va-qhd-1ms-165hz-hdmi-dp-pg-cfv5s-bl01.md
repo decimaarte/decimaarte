@@ -1,6 +1,6 @@
 ---
 title: Monitor Gamer Pichau Cepheus V5S, 32 Pol, VA, QHD, 1ms, 165Hz, HDMI/DP, PG-CFV5S-BL01
-categoria: componentes
+categoria: monitores
 preco_original: ''
 preco_promo: R$1.136,20
 cupom: ''
