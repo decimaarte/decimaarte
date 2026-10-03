@@ -1,5 +1,5 @@
 ---
-title: Controle Sem Fio Sony DualSense, Marvel's Wolverine Edição Limitada, Amarelo - 1000056855
+title: Controle Sem Fio Sony DualSense, Marvel's Wolverine Edição Limitada, Amarelo
 categoria: controles
 preco_original: ''
 preco_promo: R$ 557,07
