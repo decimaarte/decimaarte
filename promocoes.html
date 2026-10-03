@@ -39,7 +39,9 @@ title: Promoções
     <div class="promo-img-wrap">
       <img src="{{ p.image | relative_url }}" alt="{{ p.title }}" class="promo-card-img">
       {% assign loja = '' %}
-      {% if p.link contains 'kabum.com.br' %}{% assign loja = 'Kabum' %}
+      {% if p.loja_manual and p.loja_manual != '' %}
+        {% assign loja = p.loja_manual %}
+      {% elsif p.link contains 'kabum.com.br' %}{% assign loja = 'Kabum' %}
       {% elsif p.link contains 'terabyteshop.com.br' %}{% assign loja = 'Terabyte' %}
       {% elsif p.link contains 'pichau.com.br' %}{% assign loja = 'Pichau' %}
       {% elsif p.link contains 'mercadolivre.com' or p.link contains 'meli.la' %}{% assign loja = 'Mercado Livre' %}
