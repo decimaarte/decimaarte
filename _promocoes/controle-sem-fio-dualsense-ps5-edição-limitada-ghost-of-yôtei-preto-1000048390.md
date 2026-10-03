@@ -1,5 +1,5 @@
 ---
-title: Controle Sem Fio DualSense PS5, Edição Limitada Ghost of Yôtei, Preto - 1000048390
+title: Controle Sem Fio DualSense PS5, Edição Limitada Ghost of Yôtei, Preto
 categoria: controles
 preco_original: ''
 preco_promo: R$ 557,07
