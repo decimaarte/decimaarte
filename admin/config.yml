@@ -81,6 +81,19 @@ collections:
       - { label: "Preço com desconto", name: "preco_promo", widget: "string" }
       - { label: "Código de cupom (se tiver)", name: "cupom", widget: "string", required: false }
       - { label: "Link de afiliado", name: "link", widget: "string" }
+      - label: "Loja (preenche só se a etiqueta automática não aparecer — links Awin/tidd.ly não dão pra reconhecer sozinhos)"
+        name: "loja_manual"
+        widget: "select"
+        required: false
+        options:
+          - { label: "Amazon", value: "Amazon" }
+          - { label: "Kabum", value: "Kabum" }
+          - { label: "Terabyte", value: "Terabyte" }
+          - { label: "Pichau", value: "Pichau" }
+          - { label: "Mercado Livre", value: "Mercado Livre" }
+          - { label: "Shopee", value: "Shopee" }
+          - { label: "AliExpress", value: "AliExpress" }
+          - { label: "Nuuvem", value: "Nuuvem" }
       - { label: "Imagem do produto", name: "image", widget: "image", required: false }
       - { label: "Data", name: "date", widget: "datetime" }
       - { label: "Destaque (Em Alta)", name: "destaque", widget: "boolean", required: false, default: false, hint: "Marque manualmente quando o produto estiver vendendo bem de verdade (não só recebido clique)" }
