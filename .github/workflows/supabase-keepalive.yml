@@ -9,15 +9,27 @@ jobs:
   ping:
     runs-on: ubuntu-latest
     steps:
-      - name: Consultar o banco pra manter o projeto ativo
+      - name: Gravar e limpar um ping no banco pra manter o projeto ativo
         run: |
-          STATUS=$(curl -s -o /dev/null -w "%{http_code}" \
-            "https://lvkbrtyqjzvjimcfahej.supabase.co/rest/v1/comments?select=id&limit=1" \
-            -H "apikey: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx2a2JydHlxanp2amltY2ZhaGVqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODkyMTQyMzMsImV4cCI6MjEwNDc5MDIzM30.JegRq0USoUKfUgKDM95gKz69-o0SpTEjp-FTlfS93qs" \
-            -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx2a2JydHlxanp2amltY2ZhaGVqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODkyMTQyMzMsImV4cCI6MjEwNDc5MDIzM30.JegRq0USoUKfUgKDM95gKz69-o0SpTEjp-FTlfS93qs")
-          echo "HTTP status recebido: $STATUS"
-          if [ "$STATUS" -ge 400 ]; then
-            echo "Consulta falhou (status $STATUS) — pode ser projeto pausado ou chave expirada."
+          APIKEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx2a2JydHlxanp2amltY2ZhaGVqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODkyMTQyMzMsImV4cCI6MjEwNDc5MDIzM30.JegRq0USoUKfUgKDM95gKz69-o0SpTEjp-FTlfS93qs"
+          BASE="https://lvkbrtyqjzvjimcfahej.supabase.co/rest/v1/keepalive_ping"
+
+          INSERT_STATUS=$(curl -s -o /dev/null -w "%{http_code}" -X POST "$BASE" \
+            -H "apikey: $APIKEY" \
+            -H "Authorization: Bearer $APIKEY" \
+            -H "Content-Type: application/json" \
+            -H "Prefer: return=minimal" \
+            -d '{}')
+          echo "Status da gravação: $INSERT_STATUS"
+
+          CUTOFF=$(date -u -d '-1 hour' +%Y-%m-%dT%H:%M:%S)
+          DELETE_STATUS=$(curl -s -o /dev/null -w "%{http_code}" -X DELETE "$BASE?pinged_at=lt.$CUTOFF" \
+            -H "apikey: $APIKEY" \
+            -H "Authorization: Bearer $APIKEY")
+          echo "Status da limpeza: $DELETE_STATUS"
+
+          if [ "$INSERT_STATUS" -ge 400 ]; then
+            echo "Falha ao gravar o ping (status $INSERT_STATUS) — pode ser projeto pausado ou chave expirada."
             exit 1
           fi
           echo "Supabase respondeu normalmente. Projeto continua ativo."
