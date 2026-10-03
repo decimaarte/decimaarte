@@ -1,5 +1,5 @@
 ---
-title: PC Gamer Completo Trigger I, AMD Ryzen 5 5600GT 16GB RAM SSD M.2 500GB Monitor 21" 75Hz, Periféricos R$4.047,08 https://s.shopee.com.br/4B0PlnQCKD
+title: PC Gamer Completo Trigger I, AMD Ryzen 5 5600GT 16GB RAM SSD M.2 500GB Monitor 21" 75Hz, Periféricos
 categoria: kits
 preco_original: ''
 preco_promo: R$4.047,08
