@@ -1,10 +1,10 @@
 ---
-title: Placa-Mãe Z790-P MSI PRO Wi-Fi, Intel LGA 1700, ATX, DDR5, Preto - PRO Z790-P WIFI
-categoria: notebooks
+title: Placa-Mãe ASRock B840M-HVS, Ryzen AM5 B840, Micro ATX, DDR5 - 90-MXBSQ0-A0UAYZ
+categoria: componentes
 preco_original: ''
-preco_promo: R$ 1.889,99
+preco_promo: R$ 744,99
 cupom: ''
-link: https://tidd.ly/4rHH4Yi
+link: https://tidd.ly/4AMMDZE
 image: /assets/img/uploads/photo_2026-10-03_18-42-22.jpg
 date: 2026-10-03T19:16:00
 destaque: false
