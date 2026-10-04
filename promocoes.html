@@ -2,6 +2,15 @@
 layout: default
 title: Promoções
 ---
+<style>
+  .promo-filters { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+  .promo-filter-count { margin-left: 4px; font-size: 11.5px; font-weight: 700; opacity: .65; }
+  @media (max-width: 640px) {
+    .promo-filters { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 6px; -webkit-overflow-scrolling: touch; }
+    .promo-filter-btn { flex-shrink: 0; white-space: nowrap; }
+  }
+</style>
+
 <div class="wrap" style="padding-top:44px;padding-bottom:60px;">
 
 <h1 style="font-family:var(--font-display);font-weight:400;font-size:clamp(28px,4vw,38px);margin:0 0 20px;">Promoções</h1>
@@ -14,11 +23,27 @@ title: Promoções
 
 <div class="promo-controls" style="margin-bottom:24px;">
   <input type="text" id="promo-search" placeholder="Buscar por nome do produto..." class="promo-search-input">
-  <div id="promo-filters" style="display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;">
-    <button class="promo-filter-btn active" data-cat="todos">Todos</button>
-    {% assign cats = "componentes,armazenamento,perifericos,monitores,cadeiras-mesas,notebooks,celulares,consoles,controles,kits,jogos-keys,custo-beneficio,gift-cards" | split: "," %}
-    {% assign labels = "Componentes,Armazenamento,Periféricos &amp; Áudio,Monitores &amp; TVs,Cadeiras &amp; Mesas,Notebooks,Celulares,Consoles,Controles,Kits Completos,Jogos &amp; Keys,Custo-Benefício,Gift Cards" | split: "," %}
-    {% for cat in cats %}<button class="promo-filter-btn" data-cat="{{ cat }}">{{ labels[forloop.index0] }}</button>{% endfor %}
+
+  {% comment %}
+    Lista de categorias: "código|Nome que aparece" separadas por ~
+    O código tem que ser igual ao "value" do seletor de Categoria no admin/config.yml.
+    Categoria sem nenhum produto não aparece como botão.
+    Obs: o código "cadeiras-mesas" ficou só pra Cadeiras e o código "headsets" agora é "Headsets e Fones"
+    (pra não precisar editar os produtos que já estavam neles).
+  {% endcomment %}
+  {% assign cat_defs = "placas-de-video|Placas de Vídeo~processadores|Processadores~placas-mae|Placas-Mãe~memoria-ram|Memória RAM~armazenamento|Armazenamento~fontes|Fontes~gabinetes|Gabinetes~coolers|Coolers~monitores|Monitores~tvs|TVs~teclados|Teclados~mouses|Mouses~headsets|Headsets e Fones~microfones|Microfones~webcams|Webcams~mousepads|Mousepads~suportes-monitor|Suportes de Monitor~cabos-acessorios|Cabos e Acessórios~controles|Controles~cadeiras-mesas|Cadeiras~mesas-escrivaninhas|Mesas e Escrivaninhas~mesas-digitalizadoras|Mesas Digitalizadoras~notebooks|Notebooks~celulares|Celulares~consoles|Consoles~acessorios-console|Acessórios de Console~kits|Kits Completos~jogos-keys|Jogos &amp; Keys~gift-cards|Gift Cards~pra-quem-ta-comecando|Pra quem tá começando" | split: "~" %}
+
+  <div id="promo-filters" class="promo-filters">
+    <button class="promo-filter-btn active" data-cat="todos">Todos <span class="promo-filter-count">{{ site.promocoes.size }}</span></button>
+    {% for def in cat_defs %}
+      {% assign parts = def | split: "|" %}
+      {% assign cat_slug = parts[0] %}
+      {% assign cat_label = parts[1] %}
+      {% assign cat_n = site.promocoes | where: 'categoria', cat_slug | size %}
+      {% if cat_n > 0 %}
+        <button class="promo-filter-btn" data-cat="{{ cat_slug }}">{{ cat_label }} <span class="promo-filter-count">{{ cat_n }}</span></button>
+      {% endif %}
+    {% endfor %}
   </div>
 </div>
 
