@@ -5,6 +5,7 @@ preco_original: ''
 preco_promo: R$5.699
 cupom: ''
 link: https://meli.la/2Vn12nA
+loja_manual: Mercado Livre
 image: /assets/img/uploads/photo_2026-10-03_15-48-48.jpg
 date: 2026-10-03T19:43:00
 destaque: false
