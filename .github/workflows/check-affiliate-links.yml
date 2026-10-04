@@ -2,40 +2,35 @@ name: Checador de Links de Afiliado
 
 on:
   schedule:
-    - cron: '0 7 * * 1'
-  workflow_dispatch:
+    - cron: "0 12 * * 1"   # toda segunda-feira, 12h UTC = 9h em Brasília
+  workflow_dispatch: {}     # permite rodar manualmente pela aba Actions
 
 permissions:
   issues: write
+  contents: read
 
 jobs:
   check-links:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      - uses: actions/setup-python@v5
+      - name: Configurar Python
+        uses: actions/setup-python@v5
         with:
-          python-version: '3.x'
+          python-version: "3.12"
 
       - name: Instalar dependências
-        run: pip install pyyaml requests
+        run: pip install requests pyyaml
 
-      - name: Checar links e montar relatório
-        id: check
+      - name: Rodar verificação de links
         run: python .github/scripts/check_links.py
 
       - name: Abrir issue com o relatório
-        if: steps.check.outputs.has_findings == 'true'
-        uses: actions/github-script@v7
-        with:
-          script: |
-            const fs = require('fs');
-            const body = fs.readFileSync('report.md', 'utf8');
-            const hoje = new Date().toISOString().slice(0, 10);
-            await github.rest.issues.create({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              title: `Checagem de links de afiliado — ${hoje}`,
-              body: body
-            });
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh issue create \
+            --title "Verificação de links de afiliado — $(date +'%d/%m/%Y')" \
+            --body-file relatorio-links.md
