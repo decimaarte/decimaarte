@@ -5,6 +5,7 @@ preco_original: ''
 preco_promo: R$ 4.899,00
 cupom: ''
 link: https://tidd.ly/4iY8XJm
+loja_manual: Kabum
 image: /assets/img/uploads/photo_2026-10-03_19-25-09.jpg
 date: 2026-10-03T19:25:00
 destaque: false
