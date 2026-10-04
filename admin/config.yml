@@ -59,24 +59,52 @@ collections:
     folder: "_promocoes"
     create: true
     slug: "{{slug}}"
+    view_filters:
+      - label: "A reclassificar: Componentes (antiga)"
+        field: categoria
+        pattern: "componentes"
+      - label: "A reclassificar: Periféricos & Áudio (antiga)"
+        field: categoria
+        pattern: "perifericos"
+    view_groups:
+      - label: "Categoria"
+        field: categoria
     fields:
       - { label: "Nome do produto", name: "title", widget: "string" }
       - label: "Categoria"
         name: "categoria"
         widget: "select"
         options:
-          - { label: "Componentes", value: "componentes" }
-          - { label: "Armazenamento", value: "armazenamento" }
-          - { label: "Periféricos & Áudio", value: "perifericos" }
-          - { label: "Monitores & TVs", value: "monitores" }
-          - { label: "Cadeiras & Mesas", value: "cadeiras-mesas" }
+          - { label: "Placas de Vídeo", value: "placas-de-video" }
+          - { label: "Processadores", value: "processadores" }
+          - { label: "Placas-Mãe", value: "placas-mae" }
+          - { label: "Memória RAM", value: "memoria-ram" }
+          - { label: "Armazenamento (SSD, HD, pendrive, cartão de memória)", value: "armazenamento" }
+          - { label: "Fontes", value: "fontes" }
+          - { label: "Gabinetes", value: "gabinetes" }
+          - { label: "Coolers", value: "coolers" }
+          - { label: "Monitores", value: "monitores" }
+          - { label: "TVs", value: "tvs" }
+          - { label: "Teclados", value: "teclados" }
+          - { label: "Mouses", value: "mouses" }
+          - { label: "Headsets e Fones (inclui TWS)", value: "headsets" }
+          - { label: "Microfones", value: "microfones" }
+          - { label: "Webcams", value: "webcams" }
+          - { label: "Mousepads", value: "mousepads" }
+          - { label: "Suportes de Monitor", value: "suportes-monitor" }
+          - { label: "Cabos e Acessórios", value: "cabos-acessorios" }
+          - { label: "Controles", value: "controles" }
+          - { label: "Cadeiras", value: "cadeiras-mesas" }
+          - { label: "Mesas e Escrivaninhas", value: "mesas-escrivaninhas" }
+          - { label: "Mesas Digitalizadoras", value: "mesas-digitalizadoras" }
           - { label: "Notebooks", value: "notebooks" }
           - { label: "Celulares", value: "celulares" }
           - { label: "Consoles", value: "consoles" }
-          - { label: "Controles", value: "controles" }
+          - { label: "Acessórios de Console", value: "acessorios-console" }
           - { label: "Kits Completos", value: "kits" }
           - { label: "Jogos & Keys", value: "jogos-keys" }
-          - { label: "Custo-Benefício", value: "custo-beneficio" }
+          - { label: "Gift Cards", value: "gift-cards" }
+          - { label: "Pra quem tá começando", value: "pra-quem-ta-comecando" }
       - { label: "Preço original", name: "preco_original", widget: "string", required: false }
       - { label: "Preço com desconto", name: "preco_promo", widget: "string" }
       - { label: "Código de cupom (se tiver)", name: "cupom", widget: "string", required: false }
