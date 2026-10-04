@@ -5,7 +5,8 @@ preco_original: ''
 preco_promo: R$179,89
 cupom: ''
 link: https://link.amazon/B01qrTV6W
-image: /assets/img/uploads/51sg9BLSMTL._AC_SL1500_.jpg
+loja_manual: ''
+image: /assets/img/uploads/photo_2026-10-04_01-57-27.jpg
 date: 2026-10-03T15:45:00
 destaque: false
 prioridade_destaque: null
