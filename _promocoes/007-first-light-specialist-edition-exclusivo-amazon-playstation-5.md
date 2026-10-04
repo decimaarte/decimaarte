@@ -5,6 +5,7 @@ preco_original: ''
 preco_promo: R$278,90
 cupom: ''
 link: https://link.amazon/B0bA3E3vU
+loja_manual: Amazon
 image: /assets/img/uploads/61mxvp+aRrL._AC_SL1020_ (1).jpg
 date: 2026-10-03T15:41:00
 destaque: false
