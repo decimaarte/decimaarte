@@ -89,6 +89,7 @@ collections:
           - { label: "Mouses", value: "mouses" }
           - { label: "Headsets e Fones (inclui TWS)", value: "headsets" }
           - { label: "Microfones", value: "microfones" }
+          - { label: "Caixas de Som (JBL, Alexa, soundbar...)", value: "caixas-de-som" }
           - { label: "Webcams", value: "webcams" }
           - { label: "Mousepads", value: "mousepads" }
           - { label: "Suportes de Monitor", value: "suportes-monitor" }
