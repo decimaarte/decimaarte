@@ -56,10 +56,10 @@ title: Promoções
     {% if p.destaque %}<span class="promo-badge">🔥 Em alta</span>{% endif %}
     <h4 class="promo-card-title">{{ p.title }}</h4>
     <div>
-      {% if p.preco_promo %}<span class="promo-price-now">{{ p.preco_promo }}</span>{% endif %}
-      {% if p.preco_original %}<s class="promo-price-old">{{ p.preco_original }}</s>{% endif %}
+      {% if p.preco_promo and p.preco_promo != '' %}<span class="promo-price-now">{{ p.preco_promo }}</span>{% endif %}
+      {% if p.preco_original and p.preco_original != '' %}<s class="promo-price-old">{{ p.preco_original }}</s>{% endif %}
     </div>
-    {% if p.cupom %}<div class="promo-coupon">Cupom: {{ p.cupom }}</div>{% endif %}
+    {% if p.cupom and p.cupom != '' %}<div class="promo-coupon">Cupom: {{ p.cupom }}</div>{% endif %}
     <a href="{{ p.link }}" target="_blank" rel="noopener sponsored" data-goatcounter-click="produto-{{ p.title | slugify }}" class="promo-cta">Ver oferta</a>
   </div>
   {% endfor %}
