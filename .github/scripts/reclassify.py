@@ -39,6 +39,7 @@ LABELS = {
     "mouses": "Mouses",
     "headsets": "Headsets e Fones",
     "microfones": "Microfones",
+    "caixas-de-som": "Caixas de Som",
     "webcams": "Webcams",
     "mousepads": "Mousepads",
     "suportes-monitor": "Suportes de Monitor",
@@ -81,9 +82,10 @@ RULES = [
     ("mouses", [r"\bmouse\b"]),
     ("headsets", [r"\bheadset\b", r"\bheadphones?\b", r"fone de ouvido", r"\bfones?\b", r"\btws\b", r"\bearbuds?\b"]),
     ("microfones", [r"\bmicrofone\b"]),
+    ("caixas-de-som", [r"caixa de som", r"\bsoundbar\b", r"\balexa\b", r"\becho dot\b", r"\bspeaker\b"]),
     ("webcams", [r"\bweb ?cam\b"]),
     ("acessorios-console", [r"\bps2\b", r"\bopl\b", r"\bmx4sio\b", r"\bmemory card\b", r"base (de )?carregamento", r"\bdock\b"]),
-    ("cabos-acessorios", [r"\bcabos?\b", r"\badaptador\b", r"\bhub\b", r"pasta termica", r"suporte (para|de) (controle|headset|fone)"]),
+    ("cabos-acessorios", [r"\bcabos?\b", r"\badaptador\b", r"\bhub\b", r"\bnobreak\b", r"\bestabilizador\b", r"pasta termica", r"suporte (para|de) (controle|headset|fone)"]),
     ("controles", [r"\bcontrole\b", r"\bgamepad\b", r"\bjoystick\b", r"\bdualsense\b", r"\bdualshock\b", r"\bcontroller\b"]),
     ("consoles", [r"\bconsole\b", r"\bsteam deck\b", r"\brog ally\b"]),
     ("celulares", [r"\bcelular\b", r"\bsmartphone\b", r"\biphone\b", r"\bredmagic\b", r"\bpoco\b", r"\bredmi\b"]),
@@ -101,6 +103,13 @@ def norm(s):
     return s.lower()
 
 
+# Cabo/adaptador feito pra console: vai pra Acessórios de Console, não pra Cabos genéricos.
+CONSOLE_RE = re.compile(
+    r"\bps[123]\b|\bplaystation ?[123]\b|"
+    r"\b(snes|n64|nintendo 64|gamecube|famicom|mega drive|atari|dreamcast|xbox 360|wii)\b"
+)
+
+
 def classify(title):
     t = norm(title)
     best = None  # (posição, índice da regra, categoria)
@@ -111,7 +120,12 @@ def classify(title):
                 cand = (m.start(), idx, cat)
                 if best is None or cand < best:
                     best = cand
-    return best[2] if best else None
+    if not best:
+        return None
+    cat = best[2]
+    if cat == "cabos-acessorios" and CONSOLE_RE.search(t):
+        cat = "acessorios-console"
+    return cat
 
 
 def read_product(path):
