@@ -1,0 +1,51 @@
+name: Reclassificar Produtos
+
+on:
+  workflow_dispatch:
+    inputs:
+      modo:
+        description: "relatorio = só mostra o que mudaria | aplicar = muda as categorias e salva"
+        type: choice
+        options:
+          - relatorio
+          - aplicar
+        default: relatorio
+
+permissions:
+  contents: write
+  pages: write
+
+jobs:
+  reclassificar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Instalar dependências
+        run: pip install pyyaml
+
+      - name: Rodar reclassificação
+        run: python .github/scripts/reclassify.py ${{ inputs.modo }}
+
+      - name: Salvar mudanças (só no modo aplicar)
+        if: inputs.modo == 'aplicar'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add _promocoes
+          if git diff --cached --quiet; then
+            echo "Nada pra salvar."
+          else
+            git commit -m "Reclassifica produtos de Promoções por regras de título"
+            git push
+            # Pede a publicação do site (garantia extra; se falhar, não derruba o job)
+            gh api -X POST "repos/${{ github.repository }}/pages/builds" || true
+          fi
