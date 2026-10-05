@@ -1,263 +1,58 @@
-backend:
-  name: github
-  repo: decimaarte/decimaarte
-  branch: main
+title: Décima Arte
+description: "Notícias, curiosidades de desenvolvimento e promoções do mundo dos games."
+url: "https://decimaarte.com.br"
+baseurl: ""
+email: contato@decimaarte.com.br
+youtube_url: "https://www.youtube.com/@decima10arte?sub_confirmation=1"
+lang: pt-BR
+logo: /assets/img/logo-badge.png
 
-# Login por token pessoal (PAT) — sem precisar de servidor de OAuth externo.
-# Basta colar o token na tela de login do painel.
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
 
-site_url: https://decimaarte.com.br
-media_folder: "assets/img/uploads"
-public_folder: "/assets/img/uploads"
+# Menu principal — "Guias" fica pronto no código mas oculto até ter o 1º guia publicado
+nav:
+  - title: Notícias
+    url: /noticias/
+  - title: Curiosidades Dev
+    url: /curiosidades-dev/
+  - title: Gameplays
+    url: /gameplays/
+  - title: Promoções
+    url: /promocoes/
+  - title: Sobre
+    url: /sobre/
+  # - title: Guias
+  #   url: /guias/
+
+markdown: kramdown
+permalink: /:categories/:title/
 
 collections:
-  - name: "posts"
-    label: "Matérias"
-    label_singular: "Matéria"
-    folder: "_posts"
-    create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
-    fields:
-      - { label: "Título", name: "title", widget: "string" }
-      - { label: "Data", name: "date", widget: "datetime" }
-      - label: "Categoria"
-        name: "categories"
-        widget: "select"
-        multiple: false
-        options:
-          - { label: "Notícias", value: "noticias" }
-          - { label: "Curiosidades Dev", value: "curiosidades-dev" }
-          - { label: "Gameplays", value: "gameplays" }
-        default: "curiosidades-dev"
-      - label: "Tags (aparecem na faixa de categorias)"
-        name: "tags"
-        widget: "select"
-        multiple: true
-        required: false
-        options:
-          - { label: "Lançamentos", value: "lancamentos" }
-          - { label: "PC", value: "pc" }
-          - { label: "PlayStation", value: "playstation" }
-          - { label: "Xbox", value: "xbox" }
-          - { label: "Nintendo", value: "nintendo" }
-          - { label: "Tech", value: "tech" }
-          - { label: "Indie", value: "indie" }
-          - { label: "Game Design", value: "game-design" }
-          - { label: "Retro", value: "retro" }
-          - { label: "Jogos grátis da semana", value: "jogos-gratis" }
-          - { label: "Gift Cards", value: "gift-cards" }
-      - { label: "Imagem de destaque", name: "image", widget: "image", required: false }
-      - { label: "Resumo (aparece nos cards)", name: "excerpt", widget: "text", required: false }
-      - { label: "Texto da matéria", name: "body", widget: "markdown" }
-      - {label: "Autor", name: "author", widget: "string", required: false, default: "Deivisson Freitas"}
-      - { label: "Destacar na home?", name: "destaque_home", widget: "boolean", required: false, default: false, hint: "Marque pra furar a ordem cronológica e aparecer em destaque na home (bloco de topo e nas seções de Notícias/Curiosidades)" }
-      - { label: "Prioridade no destaque", name: "prioridade_home", widget: "number", required: false, hint: "Só importa se 'Destacar na home?' estiver marcado. Números menores aparecem primeiro (1 = topo de tudo). Deixe em branco se não quiser controlar a ordem entre os destaques." }
+  guias:
+    output: true
+    permalink: /guias/:path/
+  promocoes:
+    output: false
 
-  - name: "promocoes"
-    label: "Promoções"
-    label_singular: "Promoção"
-    folder: "_promocoes"
-    create: true
-    slug: "{{slug}}"
-    view_filters:
-      - label: "A reclassificar: Componentes (antiga)"
-        field: categoria
-        pattern: "componentes"
-      - label: "A reclassificar: Periféricos & Áudio (antiga)"
-        field: categoria
-        pattern: "perifericos"
-    view_groups:
-      - label: "Categoria"
-        field: categoria
-    fields:
-      - { label: "Nome do produto", name: "title", widget: "string" }
-      - label: "Categoria"
-        name: "categoria"
-        widget: "select"
-        options:
-          - { label: "Placas de Vídeo", value: "placas-de-video" }
-          - { label: "Processadores", value: "processadores" }
-          - { label: "Placas-Mãe", value: "placas-mae" }
-          - { label: "Memória RAM", value: "memoria-ram" }
-          - { label: "Armazenamento (SSD, HD, pendrive, cartão de memória)", value: "armazenamento" }
-          - { label: "Fontes", value: "fontes" }
-          - { label: "Gabinetes", value: "gabinetes" }
-          - { label: "Coolers", value: "coolers" }
-          - { label: "Monitores", value: "monitores" }
-          - { label: "TVs", value: "tvs" }
-          - { label: "Teclados", value: "teclados" }
-          - { label: "Mouses", value: "mouses" }
-          - { label: "Headsets e Fones (inclui TWS)", value: "headsets" }
-          - { label: "Microfones", value: "microfones" }
-          - { label: "Caixas de Som (JBL, Alexa, soundbar...)", value: "caixas-de-som" }
-          - { label: "Webcams", value: "webcams" }
-          - { label: "Mousepads", value: "mousepads" }
-          - { label: "Suportes de Monitor", value: "suportes-monitor" }
-          - { label: "Cabos e Acessórios", value: "cabos-acessorios" }
-          - { label: "Controles", value: "controles" }
-          - { label: "Cadeiras", value: "cadeiras-mesas" }
-          - { label: "Mesas e Escrivaninhas", value: "mesas-escrivaninhas" }
-          - { label: "Mesas Digitalizadoras", value: "mesas-digitalizadoras" }
-          - { label: "Notebooks", value: "notebooks" }
-          - { label: "Celulares", value: "celulares" }
-          - { label: "Consoles", value: "consoles" }
-          - { label: "Acessórios de Console", value: "acessorios-console" }
-          - { label: "Kits Completos", value: "kits" }
-          - { label: "Jogos & Keys", value: "jogos-keys" }
-          - { label: "Gift Cards", value: "gift-cards" }
-          - { label: "Pra quem tá começando", value: "pra-quem-ta-comecando" }
-      - label: "Marcas (pode marcar várias: fabricante, chip...)"
-        name: "marcas"
-        widget: "select"
-        multiple: true
-        required: false
-        hint: "Ex.: placa-mãe ASRock com Ryzen = ASRock + AMD. Marca que não está na lista? Me avise que eu adiciono."
-        options:
-          - { label: "Acer", value: "Acer" }
-          - { label: "ADATA", value: "ADATA" }
-          - { label: "Afox", value: "Afox" }
-          - { label: "Amazon", value: "Amazon" }
-          - { label: "AMD", value: "AMD" }
-          - { label: "AOC", value: "AOC" }
-          - { label: "Apple", value: "Apple" }
-          - { label: "ASRock", value: "ASRock" }
-          - { label: "ASUS", value: "ASUS" }
-          - { label: "Attack Shark", value: "Attack Shark" }
-          - { label: "Basike", value: "Basike" }
-          - { label: "Biostar", value: "Biostar" }
-          - { label: "Clanm", value: "Clanm" }
-          - { label: "Colorful", value: "Colorful" }
-          - { label: "Cooler Master", value: "Cooler Master" }
-          - { label: "Corsair", value: "Corsair" }
-          - { label: "Crucial", value: "Crucial" }
-          - { label: "DeepCool", value: "DeepCool" }
-          - { label: "Dell", value: "Dell" }
-          - { label: "DT3 Sports", value: "DT3 Sports" }
-          - { label: "Edifier", value: "Edifier" }
-          - { label: "Elgato", value: "Elgato" }
-          - { label: "EVGA", value: "EVGA" }
-          - { label: "Fantech", value: "Fantech" }
-          - { label: "Fortrek", value: "Fortrek" }
-          - { label: "Gainward", value: "Gainward" }
-          - { label: "Galax", value: "Galax" }
-          - { label: "Gamemax", value: "Gamemax" }
-          - { label: "Gaomon", value: "Gaomon" }
-          - { label: "Gigabyte", value: "Gigabyte" }
-          - { label: "HP", value: "HP" }
-          - { label: "Huion", value: "Huion" }
-          - { label: "Husky", value: "Husky" }
-          - { label: "HyperX", value: "HyperX" }
-          - { label: "INNO3D", value: "INNO3D" }
-          - { label: "Intel", value: "Intel" }
-          - { label: "JBL", value: "JBL" }
-          - { label: "Kingston", value: "Kingston" }
-          - { label: "Lenovo", value: "Lenovo" }
-          - { label: "Lexar", value: "Lexar" }
-          - { label: "LG", value: "LG" }
-          - { label: "Logitech", value: "Logitech" }
-          - { label: "Mancer", value: "Mancer" }
-          - { label: "Maxsun", value: "Maxsun" }
-          - { label: "Microsoft", value: "Microsoft" }
-          - { label: "Motorola", value: "Motorola" }
-          - { label: "MSI", value: "MSI" }
-          - { label: "Multilaser", value: "Multilaser" }
-          - { label: "Netac", value: "Netac" }
-          - { label: "Nintendo", value: "Nintendo" }
-          - { label: "NVIDIA", value: "NVIDIA" }
-          - { label: "NZXT", value: "NZXT" }
-          - { label: "Palit", value: "Palit" }
-          - { label: "Patriot", value: "Patriot" }
-          - { label: "Philips", value: "Philips" }
-          - { label: "Pichau", value: "Pichau" }
-          - { label: "PNY", value: "PNY" }
-          - { label: "PowerColor", value: "PowerColor" }
-          - { label: "Razer", value: "Razer" }
-          - { label: "Red Magic", value: "Red Magic" }
-          - { label: "Redragon", value: "Redragon" }
-          - { label: "Samsung", value: "Samsung" }
-          - { label: "SanDisk", value: "SanDisk" }
-          - { label: "Sapphire", value: "Sapphire" }
-          - { label: "Seagate", value: "Seagate" }
-          - { label: "Sony", value: "Sony" }
-          - { label: "SteelSeries", value: "SteelSeries" }
-          - { label: "TCL", value: "TCL" }
-          - { label: "Thermaltake", value: "Thermaltake" }
-          - { label: "ThunderX3", value: "ThunderX3" }
-          - { label: "VAIO", value: "VAIO" }
-          - { label: "Wacom", value: "Wacom" }
-          - { label: "WD", value: "WD" }
-          - { label: "XFX", value: "XFX" }
-          - { label: "Xiaomi", value: "Xiaomi" }
-          - { label: "XP-Pen", value: "XP-Pen" }
-          - { label: "XPG", value: "XPG" }
-          - { label: "Zotac", value: "Zotac" }
-      - { label: "Preço original", name: "preco_original", widget: "string", required: false }
-      - { label: "Preço com desconto", name: "preco_promo", widget: "string" }
-      - { label: "Código de cupom (se tiver)", name: "cupom", widget: "string", required: false }
-      - { label: "Link de afiliado", name: "link", widget: "string" }
-      - label: "Loja (preenche só se a etiqueta automática não aparecer — links Awin/tidd.ly não dão pra reconhecer sozinhos)"
-        name: "loja_manual"
-        widget: "select"
-        required: false
-        options:
-          - { label: "Amazon", value: "Amazon" }
-          - { label: "Kabum", value: "Kabum" }
-          - { label: "Terabyte", value: "Terabyte" }
-          - { label: "Pichau", value: "Pichau" }
-          - { label: "Mercado Livre", value: "Mercado Livre" }
-          - { label: "Shopee", value: "Shopee" }
-          - { label: "AliExpress", value: "AliExpress" }
-          - { label: "Nuuvem", value: "Nuuvem" }
-      - { label: "Imagem do produto", name: "image", widget: "image", required: false }
-      - { label: "Data", name: "date", widget: "datetime" }
-      - { label: "Destaque (Em Alta)", name: "destaque", widget: "boolean", required: false, default: false, hint: "Marque manualmente quando o produto estiver vendendo bem de verdade (não só recebido clique)" }
-      - { label: "Prioridade no destaque", name: "prioridade_destaque", widget: "number", required: false, hint: "Só importa se 'Destaque' estiver marcado. Números menores aparecem primeiro (1 = topo de tudo). Deixe em branco se não quiser controlar a ordem entre os destaques." }
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+  - scope:
+      path: ""
+    values:
+      layout: page
+  - scope:
+      path: "admin"
+    values:
+      sitemap: false
 
-  - name: "textos"
-    label: "Textos do site"
-    files:
-      - name: "textos_gerais"
-        label: "Frases e avisos"
-        file: "_data/textos.yml"
-        fields:
-          - { label: "Aviso de afiliado (página Promoções)", name: "promocoes_aviso", widget: "text" }
-          - { label: "Texto de introdução (página Promoções)", name: "promocoes_intro", widget: "text" }
-          - { label: "Texto de introdução (página Apoie)", name: "apoie_intro", widget: "text" }
-          - { label: "Texto da página Sobre", name: "sobre_texto", widget: "text" }
-          - { label: "Descrição curta (rodapé, abaixo da logo)", name: "footer_descricao", widget: "text" }
-          - { label: "Texto da newsletter (rodapé)", name: "footer_newsletter_texto", widget: "text" }
-          - { label: "Título do card de promoções (home)", name: "promo_card_titulo", widget: "string" }
-          - { label: "Texto do card de promoções (home)", name: "promo_card_texto", widget: "text" }
-
-  - name: "paginas"
-    label: "Páginas fixas"
-    label_singular: "Página"
-    files:
-      - name: "sobre"
-        label: "Sobre"
-        file: "sobre.html"
-        fields:
-          - { label: "Título", name: "title", widget: "string" }
-          - { label: "Texto", name: "body", widget: "markdown" }
-      - name: "contato"
-        label: "Contato"
-        file: "contato.html"
-        fields:
-          - { label: "Título", name: "title", widget: "string" }
-          - { label: "Texto", name: "body", widget: "markdown" }
-      - name: "apoie"
-        label: "Apoie o projeto"
-        file: "apoie.html"
-        fields:
-          - { label: "Título", name: "title", widget: "string" }
-          - { label: "Texto de introdução", name: "intro", widget: "text" }
-          - { label: "Imagem do QR Code", name: "qr_image", widget: "image", required: false }
-          - { label: "Chave Pix", name: "chave_pix", widget: "string" }
-          - { label: "Texto final (chamada pro canal)", name: "texto_final", widget: "string" }
-          - { label: "Texto do botão", name: "cta_texto", widget: "string", default: "Inscreva-se no canal" }
-      - name: "privacidade"
-        label: "Política de Privacidade"
-        file: "privacidade.html"
-        fields:
-          - { label: "Título", name: "title", widget: "string" }
-          - { label: "Texto", name: "body", widget: "markdown" }
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
