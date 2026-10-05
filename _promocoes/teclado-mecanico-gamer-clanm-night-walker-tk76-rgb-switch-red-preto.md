@@ -1,6 +1,6 @@
 ---
 title: Teclado Mecanico Gamer Clanm Night Walker TK76, RGB, Switch Red, Preto
-categoria: perifericos
+categoria: teclados
 preco_original: ''
 preco_promo: R$132,05
 cupom: ''

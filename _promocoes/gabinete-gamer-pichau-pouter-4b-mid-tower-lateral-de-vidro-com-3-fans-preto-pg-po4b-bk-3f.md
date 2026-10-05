@@ -1,6 +1,6 @@
 ---
 title: Gabinete Gamer Pichau Pouter 4B, Mid-Tower, Lateral de Vidro, Com 3 Fans, Preto, PG-PO4B-BK-3F
-categoria: componentes
+categoria: gabinetes
 preco_original: ''
 preco_promo: R$297,82
 cupom: ''

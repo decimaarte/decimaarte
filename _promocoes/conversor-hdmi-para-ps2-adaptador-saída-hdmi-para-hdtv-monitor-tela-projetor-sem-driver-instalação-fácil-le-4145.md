@@ -1,6 +1,6 @@
 ---
 title: Conversor HDMI Para PS2 Adaptador Saída HDMI Para HDTV Monitor Tela Projetor Sem Driver Instalação Fácil LE-4145
-categoria: perifericos
+categoria: acessorios-console
 preco_original: ''
 preco_promo: R$26,46
 cupom: ''

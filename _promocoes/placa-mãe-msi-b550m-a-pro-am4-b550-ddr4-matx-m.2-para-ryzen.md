@@ -1,6 +1,6 @@
 ---
 title: Placa Mãe MSI B550M-A PRO AM4 B550 DDR4 mATX M.2 para Ryzen
-categoria: componentes
+categoria: placas-mae
 preco_original: ''
 preco_promo: R$510,51
 cupom: ''

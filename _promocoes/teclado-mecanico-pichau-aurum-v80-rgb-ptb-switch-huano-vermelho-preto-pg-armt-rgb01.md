@@ -1,6 +1,6 @@
 ---
 title: Teclado Mecanico Pichau Aurum V80, RGB, PTB, Switch Huano Vermelho, Preto, PG-ARMT-RGB01
-categoria: perifericos
+categoria: teclados
 preco_original: ''
 preco_promo: R$162,36
 cupom: ''

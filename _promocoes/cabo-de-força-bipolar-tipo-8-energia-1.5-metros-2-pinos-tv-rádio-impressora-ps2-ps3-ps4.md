@@ -1,6 +1,6 @@
 ---
 title: Cabo de Força Bipolar Tipo 8 Energia 1.5 Metros 2 Pinos TV Rádio Impressora PS2 PS3 PS4
-categoria: perifericos
+categoria: acessorios-console
 preco_original: ''
 preco_promo: R$10,59
 cupom: ''

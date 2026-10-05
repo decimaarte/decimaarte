@@ -1,6 +1,6 @@
 ---
 title: Kit Cabo AV RCA + Cabo de Força para PS2 Playstation 2 Áudio Vídeo e Energia
-categoria: perifericos
+categoria: acessorios-console
 preco_original: ''
 preco_promo: R$42,90
 cupom: ''

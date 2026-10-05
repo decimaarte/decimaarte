@@ -1,6 +1,6 @@
 ---
 title: Alexa Echo Dot 5ª Geração com Assistente Virtual e Controle de Dispositivos Inteligentes
-categoria: perifericos
+categoria: caixas-de-som
 preco_original: ''
 preco_promo: R$445,55
 cupom: ''

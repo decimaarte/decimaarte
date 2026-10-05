@@ -1,6 +1,6 @@
 ---
 title: Placa Mãe MAXSUN MS-B550M Gaming WIFI, Chipset B550, AMD AM4, mATX, DDR4
-categoria: componentes
+categoria: placas-mae
 preco_original: ''
 preco_promo: R$579,60
 cupom: ''

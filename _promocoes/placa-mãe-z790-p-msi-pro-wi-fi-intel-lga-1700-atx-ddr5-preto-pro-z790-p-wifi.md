@@ -1,6 +1,6 @@
 ---
 title: Placa-Mãe ASRock B840M-HVS, Ryzen AM5 B840, Micro ATX, DDR5 - 90-MXBSQ0-A0UAYZ
-categoria: componentes
+categoria: placas-mae
 preco_original: ''
 preco_promo: R$ 744,99
 cupom: ''

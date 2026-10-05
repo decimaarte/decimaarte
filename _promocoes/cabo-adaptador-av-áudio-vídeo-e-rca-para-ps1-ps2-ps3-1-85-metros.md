@@ -1,6 +1,6 @@
 ---
 title: Cabo Adaptador Av Áudio/Vídeo E Rca Para Ps1-ps2-ps3 1,85 Metros
-categoria: perifericos
+categoria: acessorios-console
 preco_original: ''
 preco_promo: R$18,29
 cupom: ''

@@ -1,6 +1,6 @@
 ---
 title: Placa Mãe Asus Prime B550M-A, Chipset B550, AMD AM4, mATX, DDR4, 90MB14I0-M0EAY0
-categoria: componentes
+categoria: placas-mae
 preco_original: ''
 preco_promo: R$616,40
 cupom: ''

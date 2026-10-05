@@ -1,6 +1,6 @@
 ---
 title: Fonte Cooler Master ATX 3.1 750W MWE Gold 750 V3 PFC Ativo 80 Plus Gold
-categoria: componentes
+categoria: fontes
 preco_original: ''
 preco_promo: R$369,55
 cupom: ''

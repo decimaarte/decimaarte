@@ -1,6 +1,6 @@
 ---
 title: Placa de Video GeForce NVIDIA PALIT RTX5060TI 8GB DUAL GDDR7 NE7506T019P1-GB2062D
-categoria: componentes
+categoria: placas-de-video
 preco_original: ''
 preco_promo: R$3.311,08
 cupom: ''

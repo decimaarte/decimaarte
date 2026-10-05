@@ -1,6 +1,6 @@
 ---
 title: Gabinete Gamer Kalkan Asgard Preto Aquário sem fans KLK00040
-categoria: componentes
+categoria: gabinetes
 preco_original: ''
 preco_promo: R$369,99
 cupom: ''

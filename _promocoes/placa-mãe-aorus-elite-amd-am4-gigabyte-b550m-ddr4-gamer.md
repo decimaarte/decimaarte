@@ -1,6 +1,6 @@
 ---
 title: Placa Mãe AORUS ELITE AMD AM4 Gigabyte B550M DDR4 Gamer
-categoria: componentes
+categoria: placas-mae
 preco_original: ''
 preco_promo: R$758,91
 cupom: ''

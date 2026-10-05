@@ -1,6 +1,6 @@
 ---
 title: Adaptador Conversor Ps2 Audio Vídeo Av Para Cabo Hdmi Premium
-categoria: perifericos
+categoria: acessorios-console
 preco_original: ''
 preco_promo: R$39,90
 cupom: ''

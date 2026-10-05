@@ -1,6 +1,6 @@
 ---
 title: Water Cooler Gigabyte Eagle 360, ARGB, 360mm, AMD e Intel, Preto - GP-GIGABYTE EAGLE 360
-categoria: componentes
+categoria: coolers
 preco_original: ''
 preco_promo: R$ 349,99
 cupom: ''

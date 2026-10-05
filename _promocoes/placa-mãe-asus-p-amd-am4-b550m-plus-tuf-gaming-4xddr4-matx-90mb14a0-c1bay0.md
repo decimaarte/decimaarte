@@ -1,6 +1,6 @@
 ---
 title: Placa-mãe Asus p/AMD AM4 B550M-Plus TUF Gaming 4xDDR4 mATX 90MB14A0-C1BAY0
-categoria: componentes
+categoria: placas-mae
 preco_original: ''
 preco_promo: R$841,71
 cupom: ''

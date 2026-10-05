@@ -1,6 +1,6 @@
 ---
 title: Placa-Mãe ASRock A620AM-HVS, Ryzen AM5 A620A, Micro ATX, DDR5 - 90-MXBSR0-A0UAYZ
-categoria: componentes
+categoria: placas-mae
 preco_original: ''
 preco_promo: R$ 639,99
 cupom: ''

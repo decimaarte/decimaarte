@@ -1,6 +1,6 @@
 ---
 title: Gabinete Gamer Pichau Pouter 3 Lateral De Vidro Preto, PG-P03-BK
-categoria: componentes
+categoria: gabinetes
 preco_original: ''
 preco_promo: R$290,51
 cupom: ''

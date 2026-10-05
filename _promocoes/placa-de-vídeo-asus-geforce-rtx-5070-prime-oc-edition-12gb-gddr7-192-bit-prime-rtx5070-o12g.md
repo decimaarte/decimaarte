@@ -1,6 +1,6 @@
 ---
 title: Placa de Vídeo ASUS GeForce RTX 5070 Prime OC Edition, 12GB, GDDR7, 192-bit, PRIME-RTX5070-O12G
-categoria: componentes
+categoria: placas-de-video
 preco_original: ''
 preco_promo: R$6.071,08
 cupom: ''

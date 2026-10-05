@@ -1,6 +1,6 @@
 ---
 title: Mouse Gamer Clanm Slits V2, RGB, 7200 DPI, 7 Botoes, Branco, SNOW SLITS
-categoria: perifericos
+categoria: mouses
 preco_original: ''
 preco_promo: R$69,90
 cupom: ''

@@ -1,6 +1,6 @@
 ---
 title: Processador AMD Ryzen 5 5500, 3.6GHz, Cache 16MB, Hexa Core, 12 Threads, AM4 - 100-100000457BOX
-categoria: componentes
+categoria: processadores
 preco_original: ''
 preco_promo: R$555,68
 cupom: ''

@@ -1,6 +1,6 @@
 ---
 title: Placa Mae Asus TUF Gaming, DDR4, Socket AMD AM4, M-ATX, Chipset AMD A520, TUF-GAMING-A520M-PLUS-II
-categoria: componentes
+categoria: placas-mae
 preco_original: ''
 preco_promo: R$737,00
 cupom: ''

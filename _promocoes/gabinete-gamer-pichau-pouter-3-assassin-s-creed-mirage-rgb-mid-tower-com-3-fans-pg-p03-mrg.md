@@ -1,6 +1,6 @@
 ---
 title: Gabinete Gamer Pichau Pouter 3 Assassin's Creed Mirage, RGB, Mid-Tower, Com 3 Fans, PG-P03-MRG
-categoria: componentes
+categoria: gabinetes
 preco_original: ''
 preco_promo: R$468,26
 cupom: ''

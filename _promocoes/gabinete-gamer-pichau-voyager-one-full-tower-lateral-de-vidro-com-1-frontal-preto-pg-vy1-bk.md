@@ -1,6 +1,6 @@
 ---
 title: Gabinete Gamer Pichau Voyager One, Full-Tower, Lateral de Vidro, Com 1 frontal, Preto, PG-VY1-BK
-categoria: componentes
+categoria: gabinetes
 preco_original: ''
 preco_promo: R$595,15
 cupom: ''

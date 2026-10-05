@@ -1,6 +1,6 @@
 ---
 title: Placa Mãe Asus TUF Gaming A520M-PLUS II, Chipset A520, AMD AM4, mATX, DDR4, 90MB17G0-M0EAY0
-categoria: componentes
+categoria: placas-mae
 preco_original: ''
 preco_promo: R$602,60
 cupom: ''

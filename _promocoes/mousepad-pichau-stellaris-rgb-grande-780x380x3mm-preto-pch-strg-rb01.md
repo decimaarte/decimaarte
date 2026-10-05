@@ -1,6 +1,6 @@
 ---
 title: Mousepad Pichau Stellaris, RGB, Grande, 780x380x3mm, Preto, PCH-STRG-RB01
-categoria: perifericos
+categoria: mousepads
 preco_original: ''
 preco_promo: R$55,90
 cupom: ''

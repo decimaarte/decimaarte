@@ -1,6 +1,6 @@
 ---
 title: Fonte ATX MSI 650W MAG 2.4 PCIE 80 Plus Bronze 306-7ZPAX39-HH9
-categoria: componentes
+categoria: fontes
 preco_original: ''
 preco_promo: R$287,90
 cupom: ''

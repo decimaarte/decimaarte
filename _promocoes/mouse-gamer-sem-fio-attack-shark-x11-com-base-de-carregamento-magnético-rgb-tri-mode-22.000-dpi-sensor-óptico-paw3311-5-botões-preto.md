@@ -1,6 +1,6 @@
 ---
 title: Mouse Gamer sem Fio Attack Shark X11 com Base de Carregamento Magnético RGB, Tri-Mode, 22.000 DPI, Sensor Óptico PAW3311, 5 Botões - Preto
-categoria: componentes
+categoria: mouses
 preco_original: ''
 preco_promo: R$ 159,99
 cupom: ''

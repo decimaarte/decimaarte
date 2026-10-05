@@ -1,6 +1,6 @@
 ---
 title: Placa de Vídeo MSI GeForce RTX 5060 Shadow 2X OC, 8GB, GDDR7, 128-bit, 912-V537-038
-categoria: componentes
+categoria: placas-de-video
 preco_original: ''
 preco_promo: R$2.851,08
 cupom: ''

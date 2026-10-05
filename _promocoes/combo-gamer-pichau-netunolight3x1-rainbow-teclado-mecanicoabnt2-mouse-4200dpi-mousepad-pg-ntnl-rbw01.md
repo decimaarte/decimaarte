@@ -1,6 +1,6 @@
 ---
 title: Combo Gamer Pichau NetunoLight3x1,Rainbow,Teclado MecanicoABNT2,Mouse 4200DPI,Mousepad PG-NTNL-RBW01
-categoria: perifericos
+categoria: teclados
 preco_original: ''
 preco_promo: R$145,35
 cupom: ''

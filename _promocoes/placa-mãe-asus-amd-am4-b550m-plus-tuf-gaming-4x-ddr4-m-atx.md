@@ -1,6 +1,6 @@
 ---
 title: Placa Mãe ASUS AMD Am4 B550M-Plus Tuf Gaming 4x DDR4 M-ATX
-categoria: componentes
+categoria: placas-mae
 preco_original: ''
 preco_promo: R$758,91
 cupom: ''

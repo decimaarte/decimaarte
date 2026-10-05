@@ -1,6 +1,6 @@
 ---
 title: Placa Mãe Gigabyte B550M Aorus Elite, DDR4, AMD AM4, mATX, Chipset B550, 9MB55MAEL-00-G13
-categoria: componentes
+categoria: placas-mae
 preco_original: ''
 preco_promo: R$739,68
 cupom: ''

@@ -1,6 +1,6 @@
 ---
 title: Placa Mãe MSI B550M-A PRO, DDR4, Socket AMD AM4, mATX, Chipset B550, MSIB550MAPRO
-categoria: componentes
+categoria: placas-mae
 preco_original: ''
 preco_promo: R$528,08
 cupom: ''

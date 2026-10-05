@@ -1,6 +1,6 @@
 ---
 title: Nobreak JBR Guard 1200VA entrada e saída 120v Preto
-categoria: perifericos
+categoria: cabos-acessorios
 preco_original: ''
 preco_promo: R$475,55
 cupom: ''

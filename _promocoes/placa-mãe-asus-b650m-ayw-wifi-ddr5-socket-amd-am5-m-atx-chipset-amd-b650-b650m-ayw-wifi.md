@@ -1,6 +1,6 @@
 ---
 title: Placa Mãe Asus B650M-AYW WiFi, DDR5, Socket AMD AM5, M-ATX, Chipset AMD B650 - B650M-AYW-WIFI
-categoria: componentes
+categoria: placas-mae
 preco_original: ''
 preco_promo: R$840,88
 cupom: ''

@@ -1,6 +1,6 @@
 ---
 title: Water Cooler MACH1 GLACIAL, ARGB, 360mm, AMD e Intel, Preto - IMV360BK
-categoria: componentes
+categoria: coolers
 preco_original: ''
 preco_promo: R$ 623,99
 cupom: ''

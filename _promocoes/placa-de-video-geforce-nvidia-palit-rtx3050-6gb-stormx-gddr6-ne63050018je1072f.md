@@ -1,6 +1,6 @@
 ---
 title: Placa de Video GeForce NVIDIA PALIT RTX3050 6GB STORMX GDDR6 NE63050018JE1072F
-categoria: componentes
+categoria: placas-de-video
 preco_original: ''
 preco_promo: R$1.397,53
 cupom: ''

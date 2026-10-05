@@ -1,6 +1,6 @@
 ---
 title: Caixa de Som Bluetooth JBL Boombox 4, com Auracast, IP68 Bivolt Preta
-categoria: perifericos
+categoria: caixas-de-som
 preco_original: ''
 preco_promo: R$2.225,48
 cupom: ''

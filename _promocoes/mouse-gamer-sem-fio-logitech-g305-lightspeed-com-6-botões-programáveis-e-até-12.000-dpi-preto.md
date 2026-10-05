@@ -1,6 +1,6 @@
 ---
 title: Mouse Gamer Sem Fio Logitech G305 LIGHTSPEED com 6 Botões Programáveis e Até 12.000 DPI - Preto
-categoria: componentes
+categoria: mouses
 preco_original: ''
 preco_promo: R$179,89
 cupom: ''

@@ -1,6 +1,6 @@
 ---
 title: Placa de Video GeForce NVIDIA INNO3D RTX5060TI 8GB TWIN X2 GDDR7 N506T2-08D7-193075N
-categoria: componentes
+categoria: placas-de-video
 preco_original: ''
 preco_promo: R$3.403,08
 cupom: ''

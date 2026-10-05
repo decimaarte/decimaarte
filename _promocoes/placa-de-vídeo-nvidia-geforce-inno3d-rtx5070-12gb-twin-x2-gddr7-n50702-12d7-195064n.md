@@ -1,6 +1,6 @@
 ---
 title: Placa de Vídeo NVIDIA GeForce INNO3D RTX5070 12GB TWIN X2 GDDR7 N50702-12D7-195064N
-categoria: componentes
+categoria: placas-de-video
 preco_original: ''
 preco_promo: R$5.243,08
 cupom: ''

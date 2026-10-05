@@ -1,6 +1,6 @@
 ---
 title: Placa de Vídeo Gigabyte GeForce RTX 5060 GAMING OC, 8GB, GDDR7, 128-bit, GV-N5060GAMING OC-8GD
-categoria: componentes
+categoria: placas-de-video
 preco_original: ''
 preco_promo: R$3.035,08
 cupom: ''

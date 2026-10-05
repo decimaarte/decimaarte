@@ -1,6 +1,6 @@
 ---
 title: Placa Mãe Asus Prime B550M-A AC - 90MB15K0-M0EAY0
-categoria: componentes
+categoria: placas-mae
 preco_original: ''
 preco_promo: R$601,57
 cupom: ''

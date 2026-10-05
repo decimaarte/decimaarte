@@ -1,6 +1,6 @@
 ---
 title: Fonte ATX Gamemax 600W GS600 com Cabo PFC Ativo 80 Plus White Preto
-categoria: componentes
+categoria: fontes
 preco_original: ''
 preco_promo: R$233,75
 cupom: ''

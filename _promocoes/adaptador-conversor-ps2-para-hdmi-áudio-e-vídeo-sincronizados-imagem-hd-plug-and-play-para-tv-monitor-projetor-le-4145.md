@@ -1,6 +1,6 @@
 ---
 title: Adaptador Conversor PS2 Para HDMI Áudio e Vídeo Sincronizados Imagem HD Plug and Play Para TV Monitor Projetor LE-4145
-categoria: perifericos
+categoria: acessorios-console
 preco_original: ''
 preco_promo: R$25,46
 cupom: ''

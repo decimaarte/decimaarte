@@ -1,6 +1,6 @@
 ---
 title: Processador AMD Ryzen 5 5500 3.6GHz 4.2GHz Max Turbo
-categoria: componentes
+categoria: processadores
 preco_original: ''
 preco_promo: R$553,75
 cupom: ''

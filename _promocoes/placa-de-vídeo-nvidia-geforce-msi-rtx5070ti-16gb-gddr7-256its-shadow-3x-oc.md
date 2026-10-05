@@ -1,6 +1,6 @@
 ---
 title: Placa de Vídeo NVIDIA GeForce MSI RTX5070TI 16GB GDDR7 256ITS SHADOW 3X OC
-categoria: componentes
+categoria: placas-de-video
 preco_original: ''
 preco_promo: R$8.555,08
 cupom: ''

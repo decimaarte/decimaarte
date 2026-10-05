@@ -1,6 +1,6 @@
 ---
 title: Placa-Mãe Z790-P MSI PRO Wi-Fi, Intel LGA 1700, ATX, DDR5, Preto - PRO Z790-P WIFI
-categoria: componentes
+categoria: placas-mae
 preco_original: ''
 preco_promo: R$ 1.889,99
 cupom: ''
