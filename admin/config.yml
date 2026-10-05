@@ -106,6 +106,91 @@ collections:
           - { label: "Jogos & Keys", value: "jogos-keys" }
           - { label: "Gift Cards", value: "gift-cards" }
           - { label: "Pra quem tá começando", value: "pra-quem-ta-comecando" }
+      - label: "Marcas (pode marcar várias: fabricante, chip...)"
+        name: "marcas"
+        widget: "select"
+        multiple: true
+        required: false
+        hint: "Ex.: placa-mãe ASRock com Ryzen = ASRock + AMD. Marca que não está na lista? Me avise que eu adiciono."
+        options:
+          - { label: "Acer", value: "Acer" }
+          - { label: "ADATA", value: "ADATA" }
+          - { label: "Afox", value: "Afox" }
+          - { label: "Amazon", value: "Amazon" }
+          - { label: "AMD", value: "AMD" }
+          - { label: "AOC", value: "AOC" }
+          - { label: "Apple", value: "Apple" }
+          - { label: "ASRock", value: "ASRock" }
+          - { label: "ASUS", value: "ASUS" }
+          - { label: "Attack Shark", value: "Attack Shark" }
+          - { label: "Basike", value: "Basike" }
+          - { label: "Biostar", value: "Biostar" }
+          - { label: "Clanm", value: "Clanm" }
+          - { label: "Colorful", value: "Colorful" }
+          - { label: "Cooler Master", value: "Cooler Master" }
+          - { label: "Corsair", value: "Corsair" }
+          - { label: "Crucial", value: "Crucial" }
+          - { label: "DeepCool", value: "DeepCool" }
+          - { label: "Dell", value: "Dell" }
+          - { label: "DT3 Sports", value: "DT3 Sports" }
+          - { label: "Edifier", value: "Edifier" }
+          - { label: "Elgato", value: "Elgato" }
+          - { label: "EVGA", value: "EVGA" }
+          - { label: "Fantech", value: "Fantech" }
+          - { label: "Fortrek", value: "Fortrek" }
+          - { label: "Gainward", value: "Gainward" }
+          - { label: "Galax", value: "Galax" }
+          - { label: "Gamemax", value: "Gamemax" }
+          - { label: "Gaomon", value: "Gaomon" }
+          - { label: "Gigabyte", value: "Gigabyte" }
+          - { label: "HP", value: "HP" }
+          - { label: "Huion", value: "Huion" }
+          - { label: "Husky", value: "Husky" }
+          - { label: "HyperX", value: "HyperX" }
+          - { label: "INNO3D", value: "INNO3D" }
+          - { label: "Intel", value: "Intel" }
+          - { label: "JBL", value: "JBL" }
+          - { label: "Kingston", value: "Kingston" }
+          - { label: "Lenovo", value: "Lenovo" }
+          - { label: "Lexar", value: "Lexar" }
+          - { label: "LG", value: "LG" }
+          - { label: "Logitech", value: "Logitech" }
+          - { label: "Mancer", value: "Mancer" }
+          - { label: "Maxsun", value: "Maxsun" }
+          - { label: "Microsoft", value: "Microsoft" }
+          - { label: "Motorola", value: "Motorola" }
+          - { label: "MSI", value: "MSI" }
+          - { label: "Multilaser", value: "Multilaser" }
+          - { label: "Netac", value: "Netac" }
+          - { label: "Nintendo", value: "Nintendo" }
+          - { label: "NVIDIA", value: "NVIDIA" }
+          - { label: "NZXT", value: "NZXT" }
+          - { label: "Palit", value: "Palit" }
+          - { label: "Patriot", value: "Patriot" }
+          - { label: "Philips", value: "Philips" }
+          - { label: "Pichau", value: "Pichau" }
+          - { label: "PNY", value: "PNY" }
+          - { label: "PowerColor", value: "PowerColor" }
+          - { label: "Razer", value: "Razer" }
+          - { label: "Red Magic", value: "Red Magic" }
+          - { label: "Redragon", value: "Redragon" }
+          - { label: "Samsung", value: "Samsung" }
+          - { label: "SanDisk", value: "SanDisk" }
+          - { label: "Sapphire", value: "Sapphire" }
+          - { label: "Seagate", value: "Seagate" }
+          - { label: "Sony", value: "Sony" }
+          - { label: "SteelSeries", value: "SteelSeries" }
+          - { label: "TCL", value: "TCL" }
+          - { label: "Thermaltake", value: "Thermaltake" }
+          - { label: "ThunderX3", value: "ThunderX3" }
+          - { label: "VAIO", value: "VAIO" }
+          - { label: "Wacom", value: "Wacom" }
+          - { label: "WD", value: "WD" }
+          - { label: "XFX", value: "XFX" }
+          - { label: "Xiaomi", value: "Xiaomi" }
+          - { label: "XP-Pen", value: "XP-Pen" }
+          - { label: "XPG", value: "XPG" }
+          - { label: "Zotac", value: "Zotac" }
       - { label: "Preço original", name: "preco_original", widget: "string", required: false }
       - { label: "Preço com desconto", name: "preco_promo", widget: "string" }
       - { label: "Código de cupom (se tiver)", name: "cupom", widget: "string", required: false }
