@@ -5,6 +5,12 @@ title: Promoções
 <style>
   .promo-filters { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
   .promo-filter-count { margin-left: 4px; font-size: 11.5px; font-weight: 700; opacity: .65; }
+  .promo-coupon-btn { display: inline-flex; align-items: center; gap: 6px; width: fit-content; max-width: 100%; margin-top: 6px; padding: 4px 10px; border: 1px dashed var(--pink-accent); border-radius: 8px; background: transparent; color: var(--pink-accent); font-family: inherit; font-size: 13px; font-weight: 600; cursor: pointer; text-align: left; transition: background .15s ease, color .15s ease; }
+  .promo-coupon-btn:hover { background: rgba(255, 45, 85, .08); }
+  .promo-coupon-btn strong { font-weight: 800; letter-spacing: .3px; word-break: break-all; }
+  .promo-coupon-hint { font-size: 11px; font-weight: 700; opacity: .7; text-transform: uppercase; }
+  .promo-coupon-btn.copied { border-style: solid; background: var(--pink-accent); color: #fff; }
+  .promo-coupon-btn.copied .promo-coupon-hint { opacity: 1; }
   @media (max-width: 640px) {
     .promo-filters { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 6px; -webkit-overflow-scrolling: touch; }
     .promo-filter-btn { flex-shrink: 0; white-space: nowrap; }
@@ -89,7 +95,7 @@ title: Promoções
       {% if p.preco_promo and p.preco_promo != '' %}<span class="promo-price-now">{{ p.preco_promo }}</span>{% endif %}
       {% if p.preco_original and p.preco_original != '' %}<s class="promo-price-old">{{ p.preco_original }}</s>{% endif %}
     </div>
-    {% if p.cupom and p.cupom != '' %}<div class="promo-coupon">Cupom: {{ p.cupom }}</div>{% endif %}
+    {% if p.cupom and p.cupom != '' %}<button type="button" class="promo-coupon-btn" data-coupon="{{ p.cupom | escape }}" data-goatcounter-click="cupom-{{ p.title | slugify }}" aria-label="Copiar cupom {{ p.cupom | escape }}"><span>Cupom:</span> <strong>{{ p.cupom }}</strong> <span class="promo-coupon-hint">copiar</span></button>{% endif %}
     <a href="{{ p.link }}" target="_blank" rel="noopener sponsored" data-goatcounter-click="produto-{{ p.title | slugify }}" class="promo-cta">Ver oferta</a>
   </div>
   {% endfor %}
@@ -116,5 +122,33 @@ title: Promoções
     applyFilters();
   }));
   search.addEventListener('input', applyFilters);
+
+  // Clique no cupom = copia o código
+  document.getElementById('promo-grid').addEventListener('click', function(e) {
+    const btn = e.target.closest('.promo-coupon-btn');
+    if (!btn) return;
+    const code = btn.dataset.coupon;
+    const hint = btn.querySelector('.promo-coupon-hint');
+    function feito() {
+      btn.classList.add('copied');
+      hint.textContent = 'copiado!';
+      setTimeout(function() { btn.classList.remove('copied'); hint.textContent = 'copiar'; }, 1800);
+    }
+    function planoB() {
+      const t = document.createElement('textarea');
+      t.value = code;
+      t.style.position = 'fixed';
+      t.style.opacity = '0';
+      document.body.appendChild(t);
+      t.select();
+      try { if (document.execCommand('copy')) feito(); } catch (err) {}
+      document.body.removeChild(t);
+    }
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(code).then(feito, planoB);
+    } else {
+      planoB();
+    }
+  });
 })();
 </script>
