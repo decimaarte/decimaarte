@@ -1,6 +1,6 @@
 ---
 title: Cartão De Memoria Para PS2 8mb 16mb 32mb Armazenamento De Qualquer Jogo
-categoria: armazenamento
+categoria: acessorios-console
 preco_original: ''
 preco_promo: R$19,49
 cupom: ''
