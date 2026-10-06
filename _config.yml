@@ -5,6 +5,7 @@ baseurl: ""
 email: contato@decimaarte.com.br
 youtube_url: "https://www.youtube.com/@decima10arte?sub_confirmation=1"
 lang: pt-BR
+timezone: America/Sao_Paulo   # datas de matéria sem fuso são lidas como horário de Brasília (agendamento)
 logo: /assets/img/logo-badge.png
 
 plugins:
