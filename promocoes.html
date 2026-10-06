@@ -33,6 +33,12 @@ title: Promoções
   .pf-cat:hover { background: var(--purple-dark); color: var(--text-main); }
   .pf-cat.active { background: var(--purple-accent); color: #fff; }
   .pf-count { font-size: 11.5px; font-weight: 700; opacity: .65; flex-shrink: 0; }
+  /* opção sem produto no filtro atual: fica no lugar, só apagada (assim a lista não pula) */
+  .pf-cat.pf-zero { opacity: .4; }
+  .pf-opt.pf-zero { opacity: .35; cursor: default; }
+  .pf-opt.pf-zero:hover { background: transparent; }
+  .pf-opt.pf-zero input { cursor: default; }
+  .pf-group.pf-zero > summary { opacity: .45; }
 
   .pf-group { margin-top: 2px; }
   .pf-group > summary { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 8px 10px; border-radius: 8px; font-size: 13.5px; font-weight: 800; color: var(--text-main); cursor: pointer; list-style: none; }
@@ -49,7 +55,7 @@ title: Promoções
   .pf-opt .pf-name { flex: 1; min-width: 0; overflow-wrap: anywhere; }
 
   /* ---- Resultado + filtros ativos ---- */
-  .promo-result-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 16px; min-height: 28px; }
+  .promo-result-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 16px; min-height: 36px; }
   .promo-total { font-size: 13.5px; font-weight: 700; color: var(--text-muted); margin-right: 4px; }
   .pf-chip { display: inline-flex; align-items: center; gap: 6px; background: var(--purple-dark); color: var(--text-main); border: 1px solid var(--line); border-radius: 999px; padding: 4px 10px; font-family: var(--font-body); font-size: 12.5px; font-weight: 700; cursor: pointer; }
   .pf-chip:hover { border-color: var(--pink-accent); }
@@ -286,7 +292,7 @@ title: Promoções
       label.appendChild(count);
       input.addEventListener('change', function () {
         if (input.checked) set.add(v); else set.delete(v);
-        render();
+        render(input);
       });
       box.appendChild(label);
     });
@@ -324,11 +330,19 @@ title: Promoções
   // O site usa rolagem suave (scroll-behavior: smooth); aqui precisa ser instantâneo, senão a tela 'escorrega'.
   function scrollNow(y) { window.scrollTo({ top: y, left: 0, behavior: 'instant' }); }
 
-  function render() {
+  // Quem rola dentro dos filtros: a coluna (PC) ou o corpo do painel (celular)
+  var sideBody = sidebar.querySelector('.promo-sidebar-body');
+  function scroller() { return window.innerWidth <= 900 ? sideBody : sidebar; }
+
+  function render(anchor) {
     var prevY = window.scrollY || window.pageYOffset || 0;
-    var prevSide = sidebar.scrollTop;
-    var catCounts = {}, lojaCounts = {}, marcaCounts = {};
-    var shown = 0, totalForCats = 0;
+    var box = scroller();
+    var prevScroll = box.scrollTop;
+    var anchorTop = (anchor && anchor.offsetParent !== null) ? anchor.getBoundingClientRect().top : null;
+
+    var catCounts = {}, lojaCounts = {}, marcaCounts = {};      // contagens "ao vivo" (com todos os filtros)
+    var baseCat = {}, baseLoja = {}, baseMarca = {};            // contagens "base" (só categoria + busca) -> decidem quem aparece
+    var shown = 0, totalForCats = 0, baseTotal = 0;
 
     cards.forEach(function (c) {
       var okCat = state.cat === 'todos' || c.cat === state.cat;
@@ -344,45 +358,61 @@ title: Promoções
       if (okLoja && okMarca && okTerm) { totalForCats++; catCounts[c.cat] = (catCounts[c.cat] || 0) + 1; }
       if (okCat && okMarca && okTerm) lojaCounts[c.loja] = (lojaCounts[c.loja] || 0) + 1;
       if (okCat && okLoja && okTerm) c.marcas.forEach(function (m) { marcaCounts[m] = (marcaCounts[m] || 0) + 1; });
+
+      // base: quem aparece na lista. Só muda ao trocar categoria ou buscar, NUNCA ao marcar loja/marca,
+      // então a lista não encolhe nem cresce debaixo do seu dedo.
+      if (okTerm) { baseTotal++; baseCat[c.cat] = (baseCat[c.cat] || 0) + 1; }
+      if (okCat && okTerm) {
+        baseLoja[c.loja] = (baseLoja[c.loja] || 0) + 1;
+        c.marcas.forEach(function (m) { baseMarca[m] = (baseMarca[m] || 0) + 1; });
+      }
     });
 
     // categorias
     catBtns.forEach(function (b) {
       var cat = b.dataset.cat;
       var n = cat === 'todos' ? totalForCats : (catCounts[cat] || 0);
+      var base = cat === 'todos' ? baseTotal : (baseCat[cat] || 0);
       var active = state.cat === cat;
       b.classList.toggle('active', active);
       b.querySelector('.pf-count').textContent = n;
-      b.style.display = (cat === 'todos' || n > 0 || active) ? '' : 'none';
+      b.style.display = (cat === 'todos' || base > 0 || active) ? '' : 'none';
+      b.classList.toggle('pf-zero', cat !== 'todos' && n === 0 && !active);
     });
     groups.forEach(function (g) {
-      var sum = 0, hasActive = false;
+      var sum = 0, baseSum = 0, hasActive = false;
       g.querySelectorAll('.pf-cat').forEach(function (b) {
         sum += catCounts[b.dataset.cat] || 0;
+        baseSum += baseCat[b.dataset.cat] || 0;
         if (b.classList.contains('active')) hasActive = true;
       });
       g.querySelector('summary .pf-count').textContent = sum;
-      g.style.display = (sum > 0 || hasActive) ? '' : 'none';
+      g.style.display = (baseSum > 0 || hasActive) ? '' : 'none';
+      g.classList.toggle('pf-zero', sum === 0 && !hasActive);
       if (hasActive) g.open = true;
     });
 
     // loja e marca
-    function paintOpts(opts, counts, set, section) {
+    function paintOpts(opts, live, base, set, section) {
       var any = false;
       opts.forEach(function (label) {
         var input = label.querySelector('input');
-        var n = counts[input.value] || 0;
-        var on = set.has(input.value);
+        var v = input.value;
+        var n = live[v] || 0;
+        var on = set.has(v);
         input.checked = on;
         label.querySelector('.pf-count').textContent = n;
-        var show = n > 0 || on;
+        var zero = n === 0 && !on;
+        label.classList.toggle('pf-zero', zero);
+        input.disabled = zero;
+        var show = (base[v] || 0) > 0 || on;
         label.style.display = show ? '' : 'none';
         if (show) any = true;
       });
       section.style.display = any ? '' : 'none';
     }
-    paintOpts(lojaOpts, lojaCounts, state.lojas, document.getElementById('pf-sec-loja'));
-    paintOpts(marcaOpts, marcaCounts, state.marcas, document.getElementById('pf-sec-marca'));
+    paintOpts(lojaOpts, lojaCounts, baseLoja, state.lojas, document.getElementById('pf-sec-loja'));
+    paintOpts(marcaOpts, marcaCounts, baseMarca, state.marcas, document.getElementById('pf-sec-marca'));
 
     // resumo, chips e estado vazio
     var nAtivos = (state.cat !== 'todos' ? 1 : 0) + state.lojas.size + state.marcas.size;
@@ -419,9 +449,17 @@ title: Promoções
 
     writeUrl();
 
-    // Devolve a posição de antes. Se a página encolheu e não dá mais pra ficar ali,
-    // em vez de despencar pro rodapé, leva pro começo dos resultados.
-    sidebar.scrollTop = prevSide;
+    // 1) Dentro da coluna: o item que você clicou fica EXATAMENTE onde estava.
+    //    (se algo acima dele mudou de altura, a rolagem da coluna compensa)
+    if (anchorTop !== null && anchor.offsetParent !== null) {
+      var delta = anchor.getBoundingClientRect().top - anchorTop;
+      if (Math.abs(delta) > 0.5) box.scrollTop = box.scrollTop + delta;
+    } else {
+      box.scrollTop = prevScroll;
+    }
+
+    // 2) Página: devolve a posição de antes. Se a página encolheu e não dá mais pra ficar ali,
+    //    em vez de despencar pro rodapé, leva pro começo dos resultados.
     if (prevY > 0) {
       var maxY = document.documentElement.scrollHeight - window.innerHeight;
       if (prevY > maxY) {
@@ -462,7 +500,7 @@ title: Promoções
       var cat = b.dataset.cat;
       state.cat = (state.cat === cat) ? 'todos' : cat;
       pruneInvalid();
-      render();
+      render(b);
     });
   });
   search.addEventListener('input', function () {
