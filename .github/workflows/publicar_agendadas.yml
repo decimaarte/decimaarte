@@ -1,0 +1,47 @@
+name: Publicar Matérias Agendadas
+
+# A cada 10 minutos olha se alguma matéria agendada já passou da hora e ainda não está no ar.
+# Se tiver, pede um build ao GitHub Pages. Se não tiver, não faz nada.
+# Também dá pra rodar na mão: Actions > Publicar Matérias Agendadas > Run workflow.
+
+on:
+  schedule:
+    - cron: "*/10 * * * *"
+  workflow_dispatch:
+    inputs:
+      forcar:
+        description: "Pedir um build agora, mesmo sem matéria pendente"
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+  pages: write
+
+concurrency:
+  group: publicar-agendadas
+  cancel-in-progress: false
+
+jobs:
+  checar:
+    name: Checar e publicar
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            _posts
+            .github/scripts
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Verificar matérias vencidas
+        run: python .github/scripts/publicar_agendadas.py
+        env:
+          # Se o token padrão não tiver permissão pra pedir build, crie o segredo PAGES_TOKEN.
+          GH_TOKEN: ${{ secrets.PAGES_TOKEN || github.token }}
+          REPO: ${{ github.repository }}
+          FORCAR: ${{ inputs.forcar }}
