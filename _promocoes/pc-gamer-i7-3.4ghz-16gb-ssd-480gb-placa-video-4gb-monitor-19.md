@@ -1,6 +1,8 @@
 ---
 title: Pc Gamer I7 3.4ghz 16gb Ssd 480gb Placa Video 4gb Monitor 19
 categoria: kits
+marcas:
+  - Intel
 preco_original: ''
 preco_promo: R$2.398,46
 cupom: ''
