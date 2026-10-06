@@ -71,7 +71,7 @@ title: Promoções
   /* ---- Celular / tablet: coluna vira painel "Filtros" ---- */
   @media (max-width: 900px) {
     .promo-layout { grid-template-columns: minmax(0, 1fr); min-height: 0; }
-    .promo-jump { display: none !important; }
+    .promo-jump { top: auto; bottom: 20px; right: 16px; }
     .promo-filter-open { display: inline-flex; }
     .promo-sidebar { position: fixed; top: 0; bottom: 0; left: 0; width: min(88vw, 340px); max-height: none; z-index: 300; border-radius: 0; border-width: 0 1px 0 0; padding: 0; display: flex; flex-direction: column; overflow: hidden; transform: translateX(-102%); transition: transform .22s ease; }
     .promo-sidebar.open { transform: translateX(0); }
@@ -111,7 +111,7 @@ title: Promoções
 {% assign grupos_defs = "Componentes#placas-de-video|Placas de Vídeo~processadores|Processadores~placas-mae|Placas-Mãe~memoria-ram|Memória RAM~armazenamento|Armazenamento~fontes|Fontes~gabinetes|Gabinetes~coolers|Coolers^Monitores &amp; TVs#monitores|Monitores~tvs|TVs^Periféricos &amp; Áudio#teclados|Teclados~mouses|Mouses~headsets|Headsets e Fones~microfones|Microfones~caixas-de-som|Caixas de Som~webcams|Webcams~mousepads|Mousepads~suportes-monitor|Suportes de Monitor~cabos-acessorios|Cabos e Acessórios^Consoles &amp; Controles#consoles|Consoles~acessorios-console|Acessórios de Console~controles|Controles^Cadeiras &amp; Mesas#cadeiras-mesas|Cadeiras~mesas-escrivaninhas|Mesas e Escrivaninhas~mesas-digitalizadoras|Mesas Digitalizadoras^Notebooks &amp; Celulares#notebooks|Notebooks~celulares|Celulares^Kits &amp; Jogos#kits|Kits Completos~jogos-keys|Jogos &amp; Keys~gift-cards|Gift Cards~pra-quem-ta-comecando|Pra quem tá começando" | split: "^" %}
 
 <div class="promo-overlay" id="promo-overlay"></div>
-<button type="button" class="promo-jump" id="promo-jump">&uarr; Ver <span id="promo-jump-n">0</span> produtos</button>
+<button type="button" class="promo-jump" id="promo-jump"><span aria-hidden="true">&uarr;</span> <span id="promo-jump-label">Voltar ao topo</span></button>
 
 <div class="promo-layout">
 
@@ -340,8 +340,8 @@ title: Promoções
   var layoutEl = document.querySelector('.promo-layout');
   var mainEl = document.querySelector('.promo-main');
   var jumpBtn = document.getElementById('promo-jump');
-  var jumpN = document.getElementById('promo-jump-n');
-  var locked = false, lastShown = 0;
+  var jumpLabel = document.getElementById('promo-jump-label');
+  var locked = false, lastShown = 0, lastActive = false;
 
   function mainTopAbs() { return mainEl.getBoundingClientRect().top + (window.scrollY || 0); }
   function layoutTopAbs() { return layoutEl.getBoundingClientRect().top + (window.scrollY || 0); }
@@ -353,10 +353,16 @@ title: Promoções
     // dá pra soltar sem a página se mexer quando a tela inteira já está dentro da área natural
     if ((window.scrollY || 0) + window.innerHeight <= layoutTopAbs() + naturalHeight()) unlock();
   }
+  // Botão flutuante: aparece sempre que a pessoa está mais de ~400px abaixo do começo da lista de produtos
+  // (logo após filtrar OU depois de descer a lista). Some sozinho quando ela volta pro começo.
   function updateJump() {
-    var show = locked && window.innerWidth > 900 && (mainTopAbs() + mainEl.offsetHeight) < (window.scrollY || 0) + 100;
+    var show = (window.scrollY || 0) > mainTopAbs() + 400;
     jumpBtn.style.display = show ? 'inline-flex' : 'none';
-    if (show) jumpN.textContent = lastShown;
+    if (show) {
+      jumpLabel.textContent = (lastActive && lastShown > 0)
+        ? 'Ver ' + lastShown + (lastShown === 1 ? ' produto' : ' produtos')
+        : 'Voltar ao topo';
+    }
   }
   function showResults() {
     unlock();
@@ -507,6 +513,7 @@ title: Promoções
     }
 
     lastShown = shown;
+    lastActive = nAtivos > 0 || !!state.term;
     maybeUnlock();
     updateJump();
   }
