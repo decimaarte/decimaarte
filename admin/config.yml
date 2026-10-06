@@ -59,13 +59,6 @@ collections:
     folder: "_promocoes"
     create: true
     slug: "{{slug}}"
-    view_filters:
-      - label: "A reclassificar: Componentes (antiga)"
-        field: categoria
-        pattern: "componentes"
-      - label: "A reclassificar: Periféricos & Áudio (antiga)"
-        field: categoria
-        pattern: "perifericos"
     view_groups:
       - label: "Categoria"
         field: categoria
