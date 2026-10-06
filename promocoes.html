@@ -18,10 +18,12 @@ title: Promoções
   .promo-filter-badge { background: var(--pink-accent); color: #fff; border-radius: 999px; min-width: 20px; height: 20px; padding: 0 6px; font-size: 11.5px; font-weight: 800; display: inline-flex; align-items: center; justify-content: center; }
 
   /* ---- Layout: coluna lateral + produtos ---- */
-  .promo-layout { display: grid; grid-template-columns: 270px minmax(0, 1fr); gap: 28px; align-items: start; }
+  /* Página não 'pula' quando a quantidade de produtos muda: sem ancoragem automática do navegador e com altura mínima estável */
+  html, body { overflow-anchor: none; }
+  .promo-layout { display: grid; grid-template-columns: 270px minmax(0, 1fr); gap: 28px; align-items: start; min-height: calc(100vh - 106px); }
   .promo-main .promo-grid { grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); }
 
-  .promo-sidebar { position: sticky; top: 86px; max-height: calc(100vh - 106px); overflow-y: auto; background: var(--bg-surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; }
+  .promo-sidebar { position: sticky; top: 86px; max-height: calc(100vh - 106px); overflow-y: auto; overscroll-behavior: contain; background: var(--bg-surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; }
   .promo-sidebar-head, .promo-sidebar-foot { display: none; }
   .pf-section { margin-bottom: 20px; }
   .pf-section:last-child { margin-bottom: 0; }
@@ -45,7 +47,6 @@ title: Promoções
   .pf-opt:hover { background: var(--purple-dark); }
   .pf-opt input { accent-color: var(--purple-accent); width: 16px; height: 16px; margin: 0; flex-shrink: 0; cursor: pointer; }
   .pf-opt .pf-name { flex: 1; min-width: 0; overflow-wrap: anywhere; }
-  .pf-scroll { max-height: 280px; overflow-y: auto; padding-right: 4px; }
 
   /* ---- Resultado + filtros ativos ---- */
   .promo-result-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 16px; min-height: 28px; }
@@ -62,13 +63,13 @@ title: Promoções
 
   /* ---- Celular / tablet: coluna vira painel "Filtros" ---- */
   @media (max-width: 900px) {
-    .promo-layout { grid-template-columns: minmax(0, 1fr); }
+    .promo-layout { grid-template-columns: minmax(0, 1fr); min-height: 0; }
     .promo-filter-open { display: inline-flex; }
     .promo-sidebar { position: fixed; top: 0; bottom: 0; left: 0; width: min(88vw, 340px); max-height: none; z-index: 300; border-radius: 0; border-width: 0 1px 0 0; padding: 0; display: flex; flex-direction: column; overflow: hidden; transform: translateX(-102%); transition: transform .22s ease; }
     .promo-sidebar.open { transform: translateX(0); }
     .promo-sidebar-head { display: flex; align-items: center; justify-content: space-between; padding: 14px 16px; border-bottom: 1px solid var(--line); font-size: 16px; font-weight: 800; }
     .promo-sidebar-close { background: transparent; border: 0; font-size: 22px; line-height: 1; color: var(--text-main); cursor: pointer; padding: 4px 8px; }
-    .promo-sidebar-body { flex: 1; overflow-y: auto; padding: 14px 16px; -webkit-overflow-scrolling: touch; }
+    .promo-sidebar-body { flex: 1; overflow-y: auto; overscroll-behavior: contain; padding: 14px 16px; -webkit-overflow-scrolling: touch; }
     .promo-sidebar-foot { display: flex; gap: 10px; align-items: center; padding: 12px 16px; border-top: 1px solid var(--line); background: var(--bg-surface); }
     .promo-sidebar-foot .promo-cta { flex: 1; margin-top: 0; border: 0; cursor: pointer; font-family: var(--font-body); }
     .pf-cat, .pf-group > summary, .pf-opt { padding-top: 9px; padding-bottom: 9px; }
@@ -320,7 +321,12 @@ title: Promoções
     clearFilters();
   }
 
+  // O site usa rolagem suave (scroll-behavior: smooth); aqui precisa ser instantâneo, senão a tela 'escorrega'.
+  function scrollNow(y) { window.scrollTo({ top: y, left: 0, behavior: 'instant' }); }
+
   function render() {
+    var prevY = window.scrollY || window.pageYOffset || 0;
+    var prevSide = sidebar.scrollTop;
     var catCounts = {}, lojaCounts = {}, marcaCounts = {};
     var shown = 0, totalForCats = 0;
 
@@ -412,6 +418,19 @@ title: Promoções
     }
 
     writeUrl();
+
+    // Devolve a posição de antes. Se a página encolheu e não dá mais pra ficar ali,
+    // em vez de despencar pro rodapé, leva pro começo dos resultados.
+    sidebar.scrollTop = prevSide;
+    if (prevY > 0) {
+      var maxY = document.documentElement.scrollHeight - window.innerHeight;
+      if (prevY > maxY) {
+        var gridTop = grid.getBoundingClientRect().top + (window.scrollY || 0) - 110;
+        scrollNow(Math.max(0, Math.min(gridTop, Math.max(0, maxY))));
+      } else if ((window.scrollY || 0) !== prevY) {
+        scrollNow(prevY);
+      }
+    }
   }
 
   // ---------- link compartilhável: ?cat=placas-de-video&loja=Kabum&marca=NVIDIA,Palit ----------
