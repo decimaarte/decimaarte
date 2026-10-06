@@ -9,4 +9,6 @@ image: /assets/img/uploads/photo_2026-05-25_00-02-37.jpg
 date: 2026-10-02T10:04:00
 destaque: false
 prioridade_destaque: null
+marcas:
+  - ASUS
 ---

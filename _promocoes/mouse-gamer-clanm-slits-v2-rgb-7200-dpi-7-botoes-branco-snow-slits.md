@@ -9,4 +9,6 @@ image: /assets/img/uploads/photo_2026-05-22_20-56-43.jpg
 date: 2026-10-02T16:07:00
 destaque: false
 prioridade_destaque: null
+marcas:
+  - Clanm
 ---

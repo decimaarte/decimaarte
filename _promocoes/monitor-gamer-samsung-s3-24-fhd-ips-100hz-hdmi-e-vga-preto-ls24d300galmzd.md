@@ -9,4 +9,6 @@ image: /assets/img/uploads/photo_2026-03-20_18-47-45.jpg
 date: 2026-09-28T13:37:00
 destaque: false
 prioridade_destaque: null
+marcas:
+  - Samsung
 ---

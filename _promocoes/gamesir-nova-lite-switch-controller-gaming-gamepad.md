@@ -9,4 +9,6 @@ image: /assets/img/uploads/Screenshot_9.png
 date: 2026-09-28T04:47:00
 destaque: false
 prioridade_destaque: null
+marcas:
+  - GameSir
 ---

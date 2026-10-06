@@ -9,4 +9,7 @@ image: /assets/img/uploads/photo_2026-09-09_21-55-51.jpg
 date: 2026-10-03T14:01:00
 destaque: false
 prioridade_destaque: null
+marcas:
+  - Gigabyte
+  - NVIDIA
 ---

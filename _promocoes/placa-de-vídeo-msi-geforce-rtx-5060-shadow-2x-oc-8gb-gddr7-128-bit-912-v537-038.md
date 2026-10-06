@@ -9,4 +9,7 @@ image: /assets/img/uploads/photo_2026-07-13_15-13-22.jpg
 date: 2026-10-03T15:23:00
 destaque: false
 prioridade_destaque: null
+marcas:
+  - MSI
+  - NVIDIA
 ---

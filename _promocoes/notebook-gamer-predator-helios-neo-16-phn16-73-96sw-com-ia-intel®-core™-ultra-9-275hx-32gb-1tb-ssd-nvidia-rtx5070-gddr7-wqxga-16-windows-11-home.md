@@ -10,4 +10,8 @@ image: /assets/img/uploads/photo_2026-10-03_19-55-19.jpg
 date: 2026-10-03T19:55:00
 destaque: false
 prioridade_destaque: null
+marcas:
+  - Acer
+  - Intel
+  - NVIDIA
 ---

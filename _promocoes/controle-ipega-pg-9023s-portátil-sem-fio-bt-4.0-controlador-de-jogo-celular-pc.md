@@ -9,4 +9,6 @@ image: /assets/img/uploads/photo_2026-06-12_12-30-01.jpg
 date: 2026-10-02T05:49:00
 destaque: false
 prioridade_destaque: null
+marcas:
+  - Ipega
 ---

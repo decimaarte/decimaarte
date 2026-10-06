@@ -9,4 +9,6 @@ image: /assets/img/uploads/photo_2025-08-08_02-29-16.jpg
 date: 2026-10-02T04:47:00
 destaque: false
 prioridade_destaque: null
+marcas:
+  - Pichau
 ---

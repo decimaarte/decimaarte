@@ -9,4 +9,7 @@ image: /assets/img/uploads/photo_2026-10-03_15-25-06.jpg
 date: 2026-10-03T15:24:00
 destaque: false
 prioridade_destaque: null
+marcas:
+  - ASUS
+  - NVIDIA
 ---

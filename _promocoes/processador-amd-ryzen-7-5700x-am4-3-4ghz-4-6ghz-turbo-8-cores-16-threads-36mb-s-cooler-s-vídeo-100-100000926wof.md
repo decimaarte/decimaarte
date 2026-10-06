@@ -9,4 +9,6 @@ image: /assets/img/uploads/photo_2025-08-21_09-08-25.jpg
 date: 2026-10-02T10:25:00
 destaque: false
 prioridade_destaque: null
+marcas:
+  - AMD
 ---

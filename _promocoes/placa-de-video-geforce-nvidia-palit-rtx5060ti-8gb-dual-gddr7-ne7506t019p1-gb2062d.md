@@ -9,4 +9,7 @@ image: /assets/img/uploads/photo_2026-08-31_11-53-16.jpg
 date: 2026-10-02T06:54:00
 destaque: false
 prioridade_destaque: null
+marcas:
+  - NVIDIA
+  - Palit
 ---

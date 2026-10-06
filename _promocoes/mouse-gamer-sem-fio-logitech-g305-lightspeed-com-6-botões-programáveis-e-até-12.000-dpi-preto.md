@@ -10,4 +10,6 @@ image: /assets/img/uploads/photo_2026-10-04_01-57-27.jpg
 date: 2026-10-03T15:45:00
 destaque: false
 prioridade_destaque: null
+marcas:
+  - Logitech
 ---

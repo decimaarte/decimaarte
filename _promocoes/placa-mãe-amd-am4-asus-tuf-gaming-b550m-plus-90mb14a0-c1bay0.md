@@ -9,4 +9,7 @@ image: /assets/img/uploads/photo_2025-03-15_09-42-34.jpg
 date: 2026-09-28T12:52:00
 destaque: false
 prioridade_destaque: null
+marcas:
+  - AMD
+  - ASUS
 ---

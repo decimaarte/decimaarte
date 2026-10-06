@@ -9,4 +9,7 @@ image: /assets/img/uploads/photo_2024-10-17_00-20-37.jpg
 date: 2026-10-02T10:21:00
 destaque: false
 prioridade_destaque: null
+marcas:
+  - Gigabyte
+  - AMD
 ---

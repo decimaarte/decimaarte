@@ -9,4 +9,6 @@ image: /assets/img/uploads/Screenshot_8.png
 date: 2026-09-28T04:32:00
 destaque: false
 prioridade_destaque: null
+marcas:
+  - 8BitDo
 ---

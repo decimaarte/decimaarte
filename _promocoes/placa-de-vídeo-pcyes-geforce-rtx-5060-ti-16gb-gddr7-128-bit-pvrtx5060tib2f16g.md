@@ -10,4 +10,6 @@ image: /assets/img/uploads/photo_2026-09-19_23-27-03.jpg
 date: 2026-10-03T15:21:00
 destaque: false
 prioridade_destaque: null
+marcas:
+  - NVIDIA
 ---

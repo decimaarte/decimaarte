@@ -9,4 +9,6 @@ image: /assets/img/uploads/photo_2025-08-27_10-14-13.jpg
 date: 2026-10-03T15:39:00
 destaque: false
 prioridade_destaque: null
+marcas:
+  - Intel
 ---

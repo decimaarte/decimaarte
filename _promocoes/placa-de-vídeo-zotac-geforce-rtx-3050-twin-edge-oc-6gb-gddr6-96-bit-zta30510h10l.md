@@ -10,4 +10,7 @@ image: /assets/img/uploads/photo_2026-05-22_20-53-42.jpg
 date: 2026-10-02T15:15:00
 destaque: false
 prioridade_destaque: null
+marcas:
+  - Zotac
+  - NVIDIA
 ---

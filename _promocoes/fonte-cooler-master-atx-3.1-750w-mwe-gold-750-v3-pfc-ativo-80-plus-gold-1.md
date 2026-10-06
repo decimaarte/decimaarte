@@ -9,4 +9,6 @@ image: /assets/img/uploads/photo_2026-10-02_15-06-55.jpg
 date: 2026-10-02T15:06:00
 destaque: false
 prioridade_destaque: null
+marcas:
+  - Cooler Master
 ---

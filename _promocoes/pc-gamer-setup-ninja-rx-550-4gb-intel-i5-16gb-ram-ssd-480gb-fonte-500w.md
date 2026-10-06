@@ -9,4 +9,7 @@ image: /assets/img/uploads/photo_2026-03-12_19-50-17.jpg
 date: 2026-10-03T15:28:00
 destaque: false
 prioridade_destaque: null
+marcas:
+  - AMD
+  - Intel
 ---

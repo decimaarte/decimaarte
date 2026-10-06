@@ -9,4 +9,6 @@ image: /assets/img/uploads/photo_2026-09-28_13-42-20.jpg
 date: 2026-09-28T13:42:00
 destaque: false
 prioridade_destaque: null
+marcas:
+  - TCL
 ---

@@ -9,4 +9,7 @@ image: /assets/img/uploads/photo_2026-09-23_00-51-00.jpg
 date: 2026-10-02T07:10:00
 destaque: false
 prioridade_destaque: null
+marcas:
+  - NVIDIA
+  - INNO3D
 ---

@@ -9,4 +9,6 @@ image: /assets/img/uploads/photo_2026-10-01_19-59-39.jpg
 date: 2026-10-01T20:00:00
 destaque: false
 prioridade_destaque: null
+marcas:
+  - Pichau
 ---

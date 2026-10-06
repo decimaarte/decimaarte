@@ -9,4 +9,6 @@ image: /assets/img/uploads/photo_2026-09-28_13-44-33.jpg
 date: 2026-09-28T13:44:00
 destaque: false
 prioridade_destaque: null
+marcas:
+  - Amazon
 ---

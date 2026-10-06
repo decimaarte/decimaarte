@@ -9,4 +9,6 @@ image: /assets/img/uploads/photo_2026-03-31_13-19-56.jpg
 date: 2026-09-28T14:12:00
 destaque: false
 prioridade_destaque: null
+marcas:
+  - Red Magic
 ---

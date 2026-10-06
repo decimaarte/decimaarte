@@ -9,4 +9,6 @@ image: /assets/img/uploads/photo_2026-03-15_11-52-14.jpg
 date: 2026-10-02T06:55:00
 destaque: false
 prioridade_destaque: null
+marcas:
+  - Gamemax
 ---

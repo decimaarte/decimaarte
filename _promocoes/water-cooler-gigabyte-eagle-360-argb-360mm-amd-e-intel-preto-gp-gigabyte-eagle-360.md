@@ -10,4 +10,6 @@ image: /assets/img/uploads/photo_2026-10-03_19-49-21.jpg
 date: 2026-10-03T19:49:00
 destaque: false
 prioridade_destaque: null
+marcas:
+  - Gigabyte
 ---

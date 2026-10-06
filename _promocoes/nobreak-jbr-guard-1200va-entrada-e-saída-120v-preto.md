@@ -9,4 +9,6 @@ image: /assets/img/uploads/photo_2026-06-03_01-33-56.jpg
 date: 2026-10-02T10:14:00
 destaque: false
 prioridade_destaque: null
+marcas:
+  - JBR
 ---

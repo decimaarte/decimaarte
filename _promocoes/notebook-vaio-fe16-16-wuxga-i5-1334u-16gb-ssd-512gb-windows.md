@@ -9,4 +9,6 @@ image: /assets/img/uploads/photo_2026-05-19_20-17-50.jpg
 date: 2026-10-02T15:12:00
 destaque: false
 prioridade_destaque: null
+marcas:
+  - VAIO
 ---

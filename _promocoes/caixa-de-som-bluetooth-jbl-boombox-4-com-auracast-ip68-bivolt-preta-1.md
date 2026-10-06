@@ -9,4 +9,6 @@ image: /assets/img/uploads/photo_2026-01-14_16-12-44.jpg
 date: 2026-10-02T09:47:00
 destaque: false
 prioridade_destaque: null
+marcas:
+  - JBL
 ---

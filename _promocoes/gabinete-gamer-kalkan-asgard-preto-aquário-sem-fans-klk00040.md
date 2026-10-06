@@ -10,4 +10,6 @@ image: /assets/img/uploads/61K4082NmoL._AC_SL1000_.jpg
 date: 2026-10-03T15:43:00
 destaque: false
 prioridade_destaque: null
+marcas:
+  - Kalkan
 ---

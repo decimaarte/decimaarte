@@ -10,4 +10,6 @@ image: /assets/img/uploads/photo_2026-10-03_15-51-56.jpg
 date: 2026-10-03T15:51:00
 destaque: false
 prioridade_destaque: null
+marcas:
+  - Sony
 ---

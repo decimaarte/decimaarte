@@ -9,4 +9,6 @@ image: /assets/img/uploads/photo_2026-04-19_14-41-12.jpg
 date: 2026-10-03T15:30:00
 destaque: false
 prioridade_destaque: null
+marcas:
+  - AMD
 ---
