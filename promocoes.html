@@ -3,17 +3,78 @@ layout: default
 title: Promoções
 ---
 <style>
-  .promo-filters { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
-  .promo-filter-count { margin-left: 4px; font-size: 11.5px; font-weight: 700; opacity: .65; }
+  /* ---- Cupom copiável ---- */
   .promo-coupon-btn { display: inline-flex; align-items: center; gap: 6px; width: fit-content; max-width: 100%; margin-top: 6px; padding: 4px 10px; border: 1px dashed var(--pink-accent); border-radius: 8px; background: transparent; color: var(--pink-accent); font-family: inherit; font-size: 13px; font-weight: 600; cursor: pointer; text-align: left; transition: background .15s ease, color .15s ease; }
   .promo-coupon-btn:hover { background: rgba(255, 45, 85, .08); }
   .promo-coupon-btn strong { font-weight: 800; letter-spacing: .3px; word-break: break-all; }
   .promo-coupon-hint { font-size: 11px; font-weight: 700; opacity: .7; text-transform: uppercase; }
   .promo-coupon-btn.copied { border-style: solid; background: var(--pink-accent); color: #fff; }
   .promo-coupon-btn.copied .promo-coupon-hint { opacity: 1; }
+
+  /* ---- Barra de busca + botão Filtros (celular) ---- */
+  .promo-toolbar { display: flex; gap: 10px; align-items: center; margin-bottom: 20px; }
+  .promo-toolbar .promo-search-input { flex: 1; min-width: 0; }
+  .promo-filter-open { display: none; align-items: center; gap: 8px; flex-shrink: 0; background: var(--purple-accent); color: #fff; border: 0; border-radius: 999px; padding: 11px 18px; font-family: var(--font-body); font-size: 14px; font-weight: 700; cursor: pointer; }
+  .promo-filter-badge { background: var(--pink-accent); color: #fff; border-radius: 999px; min-width: 20px; height: 20px; padding: 0 6px; font-size: 11.5px; font-weight: 800; display: inline-flex; align-items: center; justify-content: center; }
+
+  /* ---- Layout: coluna lateral + produtos ---- */
+  .promo-layout { display: grid; grid-template-columns: 270px minmax(0, 1fr); gap: 28px; align-items: start; }
+  .promo-main .promo-grid { grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); }
+
+  .promo-sidebar { position: sticky; top: 86px; max-height: calc(100vh - 106px); overflow-y: auto; background: var(--bg-surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; }
+  .promo-sidebar-head, .promo-sidebar-foot { display: none; }
+  .pf-section { margin-bottom: 20px; }
+  .pf-section:last-child { margin-bottom: 0; }
+  .pf-section h3 { margin: 0 0 8px; font-family: var(--font-body); font-size: 11.5px; font-weight: 800; letter-spacing: .8px; text-transform: uppercase; color: var(--text-muted); }
+
+  .pf-cat { display: flex; align-items: center; justify-content: space-between; gap: 8px; width: 100%; background: transparent; border: 0; border-radius: 8px; padding: 7px 10px; font-family: var(--font-body); font-size: 13.5px; font-weight: 600; color: var(--text-muted); text-align: left; cursor: pointer; transition: background .15s ease, color .15s ease; }
+  .pf-cat:hover { background: var(--purple-dark); color: var(--text-main); }
+  .pf-cat.active { background: var(--purple-accent); color: #fff; }
+  .pf-count { font-size: 11.5px; font-weight: 700; opacity: .65; flex-shrink: 0; }
+
+  .pf-group { margin-top: 2px; }
+  .pf-group > summary { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 8px 10px; border-radius: 8px; font-size: 13.5px; font-weight: 800; color: var(--text-main); cursor: pointer; list-style: none; }
+  .pf-group > summary::-webkit-details-marker { display: none; }
+  .pf-group > summary::before { content: "▸"; font-size: 11px; color: var(--text-muted); transition: transform .15s ease; margin-right: 2px; }
+  .pf-group[open] > summary::before { transform: rotate(90deg); }
+  .pf-group > summary .pf-label { flex: 1; }
+  .pf-group > summary:hover { background: var(--purple-dark); }
+  .pf-group-body { padding: 2px 0 6px 14px; }
+
+  .pf-opt { display: flex; align-items: center; gap: 8px; padding: 5px 6px; border-radius: 6px; font-size: 13.5px; color: var(--text-main); cursor: pointer; }
+  .pf-opt:hover { background: var(--purple-dark); }
+  .pf-opt input { accent-color: var(--purple-accent); width: 16px; height: 16px; margin: 0; flex-shrink: 0; cursor: pointer; }
+  .pf-opt .pf-name { flex: 1; min-width: 0; overflow-wrap: anywhere; }
+  .pf-scroll { max-height: 280px; overflow-y: auto; padding-right: 4px; }
+
+  /* ---- Resultado + filtros ativos ---- */
+  .promo-result-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 16px; min-height: 28px; }
+  .promo-total { font-size: 13.5px; font-weight: 700; color: var(--text-muted); margin-right: 4px; }
+  .pf-chip { display: inline-flex; align-items: center; gap: 6px; background: var(--purple-dark); color: var(--text-main); border: 1px solid var(--line); border-radius: 999px; padding: 4px 10px; font-family: var(--font-body); font-size: 12.5px; font-weight: 700; cursor: pointer; }
+  .pf-chip:hover { border-color: var(--pink-accent); }
+  .pf-clear { background: transparent; border: 0; padding: 4px 6px; font-family: var(--font-body); font-size: 12.5px; font-weight: 700; color: var(--pink-accent); cursor: pointer; text-decoration: underline; }
+  .promo-empty { display: none; text-align: center; padding: 48px 16px; color: var(--text-muted); font-size: 15px; }
+  .promo-empty .pf-clear { display: block; margin: 10px auto 0; font-size: 14px; }
+
+  .promo-overlay { display: none; position: fixed; inset: 0; background: rgba(0, 0, 0, .55); z-index: 299; }
+  .promo-overlay.show { display: block; }
+  body.promo-lock { overflow: hidden; }
+
+  /* ---- Celular / tablet: coluna vira painel "Filtros" ---- */
+  @media (max-width: 900px) {
+    .promo-layout { grid-template-columns: minmax(0, 1fr); }
+    .promo-filter-open { display: inline-flex; }
+    .promo-sidebar { position: fixed; top: 0; bottom: 0; left: 0; width: min(88vw, 340px); max-height: none; z-index: 300; border-radius: 0; border-width: 0 1px 0 0; padding: 0; display: flex; flex-direction: column; overflow: hidden; transform: translateX(-102%); transition: transform .22s ease; }
+    .promo-sidebar.open { transform: translateX(0); }
+    .promo-sidebar-head { display: flex; align-items: center; justify-content: space-between; padding: 14px 16px; border-bottom: 1px solid var(--line); font-size: 16px; font-weight: 800; }
+    .promo-sidebar-close { background: transparent; border: 0; font-size: 22px; line-height: 1; color: var(--text-main); cursor: pointer; padding: 4px 8px; }
+    .promo-sidebar-body { flex: 1; overflow-y: auto; padding: 14px 16px; -webkit-overflow-scrolling: touch; }
+    .promo-sidebar-foot { display: flex; gap: 10px; align-items: center; padding: 12px 16px; border-top: 1px solid var(--line); background: var(--bg-surface); }
+    .promo-sidebar-foot .promo-cta { flex: 1; margin-top: 0; border: 0; cursor: pointer; font-family: var(--font-body); }
+    .pf-cat, .pf-group > summary, .pf-opt { padding-top: 9px; padding-bottom: 9px; }
+  }
   @media (max-width: 640px) {
-    .promo-filters { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 6px; -webkit-overflow-scrolling: touch; }
-    .promo-filter-btn { flex-shrink: 0; white-space: nowrap; }
+    .promo-main .promo-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 14px; }
   }
 </style>
 
@@ -27,50 +88,101 @@ title: Promoções
 
 <p style="font-size:16px;line-height:1.7;color:var(--text-main);margin:24px 0 28px;">{{ site.data.textos.promocoes_intro }}</p>
 
-<div class="promo-controls" style="margin-bottom:24px;">
-  <input type="text" id="promo-search" placeholder="Buscar por nome do produto..." class="promo-search-input">
-
-  {% comment %}
-    Lista de categorias: "código|Nome que aparece" separadas por ~
-    O código tem que ser igual ao "value" do seletor de Categoria no admin/config.yml.
-    Categoria sem nenhum produto não aparece como botão.
-    Obs: o código "cadeiras-mesas" ficou só pra Cadeiras e o código "headsets" agora é "Headsets e Fones"
-    (pra não precisar editar os produtos que já estavam neles).
-  {% endcomment %}
-  {% assign cat_defs = "placas-de-video|Placas de Vídeo~processadores|Processadores~placas-mae|Placas-Mãe~memoria-ram|Memória RAM~armazenamento|Armazenamento~fontes|Fontes~gabinetes|Gabinetes~coolers|Coolers~monitores|Monitores~tvs|TVs~teclados|Teclados~mouses|Mouses~headsets|Headsets e Fones~microfones|Microfones~caixas-de-som|Caixas de Som~webcams|Webcams~mousepads|Mousepads~suportes-monitor|Suportes de Monitor~cabos-acessorios|Cabos e Acessórios~controles|Controles~cadeiras-mesas|Cadeiras~mesas-escrivaninhas|Mesas e Escrivaninhas~mesas-digitalizadoras|Mesas Digitalizadoras~notebooks|Notebooks~celulares|Celulares~consoles|Consoles~acessorios-console|Acessórios de Console~kits|Kits Completos~jogos-keys|Jogos &amp; Keys~gift-cards|Gift Cards~pra-quem-ta-comecando|Pra quem tá começando" | split: "~" %}
-
-  <div id="promo-filters" class="promo-filters">
-    <button class="promo-filter-btn active" data-cat="todos">Todos <span class="promo-filter-count">{{ site.promocoes.size }}</span></button>
-    {% for def in cat_defs %}
-      {% assign parts = def | split: "|" %}
-      {% assign cat_slug = parts[0] %}
-      {% assign cat_label = parts[1] %}
-      {% assign cat_n = site.promocoes | where: 'categoria', cat_slug | size %}
-      {% if cat_n > 0 %}
-        <button class="promo-filter-btn" data-cat="{{ cat_slug }}">{{ cat_label }} <span class="promo-filter-count">{{ cat_n }}</span></button>
-      {% endif %}
-    {% endfor %}
-  </div>
+<div class="promo-toolbar">
+  <input type="text" id="promo-search" placeholder="Buscar por nome do produto..." class="promo-search-input" autocomplete="off">
+  <button type="button" id="promo-filter-open" class="promo-filter-open" aria-controls="promo-sidebar" aria-expanded="false">Filtros <span id="promo-filter-badge" class="promo-filter-badge" style="display:none;">0</span></button>
 </div>
 
-<div class="promo-grid" id="promo-grid">
-  {% assign todos_promocoes = site.promocoes | sort: 'date' | reverse %}
-  {% assign em_alta_todos = todos_promocoes | where: 'destaque', true %}
-  {% assign resto = todos_promocoes | where_exp: 'p', 'p.destaque != true' %}
+{% comment %}
+  Grupos e categorias da coluna lateral.
+  Formato: grupos separados por ^ ; dentro do grupo "Nome#cat1|Rótulo~cat2|Rótulo".
+  O código da categoria tem que ser igual ao "value" do seletor de Categoria no admin/config.yml.
+  Categoria sem nenhum produto não aparece; grupo sem produto também não.
+{% endcomment %}
+{% assign grupos_defs = "Componentes#placas-de-video|Placas de Vídeo~processadores|Processadores~placas-mae|Placas-Mãe~memoria-ram|Memória RAM~armazenamento|Armazenamento~fontes|Fontes~gabinetes|Gabinetes~coolers|Coolers^Monitores &amp; TVs#monitores|Monitores~tvs|TVs^Periféricos &amp; Áudio#teclados|Teclados~mouses|Mouses~headsets|Headsets e Fones~microfones|Microfones~caixas-de-som|Caixas de Som~webcams|Webcams~mousepads|Mousepads~suportes-monitor|Suportes de Monitor~cabos-acessorios|Cabos e Acessórios^Consoles &amp; Controles#consoles|Consoles~acessorios-console|Acessórios de Console~controles|Controles^Cadeiras &amp; Mesas#cadeiras-mesas|Cadeiras~mesas-escrivaninhas|Mesas e Escrivaninhas~mesas-digitalizadoras|Mesas Digitalizadoras^Notebooks &amp; Celulares#notebooks|Notebooks~celulares|Celulares^Kits &amp; Jogos#kits|Kits Completos~jogos-keys|Jogos &amp; Keys~gift-cards|Gift Cards~pra-quem-ta-comecando|Pra quem tá começando" | split: "^" %}
 
-  {% assign em_alta_com_prioridade = em_alta_todos | where_exp: 'p', 'p.prioridade_destaque' %}
-  {% assign em_alta_sem_prioridade = em_alta_todos | where_exp: 'p', 'p.prioridade_destaque == nil' %}
-  {% assign em_alta_ordenado = em_alta_com_prioridade | sort: 'prioridade_destaque' %}
-  {% assign em_alta = em_alta_ordenado | concat: em_alta_sem_prioridade %}
+<div class="promo-overlay" id="promo-overlay"></div>
 
-  {% assign produtos = em_alta | concat: resto %}
-  {% for p in produtos %}
-  <div class="promo-card" data-cat="{{ p.categoria }}" data-name="{{ p.title | downcase }}">
-    {% if p.image %}
-    <div class="promo-img-wrap">
-      <img src="{{ p.image | relative_url }}" alt="{{ p.title }}" class="promo-card-img"{% if forloop.index > 8 %} loading="lazy"{% endif %} decoding="async">
+<div class="promo-layout">
+
+  <aside class="promo-sidebar" id="promo-sidebar" aria-label="Filtros de promoções">
+    <div class="promo-sidebar-head">
+      <span>Filtros</span>
+      <button type="button" class="promo-sidebar-close" id="promo-sidebar-close" aria-label="Fechar filtros">&times;</button>
+    </div>
+
+    <div class="promo-sidebar-body">
+      <section class="pf-section">
+        <h3>Categoria</h3>
+        <button type="button" class="pf-cat active" data-cat="todos"><span class="pf-label">Todos</span> <span class="pf-count">{{ site.promocoes.size }}</span></button>
+        {% for g in grupos_defs %}
+          {% assign g_parts = g | split: "#" %}
+          {% assign g_nome = g_parts[0] %}
+          {% assign g_cats = g_parts[1] | split: "~" %}
+          {% assign g_total = 0 %}
+          {% for def in g_cats %}
+            {% assign parts = def | split: "|" %}
+            {% assign cat_slug = parts[0] %}
+            {% assign cat_n = site.promocoes | where: 'categoria', cat_slug | size %}
+            {% assign g_total = g_total | plus: cat_n %}
+          {% endfor %}
+          {% if g_total > 0 %}
+          <details class="pf-group">
+            <summary><span class="pf-label">{{ g_nome }}</span> <span class="pf-count">{{ g_total }}</span></summary>
+            <div class="pf-group-body">
+              {% for def in g_cats %}
+                {% assign parts = def | split: "|" %}
+                {% assign cat_slug = parts[0] %}
+                {% assign cat_label = parts[1] %}
+                {% assign cat_n = site.promocoes | where: 'categoria', cat_slug | size %}
+                {% if cat_n > 0 %}
+                <button type="button" class="pf-cat" data-cat="{{ cat_slug }}"><span class="pf-label">{{ cat_label }}</span> <span class="pf-count">{{ cat_n }}</span></button>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </details>
+          {% endif %}
+        {% endfor %}
+      </section>
+
+      <section class="pf-section" id="pf-sec-loja">
+        <h3>Loja</h3>
+        <div id="pf-lojas"></div>
+      </section>
+
+      <section class="pf-section" id="pf-sec-marca">
+        <h3>Marca</h3>
+        <div id="pf-marcas" class="pf-scroll"></div>
+      </section>
+    </div>
+
+    <div class="promo-sidebar-foot">
+      <button type="button" class="pf-clear" id="promo-clear-side">Limpar</button>
+      <button type="button" class="promo-cta" id="promo-apply">Ver <span id="promo-apply-n">0</span> produtos</button>
+    </div>
+  </aside>
+
+  <div class="promo-main">
+
+    <div class="promo-result-bar">
+      <span class="promo-total" id="promo-total"></span>
+      <span id="promo-chips" style="display:contents;"></span>
+    </div>
+
+    <div class="promo-grid" id="promo-grid">
+      {% assign todos_promocoes = site.promocoes | sort: 'date' | reverse %}
+      {% assign em_alta_todos = todos_promocoes | where: 'destaque', true %}
+      {% assign resto = todos_promocoes | where_exp: 'p', 'p.destaque != true' %}
+
+      {% assign em_alta_com_prioridade = em_alta_todos | where_exp: 'p', 'p.prioridade_destaque' %}
+      {% assign em_alta_sem_prioridade = em_alta_todos | where_exp: 'p', 'p.prioridade_destaque == nil' %}
+      {% assign em_alta_ordenado = em_alta_com_prioridade | sort: 'prioridade_destaque' %}
+      {% assign em_alta = em_alta_ordenado | concat: em_alta_sem_prioridade %}
+
+      {% assign produtos = em_alta | concat: resto %}
+      {% for p in produtos %}
       {% comment %}
-        Etiqueta da loja. O campo manual "Loja" do painel tem prioridade; senão tenta reconhecer pelo link.
+        Loja do produto. O campo manual "Loja" do painel tem prioridade; senão tenta reconhecer pelo link.
         tidd.ly = link encurtado da Awin, usado só pela Kabum por enquanto.
         Se entrar outra loja via Awin, preencha o campo manual "Loja" nos produtos dela.
       {% endcomment %}
@@ -86,56 +198,297 @@ title: Promoções
       {% elsif p.link contains 'aliexpress.com' or p.link contains 's.click.aliexpress' %}{% assign loja = 'AliExpress' %}
       {% elsif p.link contains 'nuuvem.com' %}{% assign loja = 'Nuuvem' %}
       {% endif %}
-      {% if loja != '' %}<span class="promo-store-tag">{{ loja }}</span>{% endif %}
+      <div class="promo-card" data-cat="{{ p.categoria }}" data-loja="{{ loja | escape }}" data-marcas="{% if p.marcas %}{{ p.marcas | join: '|' | escape }}{% endif %}" data-name="{{ p.title | downcase | escape }}">
+        {% if p.image %}
+        <div class="promo-img-wrap">
+          <img src="{{ p.image | relative_url }}" alt="{{ p.title | escape }}" class="promo-card-img"{% if forloop.index > 8 %} loading="lazy"{% endif %} decoding="async">
+          {% if loja != '' %}<span class="promo-store-tag">{{ loja }}</span>{% endif %}
+        </div>
+        {% endif %}
+        {% if p.destaque %}<span class="promo-badge">🔥 Em alta</span>{% endif %}
+        <h4 class="promo-card-title">{{ p.title }}</h4>
+        <div>
+          {% if p.preco_promo and p.preco_promo != '' %}<span class="promo-price-now">{{ p.preco_promo }}</span>{% endif %}
+          {% if p.preco_original and p.preco_original != '' %}<s class="promo-price-old">{{ p.preco_original }}</s>{% endif %}
+        </div>
+        {% if p.cupom and p.cupom != '' %}<button type="button" class="promo-coupon-btn" data-coupon="{{ p.cupom | escape }}" data-goatcounter-click="cupom-{{ p.title | slugify }}" aria-label="Copiar cupom {{ p.cupom | escape }}"><span>Cupom:</span> <strong>{{ p.cupom }}</strong> <span class="promo-coupon-hint">copiar</span></button>{% endif %}
+        <a href="{{ p.link }}" target="_blank" rel="noopener sponsored" data-goatcounter-click="produto-{{ p.title | slugify }}" class="promo-cta">Ver oferta</a>
+      </div>
+      {% endfor %}
     </div>
-    {% endif %}
-    {% if p.destaque %}<span class="promo-badge">🔥 Em alta</span>{% endif %}
-    <h4 class="promo-card-title">{{ p.title }}</h4>
-    <div>
-      {% if p.preco_promo and p.preco_promo != '' %}<span class="promo-price-now">{{ p.preco_promo }}</span>{% endif %}
-      {% if p.preco_original and p.preco_original != '' %}<s class="promo-price-old">{{ p.preco_original }}</s>{% endif %}
+
+    <div class="promo-empty" id="promo-empty">
+      Nenhum produto com esses filtros.
+      <button type="button" class="pf-clear" id="promo-clear-all">Limpar filtros e busca</button>
     </div>
-    {% if p.cupom and p.cupom != '' %}<button type="button" class="promo-coupon-btn" data-coupon="{{ p.cupom | escape }}" data-goatcounter-click="cupom-{{ p.title | slugify }}" aria-label="Copiar cupom {{ p.cupom | escape }}"><span>Cupom:</span> <strong>{{ p.cupom }}</strong> <span class="promo-coupon-hint">copiar</span></button>{% endif %}
-    <a href="{{ p.link }}" target="_blank" rel="noopener sponsored" data-goatcounter-click="produto-{{ p.title | slugify }}" class="promo-cta">Ver oferta</a>
+
   </div>
-  {% endfor %}
 </div>
 
 </div>
 
 <script>
-(function() {
-  const buttons = document.querySelectorAll('.promo-filter-btn');
-  const search = document.getElementById('promo-search');
-  function applyFilters() {
-    const activeCat = document.querySelector('.promo-filter-btn.active').dataset.cat;
-    const term = search.value.trim().toLowerCase();
-    document.querySelectorAll('.promo-card').forEach(card => {
-      const matchCat = activeCat === 'todos' || card.dataset.cat === activeCat;
-      const matchSearch = !term || card.dataset.name.includes(term);
-      card.style.display = (matchCat && matchSearch) ? '' : 'none';
+(function () {
+  var grid = document.getElementById('promo-grid');
+  var search = document.getElementById('promo-search');
+  var sidebar = document.getElementById('promo-sidebar');
+  var overlay = document.getElementById('promo-overlay');
+  var openBtn = document.getElementById('promo-filter-open');
+  var badge = document.getElementById('promo-filter-badge');
+  var lojasBox = document.getElementById('pf-lojas');
+  var marcasBox = document.getElementById('pf-marcas');
+  var chipsBox = document.getElementById('promo-chips');
+  var totalEl = document.getElementById('promo-total');
+  var emptyEl = document.getElementById('promo-empty');
+  var applyN = document.getElementById('promo-apply-n');
+  var catBtns = Array.prototype.slice.call(sidebar.querySelectorAll('.pf-cat'));
+  var groups = Array.prototype.slice.call(sidebar.querySelectorAll('.pf-group'));
+
+  function norm(s) {
+    return (s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  }
+
+  var cards = Array.prototype.map.call(grid.querySelectorAll('.promo-card'), function (el) {
+    return {
+      el: el,
+      cat: el.dataset.cat || '',
+      loja: el.dataset.loja || 'Outras',
+      marcas: el.dataset.marcas ? el.dataset.marcas.split('|') : [],
+      name: norm(el.dataset.name)
+    };
+  });
+
+  var state = { cat: 'todos', lojas: new Set(), marcas: new Set(), term: '' };
+
+  // ---------- opções de Loja e Marca (montadas a partir dos próprios produtos) ----------
+  var cmp = function (a, b) { return a.localeCompare(b, 'pt-BR', { sensitivity: 'base' }); };
+  var lojaSet = {}, marcaSet = {};
+  cards.forEach(function (c) {
+    lojaSet[c.loja] = true;
+    c.marcas.forEach(function (m) { marcaSet[m] = true; });
+  });
+
+  function buildOpts(box, values, set) {
+    values.forEach(function (v) {
+      var label = document.createElement('label');
+      label.className = 'pf-opt';
+      var input = document.createElement('input');
+      input.type = 'checkbox';
+      input.value = v;
+      var name = document.createElement('span');
+      name.className = 'pf-name';
+      name.textContent = v;
+      var count = document.createElement('span');
+      count.className = 'pf-count';
+      label.appendChild(input);
+      label.appendChild(name);
+      label.appendChild(count);
+      input.addEventListener('change', function () {
+        if (input.checked) set.add(v); else set.delete(v);
+        render();
+      });
+      box.appendChild(label);
     });
   }
-  buttons.forEach(btn => btn.addEventListener('click', () => {
-    buttons.forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    applyFilters();
-  }));
-  search.addEventListener('input', applyFilters);
+  buildOpts(lojasBox, Object.keys(lojaSet).sort(cmp), state.lojas);
+  buildOpts(marcasBox, Object.keys(marcaSet).sort(cmp), state.marcas);
 
-  // Clique no cupom = copia o código
-  document.getElementById('promo-grid').addEventListener('click', function(e) {
-    const btn = e.target.closest('.promo-coupon-btn');
+  var lojaOpts = Array.prototype.slice.call(lojasBox.querySelectorAll('.pf-opt'));
+  var marcaOpts = Array.prototype.slice.call(marcasBox.querySelectorAll('.pf-opt'));
+
+  // ---------- filtros ----------
+  function pruneInvalid() {
+    // ao trocar de categoria, tira loja/marca marcada que não existe nela
+    var inCat = function (c) { return state.cat === 'todos' || c.cat === state.cat; };
+    Array.from(state.marcas).forEach(function (m) {
+      if (!cards.some(function (c) { return inCat(c) && c.marcas.indexOf(m) > -1; })) state.marcas.delete(m);
+    });
+    Array.from(state.lojas).forEach(function (l) {
+      if (!cards.some(function (c) { return inCat(c) && c.loja === l; })) state.lojas.delete(l);
+    });
+  }
+
+  function clearFilters() {
+    state.cat = 'todos';
+    state.lojas.clear();
+    state.marcas.clear();
+    render();
+  }
+  function clearAll() {
+    search.value = '';
+    state.term = '';
+    clearFilters();
+  }
+
+  function render() {
+    var catCounts = {}, lojaCounts = {}, marcaCounts = {};
+    var shown = 0, totalForCats = 0;
+
+    cards.forEach(function (c) {
+      var okCat = state.cat === 'todos' || c.cat === state.cat;
+      var okLoja = !state.lojas.size || state.lojas.has(c.loja);
+      var okMarca = !state.marcas.size || c.marcas.some(function (m) { return state.marcas.has(m); });
+      var okTerm = !state.term || c.name.indexOf(state.term) > -1;
+
+      var visible = okCat && okLoja && okMarca && okTerm;
+      c.el.style.display = visible ? '' : 'none';
+      if (visible) shown++;
+
+      // contagem de cada faceta ignora o próprio filtro dela
+      if (okLoja && okMarca && okTerm) { totalForCats++; catCounts[c.cat] = (catCounts[c.cat] || 0) + 1; }
+      if (okCat && okMarca && okTerm) lojaCounts[c.loja] = (lojaCounts[c.loja] || 0) + 1;
+      if (okCat && okLoja && okTerm) c.marcas.forEach(function (m) { marcaCounts[m] = (marcaCounts[m] || 0) + 1; });
+    });
+
+    // categorias
+    catBtns.forEach(function (b) {
+      var cat = b.dataset.cat;
+      var n = cat === 'todos' ? totalForCats : (catCounts[cat] || 0);
+      var active = state.cat === cat;
+      b.classList.toggle('active', active);
+      b.querySelector('.pf-count').textContent = n;
+      b.style.display = (cat === 'todos' || n > 0 || active) ? '' : 'none';
+    });
+    groups.forEach(function (g) {
+      var sum = 0, hasActive = false;
+      g.querySelectorAll('.pf-cat').forEach(function (b) {
+        sum += catCounts[b.dataset.cat] || 0;
+        if (b.classList.contains('active')) hasActive = true;
+      });
+      g.querySelector('summary .pf-count').textContent = sum;
+      g.style.display = (sum > 0 || hasActive) ? '' : 'none';
+      if (hasActive) g.open = true;
+    });
+
+    // loja e marca
+    function paintOpts(opts, counts, set, section) {
+      var any = false;
+      opts.forEach(function (label) {
+        var input = label.querySelector('input');
+        var n = counts[input.value] || 0;
+        var on = set.has(input.value);
+        input.checked = on;
+        label.querySelector('.pf-count').textContent = n;
+        var show = n > 0 || on;
+        label.style.display = show ? '' : 'none';
+        if (show) any = true;
+      });
+      section.style.display = any ? '' : 'none';
+    }
+    paintOpts(lojaOpts, lojaCounts, state.lojas, document.getElementById('pf-sec-loja'));
+    paintOpts(marcaOpts, marcaCounts, state.marcas, document.getElementById('pf-sec-marca'));
+
+    // resumo, chips e estado vazio
+    var nAtivos = (state.cat !== 'todos' ? 1 : 0) + state.lojas.size + state.marcas.size;
+    totalEl.textContent = shown + (shown === 1 ? ' produto' : ' produtos');
+    applyN.textContent = shown;
+    emptyEl.style.display = shown === 0 ? 'block' : 'none';
+    badge.textContent = nAtivos;
+    badge.style.display = nAtivos ? '' : 'none';
+
+    chipsBox.textContent = '';
+    function chip(text, onRemove) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'pf-chip';
+      b.textContent = text + ' ✕';
+      b.setAttribute('aria-label', 'Remover filtro ' + text);
+      b.addEventListener('click', onRemove);
+      chipsBox.appendChild(b);
+    }
+    if (state.cat !== 'todos') {
+      var cb = catBtns.filter(function (b) { return b.dataset.cat === state.cat; })[0];
+      chip(cb ? cb.querySelector('.pf-label').textContent : state.cat, function () { state.cat = 'todos'; render(); });
+    }
+    state.lojas.forEach(function (l) { chip(l, function () { state.lojas.delete(l); render(); }); });
+    state.marcas.forEach(function (m) { chip(m, function () { state.marcas.delete(m); render(); }); });
+    if (nAtivos) {
+      var limpar = document.createElement('button');
+      limpar.type = 'button';
+      limpar.className = 'pf-clear';
+      limpar.textContent = 'Limpar filtros';
+      limpar.addEventListener('click', clearFilters);
+      chipsBox.appendChild(limpar);
+    }
+
+    writeUrl();
+  }
+
+  // ---------- link compartilhável: ?cat=placas-de-video&loja=Kabum&marca=NVIDIA,Palit ----------
+  function writeUrl() {
+    try {
+      var q = new URLSearchParams();
+      if (state.cat !== 'todos') q.set('cat', state.cat);
+      if (state.lojas.size) q.set('loja', Array.from(state.lojas).join(','));
+      if (state.marcas.size) q.set('marca', Array.from(state.marcas).join(','));
+      if (search.value.trim()) q.set('q', search.value.trim());
+      var qs = q.toString();
+      history.replaceState(null, '', location.pathname + (qs ? '?' + qs : ''));
+    } catch (e) {}
+  }
+  function readUrl() {
+    try {
+      var q = new URLSearchParams(location.search);
+      var cat = q.get('cat');
+      if (cat && catBtns.some(function (b) { return b.dataset.cat === cat; })) state.cat = cat;
+      (q.get('loja') || '').split(',').forEach(function (v) { if (v && lojaSet[v]) state.lojas.add(v); });
+      (q.get('marca') || '').split(',').forEach(function (v) { if (v && marcaSet[v]) state.marcas.add(v); });
+      if (q.get('q')) { search.value = q.get('q'); state.term = norm(q.get('q').trim()); }
+    } catch (e) {}
+  }
+
+  // ---------- eventos ----------
+  catBtns.forEach(function (b) {
+    b.addEventListener('click', function () {
+      var cat = b.dataset.cat;
+      state.cat = (state.cat === cat) ? 'todos' : cat;
+      pruneInvalid();
+      render();
+    });
+  });
+  search.addEventListener('input', function () {
+    state.term = norm(search.value.trim());
+    render();
+  });
+  document.getElementById('promo-clear-side').addEventListener('click', clearFilters);
+  document.getElementById('promo-clear-all').addEventListener('click', clearAll);
+
+  // ---------- painel no celular ----------
+  function openPanel() {
+    sidebar.classList.add('open');
+    overlay.classList.add('show');
+    document.body.classList.add('promo-lock');
+    openBtn.setAttribute('aria-expanded', 'true');
+  }
+  function closePanel() {
+    sidebar.classList.remove('open');
+    overlay.classList.remove('show');
+    document.body.classList.remove('promo-lock');
+    openBtn.setAttribute('aria-expanded', 'false');
+  }
+  openBtn.addEventListener('click', openPanel);
+  overlay.addEventListener('click', closePanel);
+  document.getElementById('promo-sidebar-close').addEventListener('click', closePanel);
+  document.getElementById('promo-apply').addEventListener('click', closePanel);
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closePanel(); });
+  window.addEventListener('resize', function () { if (window.innerWidth > 900) closePanel(); });
+
+  readUrl();
+  render();
+
+  // ---------- clique no cupom = copia o código ----------
+  grid.addEventListener('click', function (e) {
+    var btn = e.target.closest('.promo-coupon-btn');
     if (!btn) return;
-    const code = btn.dataset.coupon;
-    const hint = btn.querySelector('.promo-coupon-hint');
+    var code = btn.dataset.coupon;
+    var hint = btn.querySelector('.promo-coupon-hint');
     function feito() {
       btn.classList.add('copied');
       hint.textContent = 'copiado!';
-      setTimeout(function() { btn.classList.remove('copied'); hint.textContent = 'copiar'; }, 1800);
+      setTimeout(function () { btn.classList.remove('copied'); hint.textContent = 'copiar'; }, 1800);
     }
     function planoB() {
-      const t = document.createElement('textarea');
+      var t = document.createElement('textarea');
       t.value = code;
       t.style.position = 'fixed';
       t.style.opacity = '0';
