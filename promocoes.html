@@ -63,6 +63,7 @@ title: Promoções
   .promo-empty { display: none; text-align: center; padding: 48px 16px; color: var(--text-muted); font-size: 15px; }
   .promo-empty .pf-clear { display: block; margin: 10px auto 0; font-size: 14px; }
 
+  .promo-jump { position: fixed; top: 92px; right: 24px; z-index: 40; display: none; align-items: center; gap: 6px; background: var(--pink-accent); color: #fff; border: 0; border-radius: 999px; padding: 10px 18px; font-family: var(--font-body); font-size: 13.5px; font-weight: 800; cursor: pointer; box-shadow: 0 6px 20px rgba(0, 0, 0, .35); }
   .promo-overlay { display: none; position: fixed; inset: 0; background: rgba(0, 0, 0, .55); z-index: 299; }
   .promo-overlay.show { display: block; }
   body.promo-lock { overflow: hidden; }
@@ -70,6 +71,7 @@ title: Promoções
   /* ---- Celular / tablet: coluna vira painel "Filtros" ---- */
   @media (max-width: 900px) {
     .promo-layout { grid-template-columns: minmax(0, 1fr); min-height: 0; }
+    .promo-jump { display: none !important; }
     .promo-filter-open { display: inline-flex; }
     .promo-sidebar { position: fixed; top: 0; bottom: 0; left: 0; width: min(88vw, 340px); max-height: none; z-index: 300; border-radius: 0; border-width: 0 1px 0 0; padding: 0; display: flex; flex-direction: column; overflow: hidden; transform: translateX(-102%); transition: transform .22s ease; }
     .promo-sidebar.open { transform: translateX(0); }
@@ -109,6 +111,7 @@ title: Promoções
 {% assign grupos_defs = "Componentes#placas-de-video|Placas de Vídeo~processadores|Processadores~placas-mae|Placas-Mãe~memoria-ram|Memória RAM~armazenamento|Armazenamento~fontes|Fontes~gabinetes|Gabinetes~coolers|Coolers^Monitores &amp; TVs#monitores|Monitores~tvs|TVs^Periféricos &amp; Áudio#teclados|Teclados~mouses|Mouses~headsets|Headsets e Fones~microfones|Microfones~caixas-de-som|Caixas de Som~webcams|Webcams~mousepads|Mousepads~suportes-monitor|Suportes de Monitor~cabos-acessorios|Cabos e Acessórios^Consoles &amp; Controles#consoles|Consoles~acessorios-console|Acessórios de Console~controles|Controles^Cadeiras &amp; Mesas#cadeiras-mesas|Cadeiras~mesas-escrivaninhas|Mesas e Escrivaninhas~mesas-digitalizadoras|Mesas Digitalizadoras^Notebooks &amp; Celulares#notebooks|Notebooks~celulares|Celulares^Kits &amp; Jogos#kits|Kits Completos~jogos-keys|Jogos &amp; Keys~gift-cards|Gift Cards~pra-quem-ta-comecando|Pra quem tá começando" | split: "^" %}
 
 <div class="promo-overlay" id="promo-overlay"></div>
+<button type="button" class="promo-jump" id="promo-jump">&uarr; Ver <span id="promo-jump-n">0</span> produtos</button>
 
 <div class="promo-layout">
 
@@ -330,6 +333,38 @@ title: Promoções
   // O site usa rolagem suave (scroll-behavior: smooth); aqui precisa ser instantâneo, senão a tela 'escorrega'.
   function scrollNow(y) { window.scrollTo({ top: y, left: 0, behavior: 'instant' }); }
 
+  // ---------- trava de altura ----------
+  // Se a quantidade de produtos cai, a página encolheria e o navegador te empurraria pra cima
+  // (e a coluna fixa se reencaixaria). Então, enquanto você mexe nos filtros, a altura da área
+  // fica TRAVADA no que era. Ela solta sozinha assim que você chega na parte dos resultados.
+  var layoutEl = document.querySelector('.promo-layout');
+  var mainEl = document.querySelector('.promo-main');
+  var jumpBtn = document.getElementById('promo-jump');
+  var jumpN = document.getElementById('promo-jump-n');
+  var locked = false, lastShown = 0;
+
+  function mainTopAbs() { return mainEl.getBoundingClientRect().top + (window.scrollY || 0); }
+  function layoutTopAbs() { return layoutEl.getBoundingClientRect().top + (window.scrollY || 0); }
+  function naturalHeight() { return Math.max(mainEl.offsetHeight, sidebar.offsetHeight, window.innerHeight - 106); }
+  function lock(h) { layoutEl.style.minHeight = h + 'px'; locked = true; }
+  function unlock() { layoutEl.style.minHeight = ''; locked = false; }
+  function maybeUnlock() {
+    if (!locked) return;
+    // dá pra soltar sem a página se mexer quando a tela inteira já está dentro da área natural
+    if ((window.scrollY || 0) + window.innerHeight <= layoutTopAbs() + naturalHeight()) unlock();
+  }
+  function updateJump() {
+    var show = locked && window.innerWidth > 900 && (mainTopAbs() + mainEl.offsetHeight) < (window.scrollY || 0) + 100;
+    jumpBtn.style.display = show ? 'inline-flex' : 'none';
+    if (show) jumpN.textContent = lastShown;
+  }
+  function showResults() {
+    unlock();
+    var target = Math.max(0, mainTopAbs() - 110);
+    if ((window.scrollY || 0) > target) scrollNow(target);
+    updateJump();
+  }
+
   // Quem rola dentro dos filtros: a coluna (PC) ou o corpo do painel (celular)
   var sideBody = sidebar.querySelector('.promo-sidebar-body');
   function scroller() { return window.innerWidth <= 900 ? sideBody : sidebar; }
@@ -339,6 +374,7 @@ title: Promoções
     var box = scroller();
     var prevScroll = box.scrollTop;
     var anchorTop = (anchor && anchor.offsetParent !== null) ? anchor.getBoundingClientRect().top : null;
+    lock(layoutEl.getBoundingClientRect().height);   // trava a altura antes de mexer nos produtos
 
     var catCounts = {}, lojaCounts = {}, marcaCounts = {};      // contagens "ao vivo" (com todos os filtros)
     var baseCat = {}, baseLoja = {}, baseMarca = {};            // contagens "base" (só categoria + busca) -> decidem quem aparece
@@ -458,8 +494,8 @@ title: Promoções
       box.scrollTop = prevScroll;
     }
 
-    // 2) Página: devolve a posição de antes. Se a página encolheu e não dá mais pra ficar ali,
-    //    em vez de despencar pro rodapé, leva pro começo dos resultados.
+    // 2) Página: devolve a posição de antes (com a altura travada, ela nem chega a sair do lugar).
+    //    Plano B: se mesmo assim não der pra ficar ali, leva pro começo dos resultados.
     if (prevY > 0) {
       var maxY = document.documentElement.scrollHeight - window.innerHeight;
       if (prevY > maxY) {
@@ -469,6 +505,10 @@ title: Promoções
         scrollNow(prevY);
       }
     }
+
+    lastShown = shown;
+    maybeUnlock();
+    updateJump();
   }
 
   // ---------- link compartilhável: ?cat=placas-de-video&loja=Kabum&marca=NVIDIA,Palit ----------
@@ -518,10 +558,12 @@ title: Promoções
     openBtn.setAttribute('aria-expanded', 'true');
   }
   function closePanel() {
+    var estavaAberto = sidebar.classList.contains('open');
     sidebar.classList.remove('open');
     overlay.classList.remove('show');
     document.body.classList.remove('promo-lock');
     openBtn.setAttribute('aria-expanded', 'false');
+    if (estavaAberto) showResults();   // no celular: ao fechar o painel, mostra os resultados
   }
   openBtn.addEventListener('click', openPanel);
   overlay.addEventListener('click', closePanel);
@@ -529,6 +571,17 @@ title: Promoções
   document.getElementById('promo-apply').addEventListener('click', closePanel);
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closePanel(); });
   window.addEventListener('resize', function () { if (window.innerWidth > 900) closePanel(); });
+
+  var ticking = false;
+  window.addEventListener('scroll', function () {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(function () { ticking = false; maybeUnlock(); updateJump(); });
+  }, { passive: true });
+  window.addEventListener('resize', function () { maybeUnlock(); updateJump(); });
+  jumpBtn.addEventListener('click', function () {
+    window.scrollTo({ top: Math.max(0, mainTopAbs() - 110), left: 0, behavior: 'smooth' });
+  });
 
   readUrl();
   render();
