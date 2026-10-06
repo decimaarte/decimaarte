@@ -113,6 +113,7 @@ collections:
         required: false
         hint: "Ex.: placa-mãe ASRock com Ryzen = ASRock + AMD. Marca que não está na lista? Me avise que eu adiciono."
         options:
+          - { label: "8BitDo", value: "8BitDo" }
           - { label: "Acer", value: "Acer" }
           - { label: "ADATA", value: "ADATA" }
           - { label: "Afox", value: "Afox" }
@@ -141,6 +142,7 @@ collections:
           - { label: "Gainward", value: "Gainward" }
           - { label: "Galax", value: "Galax" }
           - { label: "Gamemax", value: "Gamemax" }
+          - { label: "GameSir", value: "GameSir" }
           - { label: "Gaomon", value: "Gaomon" }
           - { label: "Gigabyte", value: "Gigabyte" }
           - { label: "HP", value: "HP" }
@@ -149,12 +151,16 @@ collections:
           - { label: "HyperX", value: "HyperX" }
           - { label: "INNO3D", value: "INNO3D" }
           - { label: "Intel", value: "Intel" }
+          - { label: "Ipega", value: "Ipega" }
           - { label: "JBL", value: "JBL" }
+          - { label: "JBR", value: "JBR" }
+          - { label: "Kalkan", value: "Kalkan" }
           - { label: "Kingston", value: "Kingston" }
           - { label: "Lenovo", value: "Lenovo" }
           - { label: "Lexar", value: "Lexar" }
           - { label: "LG", value: "LG" }
           - { label: "Logitech", value: "Logitech" }
+          - { label: "Mach1", value: "Mach1" }
           - { label: "Mancer", value: "Mancer" }
           - { label: "Maxsun", value: "Maxsun" }
           - { label: "Microsoft", value: "Microsoft" }
