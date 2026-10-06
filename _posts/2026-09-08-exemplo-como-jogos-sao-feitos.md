@@ -1,11 +1,13 @@
 ---
-title: 'Exemplo: como um jogo indie nasce do zero'
-date: 2026-09-13T05:08:00
+title: GTA 6
+date: 2026-10-06T18:00:00
 categories: curiosidades-dev
 tags: []
 image: /assets/img/placeholder-hero.jpg
 excerpt: ''
 author: Deivisson Freitas
+destaque_home: false
+prioridade_home: null
 ---
 
 Este é um post de exemplo pra você ver como o layout de artigo fica na prática. Substitua por conteúdo real quando o chat de redação estiver produzindo as matérias.
