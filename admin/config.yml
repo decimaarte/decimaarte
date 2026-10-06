@@ -19,7 +19,7 @@ collections:
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
       - { label: "Título", name: "title", widget: "string" }
-      - { label: "Data", name: "date", widget: "datetime" }
+      - { label: "Data (horário de Brasília)", name: "date", widget: "datetime", input_timezone: "America/Sao_Paulo", hint: "Data e hora de Brasília. Se for no futuro, a matéria fica agendada e entra no ar sozinha (até ~15 min depois da hora)." }
       - label: "Categoria"
         name: "categories"
         widget: "select"
