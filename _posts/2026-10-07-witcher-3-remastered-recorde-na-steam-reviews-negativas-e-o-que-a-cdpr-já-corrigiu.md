@@ -1,6 +1,6 @@
 ---
 title: 'Witcher 3 Remastered: recorde na Steam, reviews negativas e o que a CDPR já corrigiu'
-date: 2026-10-07T04:37:00-03:00
+date: 2026-10-07T04:48:00-03:00
 categories: noticias
 tags:
   - pc
