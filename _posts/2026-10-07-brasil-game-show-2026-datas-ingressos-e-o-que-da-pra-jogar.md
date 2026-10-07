@@ -1,11 +1,9 @@
 ---
 title: 'Brasil Game Show 2026: datas, ingressos e o que dá pra jogar'
 date: 2026-10-07T04:13:00-03:00
+last_modified_at: ''
 categories: noticias
-tags:
-  - nintendo
-  - lancamentos
-  - indie
+tags: []
 image: /assets/img/uploads/photo_2026-10-07_04-15-46.jpg
 image_credit: Divulgação/Brasil Game Show
 excerpt: A Brasil Game Show 2026 acontece de 9 a 12 de outubro, no Distrito Anhembi, em São Paulo. Reunimos datas, horários, ingressos e o que já está confirmado, da Nintendo com estande de 1.000 m² até a presença da voz do Mario.
