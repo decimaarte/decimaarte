@@ -5,7 +5,7 @@ categories: noticias
 tags:
   - xbox
   - tech
-image: /assets/img/uploads/photo_2026-10-07_02-52-58.jpg
+image: /assets/img/uploads/Saga-6e7883abba45ec557821.jpg
 image_credit: Ninja Theory/Xbox Game Studios
 excerpt: A Microsoft anunciou que vai iniciar o processo de fechamento da Ninja Theory, estúdio de Hellblade, depois que duas tentativas de venda não deram certo. É mais um capítulo do "reset" do Xbox, que já mexeu com vários estúdios.
 author: Deivisson Freitas
