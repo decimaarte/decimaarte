@@ -1,6 +1,16 @@
 ---
 layout: default
 ---
+<style>
+  /* Crédito de imagem DENTRO do texto: logo abaixo da imagem, escreva uma linha em itálico começando com "Imagem:".
+     Ex.: *Imagem: Divulgação / Steam*  -> o site mostra em letra pequena e cinza, colada na imagem. */
+  .post-body p:has(> img:only-child):has(+ p > em:only-child),
+  .post-body p:has(> a:only-child > img:only-child):has(+ p > em:only-child) { margin-bottom: 0; }
+  .post-body p:has(> img:only-child):has(+ p > em:only-child) > img,
+  .post-body p:has(> a:only-child > img:only-child):has(+ p > em:only-child) img { margin-bottom: 6px; }
+  .post-body p:has(> img:only-child) + p > em:only-child,
+  .post-body p:has(> a:only-child > img:only-child) + p > em:only-child { display: block; font-style: normal; font-size: 12.5px; line-height: 1.4; color: var(--text-muted); }
+</style>
 <article>
   <div class="post-header">
     <span class="tag-pill">{{ page.categories | first }}</span>
