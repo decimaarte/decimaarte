@@ -15,6 +15,29 @@ layout: default
   .post-body p.has-credit img { margin-bottom: 6px; }
   .post-body p.img-credit { margin: 0 0 24px; font-size: 12.5px; line-height: 1.4; color: var(--text-muted); }
   .post-body p.img-credit em { font-style: normal; }
+
+  /* Links dentro do texto: roxo + sublinhado fino (no escuro, um roxo mais claro pra dar contraste) */
+  .post-body a { color: var(--purple-accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  .post-body a:hover { text-decoration-thickness: 2px; }
+  [data-theme="dark"] .post-body a { color: #B992EF; }
+
+  /* Bloco "Fontes": caixa com cada fonte numa linha clicável (nome, site e seta ↗) */
+  .post-body hr.sources-hr { display: none; }
+  .post-body .sources-box { margin: 36px 0 8px; padding: 18px 20px 12px; background: var(--bg-card); border: 1px solid var(--line); border-radius: var(--radius); }
+  .post-body .sources-box .sources-title { margin: 0 0 6px; font-family: var(--font-body); font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; line-height: 1.4; color: var(--text-muted); }
+  .post-body .sources-box ul, .post-body .sources-box ol { list-style: none; margin: 0; padding: 0; }
+  .post-body .sources-box li { margin: 0; padding: 0; }
+  .post-body .sources-box a { display: flex; align-items: baseline; gap: 10px; margin: 0 -10px; padding: 9px 10px; border-radius: 8px; text-decoration: none; line-height: 1.4; font-size: 15px; transition: background .15s ease; }
+  .post-body .sources-box a:hover { background: var(--purple-dark); }
+  .post-body .sources-box .src-name { flex: 1; min-width: 0; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  .post-body .sources-box .src-domain { flex-shrink: 0; font-size: 12px; color: var(--text-muted); white-space: nowrap; }
+  .post-body .sources-box a::after { content: "\2197"; flex-shrink: 0; font-weight: 700; }
+  @media (max-width: 640px) {
+    .post-body .sources-box { padding: 16px 16px 10px; }
+    .post-body .sources-box a { flex-wrap: wrap; row-gap: 2px; }
+    .post-body .sources-box .src-name { flex-basis: calc(100% - 28px); }
+    .post-body .sources-box .src-domain { order: 3; flex-basis: 100%; }
+  }
 </style>
 <article>
   <div class="post-header">
@@ -184,6 +207,42 @@ layout: default
       prev.classList.add('has-credit');
       p.classList.add('img-credit');
     }
+  });
+})();
+
+/* Bloco "Fontes": acha o título "Fontes" seguido de uma lista de links e monta a caixa clicável. */
+(function () {
+  var body = document.querySelector('.post-body');
+  if (!body) return;
+  var RE = /^\s*fontes?\s*:?\s*$/i;
+  Array.prototype.slice.call(body.querySelectorAll('p, h2, h3, h4')).forEach(function (t) {
+    if (!RE.test(t.textContent || '')) return;
+    if (t.tagName === 'P' && !(t.children.length === 1 && t.firstElementChild.tagName === 'STRONG')) return;
+    var list = t.nextElementSibling;
+    if (!list || (list.tagName !== 'UL' && list.tagName !== 'OL') || !list.querySelector('a')) return;
+    var box = document.createElement('div');
+    box.className = 'sources-box';
+    t.parentNode.insertBefore(box, t);
+    var prev = box.previousElementSibling;
+    if (prev && prev.tagName === 'HR') prev.classList.add('sources-hr');
+    t.className = 'sources-title';
+    box.appendChild(t);
+    box.appendChild(list);
+    Array.prototype.slice.call(list.querySelectorAll('a')).forEach(function (a) {
+      a.target = '_blank';
+      a.rel = 'noopener noreferrer';
+      var name = document.createElement('span');
+      name.className = 'src-name';
+      while (a.firstChild) name.appendChild(a.firstChild);
+      a.appendChild(name);
+      try {
+        var host = new URL(a.href).hostname.replace(/^www\./, '');
+        var dom = document.createElement('span');
+        dom.className = 'src-domain';
+        dom.textContent = host;
+        a.appendChild(dom);
+      } catch (e) {}
+    });
   });
 })();
 </script>
