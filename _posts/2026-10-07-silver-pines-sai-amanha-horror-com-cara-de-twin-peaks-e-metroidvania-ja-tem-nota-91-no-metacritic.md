@@ -44,6 +44,10 @@ Segundo o GamesRadar e a Shacknews, a base é:
 - **Interações em tempo real**, como recarregar a arma ou digitar códigos, que a Shacknews compara a um "recarregamento ativo de Gears of War" misturado com minigames estilo WarioWare
 - **Múltiplos finais**: o GamesRadar encontrou pelo menos três
 
+![](/assets/img/uploads/photo_3_2026-10-07_18-43-43.jpg)
+
+Imagem: Divulgação/Steam
+
 O visual é o grande diferencial: a animação dos personagens é **rotoscopiada à mão**, técnica usada em jogos clássicos como **Another World** e **Prince of Persia**, segundo a Shacknews. A Shacknews destaca justamente essa animação como um dos pontos altos do jogo.
 
 ![](/assets/img/uploads/Silver%20Pines%20img%20Game%20%287%29.webp)
@@ -84,6 +88,14 @@ O mesmo texto elogia o ritmo, o mundo e o desempenho no **Steam Deck**.
 ### Preço
 
 O preço de _Silver Pines_ ainda não foi divulgado para todas as plataformas. Na Steam, o jogo já está em pré-venda com **10% de desconto até 22 de outubro**: **R$61,19 (versão base)** e **R$79,19 na Deluxe Edition**. Nas lojas de console, os valores regionais costumam ser liberados na véspera do lançamento, vale conferir na página da sua plataforma antes de comprar.
+
+![](/assets/img/uploads/photo_1_2026-10-07_18-43-43.jpg)
+
+Imagem: Divulgação/Steam
+
+![](/assets/img/uploads/photo_2_2026-10-07_18-43-43.jpg)
+
+Imagem: Divulgação/Steam
 
 ***
 
