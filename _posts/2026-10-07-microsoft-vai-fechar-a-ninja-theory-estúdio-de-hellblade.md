@@ -7,7 +7,7 @@ tags:
   - tech
 image: /assets/img/uploads/Saga-6e7883abba45ec557821.jpg
 image_credit: Ninja Theory/Xbox Game Studios
-excerpt: Depois de duas tentativas de venda que não saíram, a Microsoft propôs fechar a Ninja Theory (Hellblade) em 22/09. Desde 05/10, funcionários anunciam demissões. Veja a linha do tempo, os números e o que ainda é incerto sobre Senua.
+excerpt: Depois de duas tentativas de venda que não saíram, a Microsoft propôs fechar a Ninja Theory (Hellblade) em 22/09. Desde 05/10, funcionários anunciam demissões no LinkedIn. Veja a linha do tempo, os números e o que ainda é incerto sobre Senua (o 3º game da saga).
 author: Deivisson Freitas
 destaque_home: false
 prioridade_home: null
