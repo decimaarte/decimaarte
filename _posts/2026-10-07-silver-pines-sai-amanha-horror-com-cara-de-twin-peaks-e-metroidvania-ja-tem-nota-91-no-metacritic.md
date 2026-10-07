@@ -7,7 +7,7 @@ tags:
   - lancamentos
   - indie
 image: /assets/img/uploads/photo_2026-10-07_13-38-45.jpg
-image_credit: Divulgação/Team17
+image_credit: Team17/Wych Elm
 excerpt: Silver Pines, horror Metroidvania publicado pela Team17, sai em 08/10 pra PC, PS5, Xbox Series X/S, Switch e Switch 2. A crítica abriu com nota alta, com 10/10 em alguns veículos. Veja o que é o jogo, como joga e os pontos de crítica.
 author: Deivisson Freitas
 destaque_home: false
