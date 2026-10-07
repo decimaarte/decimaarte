@@ -21,7 +21,7 @@ A revista publicou em **29/09** uma edição digital com a capa de GTA 6: uma **
 
 ![](/assets/img/uploads/photo_2_2026-10-07_05-03-21.jpg)
 
-_Imagem: Game Informer / Rockstar Games_
+_Imagem: Game Informer/Rockstar Games_
 
 ### O mapa
 
@@ -29,7 +29,7 @@ Segundo a reportagem, Aaron Garbut, da Rockstar, disse que o mapa tem **cerca de
 
 ![](/assets/img/uploads/photo_11_2026-10-07_05-03-21.jpg)
 
-_Imagem: Game Informer / Rockstar Games_
+_Imagem: Game Informer/Rockstar Games_
 
 ### O clima
 
@@ -39,7 +39,7 @@ O que ainda não se sabe: **com que frequência** os furacões acontecem e se el
 
 ![](/assets/img/uploads/photo_9_2026-10-07_05-03-21.jpg)
 
-_Imagem: Game Informer / Rockstar Games_
+_Imagem: Game Informer/Rockstar Games_
 
 ### Os bichos
 
@@ -49,7 +49,7 @@ Tem também um sistema de caça com animais **Raros, Descobríveis e Lendários*
 
 ![](/assets/img/uploads/photo_12_2026-10-07_05-03-21.jpg)
 
-_Imagem: Game Informer / Rockstar Games_
+_Imagem: Game Informer/Rockstar Games_
 
 ### O que dá pra fazer
 
@@ -57,15 +57,15 @@ A reportagem lista: **base jumping, bilhar, academia, caiaque, mini golf, mergul
 
 ![](/assets/img/uploads/photo_3_2026-10-07_05-03-21.jpg)
 
-_Imagem: Game Informer / Rockstar Games_
+_Imagem: Game Informer/Rockstar Games_
 
 ![](/assets/img/uploads/photo_4_2026-10-07_05-03-21.jpg)
 
-_Imagem: Game Informer / Rockstar Games_
+_Imagem: Game Informer/Rockstar Games_
 
 ![](/assets/img/uploads/photo_6_2026-10-07_05-03-21.jpg)
 
-_Imagem: Game Informer / Rockstar Games_
+_Imagem: Game Informer/Rockstar Games_
 
 ### Capa e protagonistas
 
@@ -73,7 +73,7 @@ A arte de capa mostra **Jason e Lucia** juntos, armados, num conversível rosa n
 
 ![](/assets/img/uploads/photo_1_2026-10-07_05-03-21.jpg)
 
-_Imagem: Game Informer / Rockstar Games_
+_Imagem: Game Informer/Rockstar Games_
 
 ### Quando sai
 
@@ -81,7 +81,7 @@ _Imagem: Game Informer / Rockstar Games_
 
 ![](/assets/img/uploads/photo_8_2026-10-07_05-03-21.jpg)
 
-_Imagem: Game Informer / Rockstar Games_
+_Imagem: Game Informer/Rockstar Games_
 
 ### Vai Mudar Tudo?
 
@@ -89,19 +89,19 @@ O que a Rockstar está vendendo é algo nunca visto antes, **densidade**: mapa g
 
 ![](/assets/img/uploads/photo_10_2026-10-07_05-03-21.jpg)
 
-_Imagem: Game Informer / Rockstar Games_
+_Imagem: Game Informer/Rockstar Games_
 
 ![](/assets/img/uploads/photo_7_2026-10-07_05-03-21.jpg)
 
-_Imagem: Game Informer / Rockstar Games_
+_Imagem: Game Informer/Rockstar Games_
 
 ![](/assets/img/uploads/photo_13_2026-10-07_05-03-21.jpg)
 
-_Imagem: Game Informer / Rockstar Games_
+_Imagem: Game Informer/Rockstar Games_
 
 ![](/assets/img/uploads/photo_14_2026-10-07_05-03-21.jpg)
 
-_Imagem: Game Informer / Rockstar Games_
+_Imagem: Game Informer/Rockstar Games_
 
 ***
 
