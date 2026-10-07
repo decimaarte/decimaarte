@@ -1,14 +1,11 @@
 ---
 title: 'Silver Pines sai amanhã: horror com cara de Twin Peaks e Metroidvania já tem nota 91 no Metacritic'
 date: 2026-10-07T13:41:00-03:00
+last_modified_at: ''
 categories: noticias
 tags:
   - lancamentos
   - indie
-  - playstation
-  - xbox
-  - nintendo
-  - pc
 image: /assets/img/uploads/photo_2026-10-07_13-38-45.jpg
 image_credit: Divulgação/Team17
 excerpt: Silver Pines, horror Metroidvania publicado pela Team17, sai em 08/10 pra PC, PS5, Xbox Series X/S, Switch e Switch 2. A crítica abriu com nota alta, com 10/10 em alguns veículos. Veja o que é o jogo, como joga e os pontos de crítica.
