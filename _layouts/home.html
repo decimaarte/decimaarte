@@ -22,10 +22,27 @@ layout: default
   .hero-dot { position: relative; pointer-events: auto; width: 9px; height: 9px; padding: 0; border: 0; border-radius: 999px; background: rgba(255, 255, 255, .45); cursor: pointer; transition: width .2s ease, background .2s ease; }
   .hero-dot::after { content: ""; position: absolute; inset: -8px; }
   .hero-dot.is-active { width: 24px; background: var(--pink-accent); }
+  .hero-pause { position: absolute; top: 12px; right: 12px; z-index: 3; width: 32px; height: 32px; padding: 0; border-radius: 50%; border: 1px solid rgba(255, 255, 255, .25); background: rgba(18, 18, 20, .55); color: #fff; font-size: 11px; line-height: 1; display: flex; align-items: center; justify-content: center; cursor: pointer; backdrop-filter: blur(4px); transition: background .15s ease; }
+  .hero-pause:hover { background: var(--purple-accent); }
+  .hero-pause:focus-visible { outline: 2px solid var(--pink-accent); outline-offset: 2px; }
+  .hero-carousel.is-reduced .hero-slide { transition: none; }
+
+  /* Título menor e limitado a 2 linhas, resumo em 1 linha, imagem mais à mostra */
+  .hero-carousel .hero-img { height: 400px; opacity: .85; }
+  .hero-carousel .hero-copy { padding: 20px 32px 30px; background: linear-gradient(0deg, rgba(0, 0, 0, .88) 0%, rgba(0, 0, 0, .6) 50%, transparent 100%); }
+  .hero-carousel .hero-copy h1, .hero-carousel .hero-copy .hero-title { font-size: clamp(24px, 2.6vw, 32px); line-height: 1.14; max-width: 760px; margin: 0 0 8px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-shadow: 0 2px 10px rgba(0, 0, 0, .6); }
+  .hero-carousel .hero-copy p { font-size: 14.5px; max-width: 640px; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; }
+  .hero-carousel .tag-pill { margin-bottom: 10px; }
+
   @media (max-width: 640px) {
     .hero-nav { width: 34px; height: 34px; font-size: 20px; }
     .hero-prev { left: 8px; }
     .hero-next { right: 8px; }
+    .hero-pause { top: 8px; right: 8px; width: 30px; height: 30px; }
+    .hero-carousel .hero-img { height: 270px; }
+    .hero-carousel .hero-copy { padding: 14px 16px 26px; }
+    .hero-carousel .hero-copy h1, .hero-carousel .hero-copy .hero-title { font-size: clamp(20px, 6vw, 25px); -webkit-line-clamp: 3; }
+    .hero-carousel .hero-copy p { display: none; }
   }
   @media (prefers-reduced-motion: reduce) {
     .hero-carousel .hero-slide { transition: none; }
@@ -64,6 +81,7 @@ layout: default
         {% endfor %}
       </div>
       {% if slides.size > 1 %}
+      <button type="button" class="hero-pause" id="hero-pause" aria-label="Pausar a troca automática" aria-pressed="false">&#10074;&#10074;</button>
       <button type="button" class="hero-nav hero-prev" id="hero-prev" aria-label="Destaque anterior">&#8249;</button>
       <button type="button" class="hero-nav hero-next" id="hero-next" aria-label="Próximo destaque">&#8250;</button>
       <div class="hero-dots" role="group" aria-label="Escolher destaque">
@@ -180,8 +198,13 @@ layout: default
   if (slides.length < 2) return;
   var dots = root.querySelectorAll('.hero-dot');
   var track = document.getElementById('hero-track');
-  var idx = 0, timer = null, DELAY = 7000;
-  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var pauseBtn = document.getElementById('hero-pause');
+  var idx = 0, timer = null, userPaused = false, DELAY = 7000;
+  function mq(q) { return !!(window.matchMedia && window.matchMedia(q).matches); }
+
+  // "Reduzir movimento" ligado no aparelho: continua girando, mas sem o fade (troca seca). O botão de pausa fica sempre à mão.
+  if (mq('(prefers-reduced-motion: reduce)')) root.classList.add('is-reduced');
+  var canHover = mq('(hover: hover)');
 
   function show(i) {
     idx = (i + slides.length) % slides.length;
@@ -196,7 +219,7 @@ layout: default
   function next() { show(idx + 1); }
   function prev() { show(idx - 1); }
   function play() {
-    if (reduce || timer || document.hidden) return;
+    if (timer || userPaused || document.hidden) return;
     timer = setInterval(next, DELAY);
     track.setAttribute('aria-live', 'off');
   }
@@ -213,9 +236,20 @@ layout: default
     dots[d].addEventListener('click', function () { show(parseInt(this.getAttribute('data-i'), 10)); restart(); });
   }
 
-  // pausa com o mouse em cima ou foco no teclado
-  root.addEventListener('mouseenter', stop);
-  root.addEventListener('mouseleave', play);
+  // botão de pausa/retomar (a pessoa decide e o site respeita)
+  pauseBtn.addEventListener('click', function () {
+    userPaused = !userPaused;
+    if (userPaused) stop(); else play();
+    pauseBtn.innerHTML = userPaused ? '&#9654;' : '&#10074;&#10074;';
+    pauseBtn.setAttribute('aria-pressed', userPaused ? 'true' : 'false');
+    pauseBtn.setAttribute('aria-label', userPaused ? 'Retomar a troca automática' : 'Pausar a troca automática');
+  });
+
+  // pausa com o mouse em cima (só em aparelho com mouse; no celular o toque "gruda" o hover) ou com foco no teclado
+  if (canHover) {
+    root.addEventListener('mouseenter', stop);
+    root.addEventListener('mouseleave', play);
+  }
   root.addEventListener('focusin', stop);
   root.addEventListener('focusout', play);
 
@@ -234,6 +268,7 @@ layout: default
   // não gira com a aba escondida
   document.addEventListener('visibilitychange', function () { if (document.hidden) stop(); else play(); });
 
-  play();
+  // só começa a contar os 7 s depois da página carregar (imagens), pra o 1º slide durar o tempo inteiro
+  if (document.readyState === 'complete') play(); else window.addEventListener('load', play);
 })();
 </script>
