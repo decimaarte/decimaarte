@@ -20,7 +20,7 @@ Se você gosta de horror com atmosfera estranha e não tem pressa de ser assusta
 
 ![](/assets/img/uploads/Silver%20Pines%20img%20Game%20%284%29.webp)
 
-Imagem: Divulgação/
+Imagem: Team17/Wych Elm
 
 ### O que é o jogo
 
