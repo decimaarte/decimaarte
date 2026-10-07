@@ -1,12 +1,16 @@
 name: Publicar Matérias Agendadas
 
-# A cada 10 minutos olha se alguma matéria agendada já passou da hora e ainda não está no ar.
+# Olha se alguma matéria agendada já passou da hora e ainda não está no ar.
 # Se tiver, pede um build ao GitHub Pages. Se não tiver, não faz nada.
 # Também dá pra rodar na mão: Actions > Publicar Matérias Agendadas > Run workflow.
+#
+# ATENÇÃO: o horário automático do GitHub (schedule) é "melhor esforço": pode atrasar ou ser pulado
+# (principalmente na virada da hora). Por isso os minutos abaixo fogem de :00 e :30.
+# Pra ser confiável de verdade, um relógio externo pode chamar este workflow (workflow_dispatch).
 
 on:
   schedule:
-    - cron: "*/10 * * * *"
+    - cron: "3,13,23,33,43,53 * * * *"
   workflow_dispatch:
     inputs:
       forcar:
