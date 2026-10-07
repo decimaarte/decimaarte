@@ -83,13 +83,13 @@ O mesmo texto elogia o ritmo, o mundo e o desempenho no **Steam Deck**.
 
 ### Preço
 
-O preço de _Silver Pines_ ainda não foi divulgado para todas as plataformas. Na Steam, o jogo já está em pré-venda com 10% de desconto até 22 de outubro: R$61,19 (versão base) e R$79,19 na Deluxe Edition. Nas lojas de console, os valores regionais costumam ser liberados na véspera do lançamento, vale conferir na página da sua plataforma antes de comprar.
+O preço de _Silver Pines_ ainda não foi divulgado para todas as plataformas. Na Steam, o jogo já está em pré-venda com **10% de desconto até 22 de outubro**: **R$61,19 (versão base)** e **R$79,19 na Deluxe Edition**. Nas lojas de console, os valores regionais costumam ser liberados na véspera do lançamento, vale conferir na página da sua plataforma antes de comprar.
 
 ***
 
 **Fontes**
 
-- [Pure Xbox: notas de Silver Pines](https://www.purexbox.com/news/2026/10/silver-pines-is-reviewing-exceptionally-well-positioning-it-as-one-of-2026s-best-games)
-- [GamesRadar: análise de Silver Pines](https://www.gamesradar.com/games/survival-horror/silver-pines-review/)
-- [Shacknews: Silver Pines e Yoku's Island Express](https://www.shacknews.com/article/148663/silver-pines-is-an-unorthodox-and-dread-inducing-follow-up-to-yokus-island-express)
-- [Wikipédia: Silver Pines (datas, plataformas, anúncio)](https://en.wikipedia.org/wiki/Silver_Pines)
+- [_Pure Xbox: notas de Silver Pines_](https://www.purexbox.com/news/2026/10/silver-pines-is-reviewing-exceptionally-well-positioning-it-as-one-of-2026s-best-games)
+- [_GamesRadar: análise de Silver Pines_](https://www.gamesradar.com/games/survival-horror/silver-pines-review/)
+- [_Shacknews: Silver Pines e Yoku's Island Express_](https://www.shacknews.com/article/148663/silver-pines-is-an-unorthodox-and-dread-inducing-follow-up-to-yokus-island-express)
+- [_Wikipédia: Silver Pines (datas, plataformas, anúncio)_](https://en.wikipedia.org/wiki/Silver_Pines)
