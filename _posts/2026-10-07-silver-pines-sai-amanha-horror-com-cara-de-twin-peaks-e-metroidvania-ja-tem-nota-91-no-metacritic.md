@@ -28,6 +28,10 @@ Imagem: Team17/Wych Elm
 
 O clima é **"lynchiano"**: estranheza, mistério e referência declarada a **Twin Peaks** e a **Silent Hill**, segundo a imprensa. A Shacknews, que jogou uma demo, descreve o jogo como uma sequência "pouco ortodoxa" no catálogo da Team17, que também publicou **Yoku's Island Express**.
 
+![](/assets/img/uploads/Silver%20Pines%20img%20Game%20%282%29.webp)
+
+Imagem: Team17/Wych Elm
+
 ### Como joga
 
 Segundo o GamesRadar e a Shacknews, a base é:
@@ -40,6 +44,10 @@ Segundo o GamesRadar e a Shacknews, a base é:
 - **Múltiplos finais**: o GamesRadar encontrou pelo menos três
 
 O visual é o grande diferencial: a animação dos personagens é **rotoscopiada à mão**, técnica usada em jogos clássicos como **Another World** e **Prince of Persia**, segundo a Shacknews. A Shacknews destaca justamente essa animação como um dos pontos altos do jogo.
+
+![](/assets/img/uploads/Silver%20Pines%20img%20Game%20%287%29.webp)
+
+Imagem: Team17/Wych Elm
 
 ### O que a crítica disse
 
@@ -58,6 +66,10 @@ Algumas notas individuais:
 
 Com poucas análises ainda, a nota pode mexer quando entrarem mais críticas e as notas dos jogadores. Vale lembrar que, nas prévias de junho, o PC Gamer achou a **primeira hora derivativa** e o **combate inicial lento**, então o ritmo parece pegar depois.
 
+![](/assets/img/uploads/Silver%20Pines%20img%20Game.webp)
+
+Imagem: Team17/Wych Elm
+
 ### Os problemas apontados
 
 O GamesRadar, que deu 9/10, cita:
@@ -70,7 +82,7 @@ O mesmo texto elogia o ritmo, o mundo e o desempenho no **Steam Deck**.
 
 ### Preço
 
-Nas fontes que conferimos, **o preço não aparece**. Confere na página da sua plataforma antes de comprar, principalmente na Steam e nas lojas de console, que costumam abrir o preço regional na véspera. A Steam está com desconto de 10% na pré-venda até 22 de outubro, saindo por R$61,19 (versão base) ou R$79,19 (Deluxe Edition)
+O preço de _Silver Pines_ ainda não foi divulgado para todas as plataformas. Na Steam, o jogo já está em pré-venda com 10% de desconto até 22 de outubro: R$61,19 (versão base) e R$79,19 na Deluxe Edition. Nas lojas de console, os valores regionais costumam ser liberados na véspera do lançamento — vale conferir na página da sua plataforma antes de comprar.
 
 ***
 
