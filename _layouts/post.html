@@ -10,6 +10,11 @@ layout: default
   .post-body p:has(> a:only-child > img:only-child):has(+ p > em:only-child) img { margin-bottom: 6px; }
   .post-body p:has(> img:only-child) + p > em:only-child,
   .post-body p:has(> a:only-child > img:only-child) + p > em:only-child { display: block; font-style: normal; font-size: 12.5px; line-height: 1.4; color: var(--text-muted); }
+  /* Mesma aparência, aplicada por classe (o script abaixo marca a legenda, mesmo se faltar itálico ou se estiver na mesma linha da imagem) */
+  .post-body p.has-credit { margin-bottom: 0; }
+  .post-body p.has-credit img { margin-bottom: 6px; }
+  .post-body p.img-credit { margin: 0 0 24px; font-size: 12.5px; line-height: 1.4; color: var(--text-muted); }
+  .post-body p.img-credit em { font-style: normal; }
 </style>
 <article>
   <div class="post-header">
@@ -150,3 +155,35 @@ layout: default
     <a href="https://newsletter.decimaarte.com.br" target="_blank" rel="noopener" class="btn-sub">Assinar</a>
   </div>
 </article>
+
+<script>
+/* Crédito de imagem dentro do texto: qualquer linha que COMECE com "Imagem:" (ou "Foto:") logo abaixo de uma imagem vira legenda pequena e cinza. */
+(function () {
+  var body = document.querySelector('.post-body');
+  if (!body) return;
+  var RE = /^\s*(imagem|foto|crédito|credito)\s*:/i;
+  Array.prototype.slice.call(body.querySelectorAll('p')).forEach(function (p) {
+    if (p.classList.contains('img-credit') || !RE.test(p.textContent || '')) return;
+    var img = p.querySelector('img');
+    if (img) {
+      // legenda escrita na MESMA linha/parágrafo da imagem: separa num parágrafo próprio
+      var anchor = (img.parentNode !== p && img.parentNode.nodeName === 'A') ? img.parentNode : img;
+      var cap = document.createElement('p');
+      var rest = [];
+      for (var n = anchor.nextSibling; n; n = n.nextSibling) rest.push(n);
+      rest.forEach(function (n) { if (n.nodeName === 'BR') n.parentNode.removeChild(n); else cap.appendChild(n); });
+      if (!RE.test(cap.textContent || '')) return;
+      p.parentNode.insertBefore(cap, p.nextSibling);
+      p.classList.add('has-credit');
+      cap.classList.add('img-credit');
+      return;
+    }
+    // legenda em parágrafo próprio, logo depois de um parágrafo que só tem imagem
+    var prev = p.previousElementSibling;
+    if (prev && prev.tagName === 'P' && prev.querySelector('img') && !(prev.textContent || '').trim()) {
+      prev.classList.add('has-credit');
+      p.classList.add('img-credit');
+    }
+  });
+})();
+</script>
