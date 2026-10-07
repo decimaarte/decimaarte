@@ -7,7 +7,7 @@ tags:
   - indie
   - game-design
 image: /assets/img/uploads/capsule_616x353.jpg
-image_credit: ''
+image_credit: Divulgação/Steam
 excerpt: A Betagames Group confirmou a morte de Diogo Moraes, fundador do estúdio e um dos criadores de 171. O jogo foi adiado pra 2027. A causa da morte não foi divulgada.
 author: Deivisson Freitas
 destaque_home: false
