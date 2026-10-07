@@ -20,7 +20,7 @@ Essa notícia não é de lançamento nem de preço. É de perda, e a comunidade 
 
 ![](/assets/img/uploads/photo_2026-10-07_05-25-11.jpg)
 
-_Imagem:_
+_Imagem: @academiadosgamersoficial Instagram_
 
 ### O que o estúdio disse
 
