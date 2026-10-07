@@ -70,7 +70,7 @@ O mesmo texto elogia o ritmo, o mundo e o desempenho no **Steam Deck**.
 
 ### Preço
 
-Nas fontes que conferimos, **o preço não aparece**. Confere na página da sua plataforma antes de comprar, principalmente na Steam e nas lojas de console, que costumam abrir o preço regional na véspera. Inclusive na Steam está com desconto de 10% na pré-venda saindo por R$61,19 (versão base) até 22 de outubro ou R$79,19 (Deluxe Edition)
+Nas fontes que conferimos, **o preço não aparece**. Confere na página da sua plataforma antes de comprar, principalmente na Steam e nas lojas de console, que costumam abrir o preço regional na véspera. A Steam está com desconto de 10% na pré-venda até 22 de outubro, saindo por R$61,19 (versão base) ou R$79,19 (Deluxe Edition)
 
 ***
 
