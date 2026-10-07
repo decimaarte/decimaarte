@@ -20,6 +20,8 @@ Essa notícia não é de lançamento nem de preço. É de perda, e a comunidade 
 
 ![](/assets/img/uploads/photo_2026-10-07_05-25-11.jpg)
 
+_Imagem:_
+
 ### O que o estúdio disse
 
 O texto da Betagames é curto e direto: "Perdemos o Diogo, fundador da Betagames Group, que sonhou e foi responsável por várias frentes do desenvolvimento deste jogo desde o primeiro dia."
