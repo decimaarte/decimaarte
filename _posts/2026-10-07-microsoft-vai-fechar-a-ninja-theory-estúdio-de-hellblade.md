@@ -35,7 +35,7 @@ Quer entender como chegamos aqui? Vai por partes.
 - **Agosto de 2017:** **Hellblade: Senua's Sacrifice**, o jogo que firmou o estúdio, e um dos casos mais citados de produção "AA" bem-sucedida.
 - **10/06/2018:** a Microsoft anuncia a compra da Ninja Theory, que entra no Xbox Game Studios.
 - **21/05/2024:** **Senua's Saga: Hellblade II**. Em 2025, o jogo teve **11 indicações ao BAFTA Games**, e a versão de **PS5** saiu em **12/08/2025**.
-- **Junho de 2026:** a Microsoft anuncia **Senua**, o terceiro jogo da série, na Xbox Games Showcase, com janela em **2027** pra Xbox Series X|S, PC e PS5. Também em junho, a Aftermath reporta o cancelamento do **Project Mara**, outro projeto do estúdio.
+- **Junho de 2026:** a Microsoft anuncia **Senua**, o terceiro jogo da série, na Xbox Games Showcase, com janela em **2027** pra Xbox Series X/S, PC e PS5. Também em junho, a Aftermath reporta o cancelamento do **Project Mara**, outro projeto do estúdio.
 - **Julho de 2026:** o Xbox diz que a Ninja Theory e a Undead Labs buscavam novos donos, no meio do "reset" da divisão.
 - **22/09/2026:** Booty anuncia que as duas negociações da Ninja Theory fracassaram e propõe o fechamento. No mesmo anúncio, o Xbox informa **mais 268 demissões**, somadas às cerca de **1.600** da primeira rodada (julho), dentro de um plano que pode chegar a cerca de **3.200** até o fim do ano fiscal, segundo GamesRadar.
 - **05/10/2026:** funcionários da Ninja Theory começam a publicar no LinkedIn que perderam o emprego (áudio, tecnologia, arte e programação, entre outras áreas).
