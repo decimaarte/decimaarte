@@ -92,4 +92,3 @@ O preço de _Silver Pines_ ainda não foi divulgado para todas as plataformas. N
 - [Pure Xbox: notas de Silver Pines](https://www.purexbox.com/news/2026/10/silver-pines-is-reviewing-exceptionally-well-positioning-it-as-one-of-2026s-best-games)
 - [GamesRadar: análise de Silver Pines](https://www.gamesradar.com/games/survival-horror/silver-pines-review/)
 - [Shacknews: Silver Pines e Yoku's Island Express](https://www.shacknews.com/article/148663/silver-pines-is-an-unorthodox-and-dread-inducing-follow-up-to-yokus-island-express)
-- [Wikipédia: Silver Pines (datas, plataformas, anúncio)](https://en.wikipedia.org/wiki/Silver_Pines)
