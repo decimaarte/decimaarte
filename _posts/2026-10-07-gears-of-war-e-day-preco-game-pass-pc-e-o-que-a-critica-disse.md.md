@@ -1,11 +1,11 @@
 ---
 title: 'Gears of War: E-Day: preço, Game Pass, PC e o que a crítica disse'
 date: 2026-10-07T00:24:00-03:00
+last_modified_at: ''
 categories: noticias
 tags:
   - lancamentos
   - xbox
-  - pc
 image: /assets/img/uploads/Gears_EDay_Hero-936e74aca9ed71732e70.jpg
 image_credit: Divulgação/Xbox Game Studios
 excerpt: 'Gears of War: E-Day libera hoje pra todo mundo no Xbox e no PC, com Game Pass desde o primeiro dia. A crítica elogia o visual e o tiroteio, mas reclama do meio da campanha. A gente resume o que você precisa saber antes de baixar.'
