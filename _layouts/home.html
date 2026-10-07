@@ -117,8 +117,9 @@ layout: default
       {% endfor %}
     </div>
 
-    {% assign gp_all = site.categories.gameplays | sort: 'date' | reverse %}
-    {% if gp_all.size > 0 %}
+    {% assign gp_raw = site.categories.gameplays %}
+    {% if gp_raw and gp_raw.size > 0 %}
+    {% assign gp_all = gp_raw | sort: 'date' | reverse %}
     <h2 class="section-title">Gameplays <a href="{{ '/gameplays/' | relative_url }}" class="see-all">Ver todas →</a></h2>
     <div class="article-grid">
       {% assign gp_destaque_todos = gp_all | where: 'destaque_home', true %}
