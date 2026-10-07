@@ -4,7 +4,6 @@ date: 2026-10-07T05:28:00-03:00
 last_modified_at: ''
 categories: noticias
 tags:
-  - pc
   - indie
   - game-design
 image: /assets/img/uploads/capsule_616x353.jpg
