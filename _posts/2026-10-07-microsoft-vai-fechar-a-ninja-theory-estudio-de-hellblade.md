@@ -1,10 +1,10 @@
 ---
 title: 'Ninja Theory, estúdio de Hellblade, começa a demitir: entenda a linha do tempo até o fechamento proposto'
 date: 2026-10-07T03:23:00-03:00
+last_modified_at: ''
 categories: noticias
 tags:
   - xbox
-  - tech
 image: /assets/img/uploads/Saga-6e7883abba45ec557821.jpg
 image_credit: Ninja Theory/Xbox Game Studios
 excerpt: Depois de duas tentativas de venda que não saíram, a Microsoft propôs fechar a Ninja Theory (Hellblade) em 22/09. Desde 05/10, funcionários anunciam demissões no LinkedIn. Veja a linha do tempo, os números e o que ainda é incerto sobre Senua (o 3º game da saga).
