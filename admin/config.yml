@@ -47,6 +47,7 @@ collections:
           - { label: "Jogos grátis da semana", value: "jogos-gratis" }
           - { label: "Gift Cards", value: "gift-cards" }
       - { label: "Imagem de destaque", name: "image", widget: "image", required: false }
+      - { label: "Crédito da imagem (opcional)", name: "image_credit", widget: "string", required: false, hint: "Só o nome da fonte, sem escrever 'Imagem:'. Ex.: Divulgação / Xbox Game Studios. Aparece em letra pequena embaixo da imagem na matéria." }
       - { label: "Resumo (aparece nos cards)", name: "excerpt", widget: "text", required: false }
       - { label: "Texto da matéria", name: "body", widget: "markdown" }
       - {label: "Autor", name: "author", widget: "string", required: false, default: "Deivisson Freitas"}
