@@ -16,9 +16,9 @@ prioridade_home: null
 
 Essa notícia não é de lançamento nem de preço. É de perda, e a comunidade dev brasileira está sentindo.
 
-![](/assets/img/uploads/photo_2026-10-07_05-25-11.jpg)
-
 **Diogo Moraes, fundador da Betagames Group e um dos criadores de 171**, morreu. A confirmação veio do próprio estúdio, em comunicado nos canais oficiais divulgado no fim de setembro e noticiado pela imprensa entre 01 e 02/10. **A causa da morte não foi divulgada**, e a gente não vai especular.
+
+![](/assets/img/uploads/photo_2026-10-07_05-25-11.jpg)
 
 ### O que o estúdio disse
 
