@@ -5,8 +5,6 @@ last_modified_at: ''
 categories: noticias
 tags:
   - lancamentos
-  - playstation
-  - xbox
 image: /assets/img/uploads/photo_2026-10-07_04-53-39.jpg
 image_credit: GTA 6 - Divulgação/Rockstar Games
 excerpt: 'A cover story da Game Informer sobre GTA 6 trouxe 12 screenshots inéditas e novos detalhes de Leonida: furacões, mais de 170 espécies de animais, mapa com cerca de o dobro do tamanho do GTA 5 e atividades como mergulho, base jumping e mini golfe.'
