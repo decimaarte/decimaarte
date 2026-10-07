@@ -1,13 +1,10 @@
 ---
 title: 'Witcher 3 Remastered: recorde na Steam, reviews negativas e o que a CDPR já corrigiu'
 date: 2026-10-07T04:48:00-03:00
+last_modified_at: ''
 categories: noticias
 tags:
   - pc
-  - playstation
-  - xbox
-  - nintendo
-  - tech
 image: /assets/img/uploads/photo_2026-10-07_04-39-27.jpg
 image_credit: Divulgação/CD Projekt Red
 excerpt: Uma semana depois, Witcher 3 Remastered bateu recorde de jogadores na Steam, mas também levou uma enxurrada de reviews negativas por desempenho. A gente junta os números, os patches e o que ainda está pendente.
