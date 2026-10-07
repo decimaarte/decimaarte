@@ -82,7 +82,7 @@ O mesmo texto elogia o ritmo, o mundo e o desempenho no **Steam Deck**.
 
 ### Preço
 
-O preço de _Silver Pines_ ainda não foi divulgado para todas as plataformas. Na Steam, o jogo já está em pré-venda com 10% de desconto até 22 de outubro: R$61,19 (versão base) e R$79,19 na Deluxe Edition. Nas lojas de console, os valores regionais costumam ser liberados na véspera do lançamento — vale conferir na página da sua plataforma antes de comprar.
+O preço de _Silver Pines_ ainda não foi divulgado para todas as plataformas. Na Steam, o jogo já está em pré-venda com 10% de desconto até 22 de outubro: R$61,19 (versão base) e R$79,19 na Deluxe Edition. Nas lojas de console, os valores regionais costumam ser liberados na véspera do lançamento, vale conferir na página da sua plataforma antes de comprar.
 
 ***
 
