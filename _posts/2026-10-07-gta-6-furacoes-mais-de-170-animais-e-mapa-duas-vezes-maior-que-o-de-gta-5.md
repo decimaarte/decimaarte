@@ -1,6 +1,7 @@
 ---
 title: 'GTA 6: furacões, mais de 170 animais e mapa duas vezes maior que o de GTA 5'
 date: 2026-10-07T04:51:00-03:00
+last_modified_at: ''
 categories: noticias
 tags:
   - lancamentos
@@ -101,6 +102,7 @@ _Imagem: Game Informer / Rockstar Games_
 ![](/assets/img/uploads/photo_14_2026-10-07_05-03-21.jpg)
 
 _Imagem: Game Informer / Rockstar Games_
+
 
 ***
 
