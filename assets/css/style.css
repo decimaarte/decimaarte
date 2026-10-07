@@ -474,3 +474,15 @@ footer { border-top: 1px solid var(--line); background: var(--bg-surface); paddi
   transition: background .15s ease;
 }
 .btn-copy-pix:hover { background: var(--pink-accent); }
+
+/* ---------- Legibilidade da fonte de título (Anton) ----------
+   A Anton é muito condensada: em texto pequeno e sobre fundo escuro as letras "grudam".
+   Um respiro entre as letras e um pouco mais de tamanho resolvem, sem trocar a identidade do site. */
+.card-body h3, .hero-copy h1, .hero-copy .hero-title, .post-header h1, .post-body h2,
+.promo-block h4, .sub-block h4, .simple-page h1 { letter-spacing: .02em; }
+.card-body h3 { font-size: 18px; line-height: 1.28; }
+[data-theme="dark"] .card-body h3, [data-theme="dark"] .hero-copy h1, [data-theme="dark"] .hero-copy .hero-title,
+[data-theme="dark"] .post-header h1, [data-theme="dark"] .post-body h2,
+[data-theme="dark"] .promo-block h4, [data-theme="dark"] .sub-block h4, [data-theme="dark"] .simple-page h1 { letter-spacing: .04em; }
+[data-theme="dark"] .card-body h3 { font-size: 18.5px; }
+[data-theme="dark"] .section-title { letter-spacing: .6px; }
