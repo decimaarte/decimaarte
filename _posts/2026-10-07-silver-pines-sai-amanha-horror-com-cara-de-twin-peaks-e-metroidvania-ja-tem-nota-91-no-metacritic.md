@@ -16,7 +16,7 @@ prioridade_home: null
 
 Se você gosta de horror com atmosfera estranha e não tem pressa de ser assustado por susto fácil, esse aqui merece atenção.
 
-**Silver Pines** chega amanhã, **8 de outubro de 2026**, pra **PC (Steam e Epic Games Store), PS5, Xbox Series X/S, Nintendo Switch e Switch 2**. O jogo é da **Wych Elm Games**, estúdio sueco-norueguês que estreia com ele, e é **publicado pela Team17**. A crítica já liberou as análises, e o saldo é bem positivo.
+**Silver Pines** chega amanhã, **8 de outubro de 2026**, pra **PC (Steam e Epic Games Store), PS5, Xbox Series X/S, Nintendo Switch e Switch 2**. O jogo é da **Wych Elm Games**, estúdio sueco que estreia com ele, e é **publicado pela Team17**. A crítica já liberou as análises, e o saldo é bem positivo.
 
 ![](/assets/img/uploads/Silver%20Pines%20img%20Game%20%284%29.webp)
 
