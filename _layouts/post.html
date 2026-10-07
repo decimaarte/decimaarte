@@ -5,7 +5,7 @@ layout: default
   <div class="post-header">
     <span class="tag-pill">{{ page.categories | first }}</span>
     <h1>{{ page.title }}</h1>
-    <div class="post-meta">{% assign meses = "Janeiro,Fevereiro,Março,Abril,Maio,Junho,Julho,Agosto,Setembro,Outubro,Novembro,Dezembro" | split: "," %}{% assign mes_index = page.date | date: "%-m" | minus: 1 %}Por {{ page.author | default: "Deivisson Freitas" }} · {{ page.date | date: "%d" }} de {{ meses[mes_index] }} de {{ page.date | date: "%Y" }}</div>
+    <div class="post-meta">{% assign meses = "Janeiro,Fevereiro,Março,Abril,Maio,Junho,Julho,Agosto,Setembro,Outubro,Novembro,Dezembro" | split: "," %}{% assign mes_index = page.date | date: "%-m" | minus: 1 %}Por {{ page.author | default: "Deivisson Freitas" }} · <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%d" }} de {{ meses[mes_index] }} de {{ page.date | date: "%Y" }} às {{ page.date | date: "%H:%M" }}</time></div>
     {% if page.image %}<img src="{{ page.image | relative_url }}" alt="{{ page.title }}" style="border-radius:10px; margin-bottom:{% if page.image_credit and page.image_credit != '' %}6{% else %}10{% endif %}px;">{% if page.image_credit and page.image_credit != '' %}<p class="image-credit" style="margin:0 0 14px; font-size:12.5px; line-height:1.4; color:var(--text-muted);">Imagem: {{ page.image_credit | escape }}</p>{% endif %}{% endif %}
   </div>
   <div class="post-body">
@@ -14,11 +14,14 @@ layout: default
     <div class="related-posts" style="margin-top:40px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.1);">
   <h3 style="margin-bottom:16px;">Continue lendo</h3>
   <div style="display:flex;flex-direction:column;gap:12px;">
-    {% assign related = site.posts | where_exp: "post", "post.url != page.url" | limit: 5 %}
-    {% for post in related %}
-      <a href="{{ post.url }}" style="display:block;padding:12px;border-radius:10px;background:rgba(255,255,255,0.03);text-decoration:none;color:inherit;">
-        <span style="font-size:11px;color:#8846C4;font-weight:600;text-transform:uppercase;">{{ post.categories | first }}</span>
-        <div style="font-weight:600;margin-top:4px;">{{ post.title }}</div>
+    {% assign related = site.posts | where_exp: "post", "post.url != page.url" %}
+    {% for post in related limit: 5 %}
+      <a href="{{ post.url | relative_url }}" style="display:flex;align-items:center;gap:14px;padding:10px;border-radius:10px;background:rgba(255,255,255,0.03);border:1px solid var(--line);text-decoration:none;color:inherit;">
+        <img src="{{ post.image | default: '/assets/img/placeholder-card.jpg' | relative_url }}" alt="" loading="lazy" decoding="async" style="width:96px;height:64px;flex-shrink:0;object-fit:cover;border-radius:8px;margin:0;background:rgba(255,255,255,0.06);">
+        <div style="min-width:0;">
+          <span style="font-size:11px;color:#8846C4;font-weight:600;text-transform:uppercase;">{{ post.categories | first }}</span>
+          <div style="font-weight:600;margin-top:4px;line-height:1.35;">{{ post.title }}</div>
+        </div>
       </a>
     {% endfor %}
   </div>
