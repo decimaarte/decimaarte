@@ -10,6 +10,12 @@ site_url: https://decimaarte.com.br
 media_folder: "assets/img/uploads"
 public_folder: "/assets/img/uploads"
 
+# Nome do arquivo/endereço da matéria: sem acento e sem cedilha (ex.: "furacoes", e não "furações")
+slug:
+  encoding: "ascii"
+  clean_accents: true
+  sanitize_replacement: "-"
+
 collections:
   - name: "posts"
     label: "Matérias"
