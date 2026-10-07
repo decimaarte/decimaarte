@@ -167,7 +167,7 @@ layout: default
       {% for post in posts_all limit:4 %}
       <a href="{{ post.url | relative_url }}" class="latest-item">
         <img class="latest-thumb" src="{{ post.image | default: '/assets/img/placeholder-card.jpg' | relative_url }}" alt="{{ post.title }}">
-        <div><h4>{{ post.title }}</h4><span>{{ post.date | date: "%d/%m" }}</span></div>
+        <div><h4>{{ post.title }}</h4><span>{{ post.date | date: "%d/%m" }} · {{ post.date | date: "%H:%M" }}</span></div>
       </a>
       {% endfor %}
     </div>
