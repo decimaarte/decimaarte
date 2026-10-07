@@ -1,6 +1,6 @@
 ---
 title: Morre Diogo Moraes, fundador da Betagames e criador de 171, o "GTA brasileiro"
-date: 2026-10-07T05:21:00-03:00
+date: 2026-10-07T05:28:00-03:00
 categories: noticias
 tags:
   - pc
