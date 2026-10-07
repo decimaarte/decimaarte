@@ -1,3 +1,13 @@
+/* ===== Fonte dos títulos: Barlow Semi Condensed Bold (arquivo no próprio site) =====
+   O arquivo vale pra qualquer peso (100–900), então os títulos que pedem "font-weight: 400" saem em negrito. */
+@font-face {
+  font-family: 'Barlow Semi Condensed';
+  src: url('/assets/barlow-semi-condensed-700.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* ===== Décima Arte — Design Tokens ===== */
 :root {
   --bg-deep:        #F6F5FB;
@@ -12,7 +22,7 @@
   --text-muted:     #5B5480;
   --line:           rgba(50, 25, 106, 0.14);
 
-  --font-display: 'Anton', sans-serif;
+  --font-display: 'Barlow Semi Condensed', 'Anton', sans-serif;
   --font-body: 'Inter', sans-serif;
   --font-logo: 'Rubik', sans-serif;
 
@@ -475,14 +485,17 @@ footer { border-top: 1px solid var(--line); background: var(--bg-surface); paddi
 }
 .btn-copy-pix:hover { background: var(--pink-accent); }
 
-/* ---------- Legibilidade da fonte de título (Anton) ----------
-   A Anton é muito condensada: em texto pequeno e sobre fundo escuro as letras "grudam".
-   Um respiro entre as letras e um pouco mais de tamanho resolvem, sem trocar a identidade do site. */
+/* ---------- Títulos em Barlow Semi Condensed: tamanho e espaçamento ----------
+   Aberta onde a Anton fechava (o "M" e o "N" têm vãos de verdade). Um respiro extra no tema escuro. */
 .card-body h3, .hero-copy h1, .hero-copy .hero-title, .post-header h1, .post-body h2,
-.promo-block h4, .sub-block h4, .simple-page h1 { letter-spacing: .02em; }
-.card-body h3 { font-size: 18px; line-height: 1.28; }
+.promo-block h4, .sub-block h4, .simple-page h1, .section-title { letter-spacing: .01em; }
+.section-title { font-size: 22px; letter-spacing: .02em; }
+.card-body h3 { font-size: 19px; line-height: 1.22; }
+.post-header h1 { font-size: clamp(28px, 4vw, 40px); line-height: 1.1; }
+.post-body h2 { font-size: 27px; line-height: 1.15; }
+.promo-block h4 { font-size: 21px; }
+.sub-block h4 { font-size: 20px; }
 [data-theme="dark"] .card-body h3, [data-theme="dark"] .hero-copy h1, [data-theme="dark"] .hero-copy .hero-title,
 [data-theme="dark"] .post-header h1, [data-theme="dark"] .post-body h2,
-[data-theme="dark"] .promo-block h4, [data-theme="dark"] .sub-block h4, [data-theme="dark"] .simple-page h1 { letter-spacing: .04em; }
-[data-theme="dark"] .card-body h3 { font-size: 18.5px; }
-[data-theme="dark"] .section-title { letter-spacing: .6px; }
+[data-theme="dark"] .promo-block h4, [data-theme="dark"] .sub-block h4, [data-theme="dark"] .simple-page h1 { letter-spacing: .02em; }
+[data-theme="dark"] .section-title { letter-spacing: .03em; }
