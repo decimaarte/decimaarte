@@ -1,6 +1,12 @@
 ---
 layout: default
 ---
+<style>
+  /* Botão "Ver todas →" das seções: roxo cheio + texto branco = contraste bom no tema claro e no escuro */
+  .see-all { font-family: var(--font-body); font-size: 12.5px; font-weight: 700; letter-spacing: .2px; line-height: 1.2; color: #fff; background: var(--purple-accent); padding: 7px 14px; border-radius: 999px; white-space: nowrap; transition: filter .15s ease, transform .15s ease; }
+  .see-all:hover { filter: brightness(1.12); transform: translateY(-1px); }
+  .see-all:focus-visible { outline: 2px solid var(--pink-accent); outline-offset: 2px; }
+</style>
 {% assign posts = site.posts %}
 
 {% assign posts_all = posts | sort: 'date' | reverse %}
@@ -26,7 +32,7 @@ layout: default
     </a>
     {% endif %}
 
-    <h2 class="section-title">Notícias quentes <a href="{{ '/noticias/' | relative_url }}" style="font-size:13px;font-weight:700;color:var(--purple-accent);">Ver todas →</a></h2>
+    <h2 class="section-title">Notícias quentes <a href="{{ '/noticias/' | relative_url }}" class="see-all">Ver todas →</a></h2>
     <div class="article-grid">
       {% assign noticias_all = site.categories.noticias | default: posts | sort: 'date' | reverse %}
       {% assign noticias_destaque_todos = noticias_all | where: 'destaque_home', true %}
@@ -48,7 +54,7 @@ layout: default
       {% endfor %}
     </div>
 
-    <h2 class="section-title">Curiosidades de desenvolvimento <a href="{{ '/curiosidades-dev/' | relative_url }}" style="font-size:13px;font-weight:700;color:var(--purple-accent);">Ver todas →</a></h2>
+    <h2 class="section-title">Curiosidades de desenvolvimento <a href="{{ '/curiosidades-dev/' | relative_url }}" class="see-all">Ver todas →</a></h2>
     <div class="article-grid">
       {% assign curio_all = site.categories["curiosidades-dev"] | default: posts | sort: 'date' | reverse %}
       {% assign curio_destaque_todos = curio_all | where: 'destaque_home', true %}
